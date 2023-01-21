@@ -11,7 +11,7 @@ import SwiftUI
 struct Gromit_client_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GromitMainView()
         }
     }
 }
