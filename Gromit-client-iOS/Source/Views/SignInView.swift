@@ -143,7 +143,6 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
             }
             return true
     }
-    //
 }
 
 extension SignInWithAppleDelegate:ASAuthorizationControllerPresentationContextProviding {
