@@ -121,7 +121,7 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
         print("Credential : \(credential)")
     }
     
-    //------------------------------------------------
+    // 작업중
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000") { (credentialState, error) in
