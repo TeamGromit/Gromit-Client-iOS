@@ -4,7 +4,6 @@
 //
 //  Created by julia on 2023/01/13.
 //
-// 제발 좀
 
 import SwiftUI
 import AuthenticationServices
