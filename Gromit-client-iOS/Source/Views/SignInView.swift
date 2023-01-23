@@ -42,7 +42,6 @@ struct SignInView: View {
             print("로그인 성공? : \($0)")
         }
         
-        //
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.email, .fullName]
