@@ -13,6 +13,7 @@ struct TempView: View {
     @State private var showChallengeList = false
     @State private var showParticipatingList = false
     @State private var showSettings = false
+    @State private var showSearchGitUser = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -21,6 +22,13 @@ struct TempView: View {
             }
             .fullScreenCover(isPresented: $showSignIn) {
                 SignInView()
+            }
+            
+            Button("Git 유저 네임 검색") {
+                showSearchGitUser.toggle()
+            }
+            .fullScreenCover(isPresented: $showSearchGitUser) {
+                SearchGitUserView()
             }
             
             Button("홈 페이지") {
