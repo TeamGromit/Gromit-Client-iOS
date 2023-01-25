@@ -122,25 +122,26 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
     
     // 작업중
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000") { (credentialState, error) in
-                switch credentialState {
-                case .authorized:       // 이미 증명이 된 경우
-                    print("authorized")
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000" /* 로그인에 사용한 User Identifier */) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:       // 이미 증명이 된 경우
                 // The Apple ID credential is valid.
-                case .revoked:      // 증명을 취소했을 때
-                    print("revoked")
-                case .notFound:     // 증명이 존재하지 않을 경우
-                    // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
-                    print("notFound")
-                    DispatchQueue.main.async {
-                        // self.window?.rootViewController?.showLoginViewController()
-                    }
-                default:
-                    break
+                print("해당 ID는 연동되어 있습니다.")
+            case .revoked:      // 증명을 취소했을 때
+                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+                print("해당 ID는 연동되어 있지 않습니다.")
+            case .notFound:     // 증명이 존재하지 않을 경우
+                // The Apple ID credential is either was not found, so show the sign-in UI.
+                print("해당 ID를 찾을 수 없습니다.")
+                DispatchQueue.main.async {
+                    // self.window?.rootViewController?.showLoginViewController()
                 }
+            default:
+                break
             }
-            return true
+        }
+        return true
     }
 }
 
