@@ -1,7 +1,7 @@
+
 import SwiftUI
 
-struct ContentView: View {
-    
+struct SettingsView: View {
     @State private var toggling = false
     @State private var showingToggle = false
     @State var date = Date()
@@ -25,7 +25,6 @@ struct ContentView: View {
                                     )
                                   }
                         }
-                
                 Link(" 이용약관", destination: URL(string: "https://www.notion.so/Gromit-Team-27c8612cb66a446b962b1fb29f8957d4")!)
                     .foregroundColor(.black)
                 
@@ -45,7 +44,6 @@ struct ContentView: View {
                           return Alert(title: Text("로그아웃 하시겠습니까?"),
                                        primaryButton: firstButton, secondaryButton: secondButton)
                       }
-                
                 Button(" 서비스탈퇴") {
                           self.showingAlert.toggle()
                       }
@@ -66,6 +64,6 @@ struct ContentView: View {
                         }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SettingsView()
     }
 }
