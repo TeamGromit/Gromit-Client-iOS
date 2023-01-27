@@ -50,13 +50,15 @@ struct HomeButtons: View {
 }
 
 struct TodaysCommit: View {
+    var numOfCommit = 23
+    
     var body: some View {
         HStack {
             VStack(spacing: 12) {
                 Text("오늘의 커밋")
-                    .font(.system(size: 20))
-                Text("23")
-                    .font(.system(size: 40))
+                    .font(.system(size: 20, weight: .semibold))
+                Text("\(numOfCommit)")
+                    .font(.system(size: 40, weight: .semibold))
             }
         }
         .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
@@ -107,17 +109,16 @@ struct CharacterLevelBar: View {
 }
 
 struct CharacterInfo: View {
+    var level = 0
+    var levelName = "알"
+    var exp = 52
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 HStack(spacing: 0) {
-                    Text("Lv.")
-                    Text("0")
-                    Text(" ")
-                    Text("알")
-                    Text(" ( ")
-                    Text("52")
-                    Text(" / 100 )")
+                    Text("Lv.\(level) \(levelName) ( \(exp) / 100 )")
+                        .font(.system(size: 18, weight: .semibold))
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                 
