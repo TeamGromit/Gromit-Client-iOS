@@ -24,7 +24,7 @@ struct TempView: View {
                 SignInView()
             }
             
-            Button("Git 유저 네임 검색") {
+            Button("Git User Name 검색") {
                 showSearchGitUser.toggle()
             }
             .fullScreenCover(isPresented: $showSearchGitUser) {

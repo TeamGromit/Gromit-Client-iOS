@@ -10,6 +10,7 @@ import AuthenticationServices
 
 struct SignInView: View {
     @State var appleSignInDelegates: SignInWithAppleDelegate! = nil
+    @State private var showSearchGitUser = false
     
     var body: some View {
         
@@ -19,11 +20,11 @@ struct SignInView: View {
             VStack(spacing: 173) { // 99
                 // logo
                 Text("Gromit Logo")
+                    .fontWeight(.bold)
                     .background (
                         Circle()
                             .fill(Color(red: 193 / 255, green: 222 / 255, blue: 146 / 255))
                             .frame(width: 186, height: 186)
-                            
                     )
                 
                 // apple login
@@ -47,7 +48,6 @@ struct SignInView: View {
         request.requestedScopes = [.email, .fullName]
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = appleSignInDelegates
-        
         authorizationController.performRequests()
     }
 }
@@ -59,7 +59,6 @@ struct SignInView_Previews: PreviewProvider {
 }
 
 struct SignInWithAppleButtonView: UIViewRepresentable {
-    
     typealias UIViewType = UIView
         
     func makeUIView(context: Context) -> UIView {
