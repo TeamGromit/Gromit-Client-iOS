@@ -15,6 +15,7 @@ struct HomeView: View {
             TodaysCommit()
             
             CharacterView()
+                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
             
             CharacterInfo()
         }
@@ -58,7 +59,7 @@ struct TodaysCommit: View {
                     .font(.system(size: 40))
             }
         }
-        .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+        .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
@@ -71,7 +72,6 @@ struct CharacterView: View {
                 .overlay(RoundedRectangle(cornerRadius: 30)
                     .stroke(Color("green500"), lineWidth: 5))
         }
-        .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
