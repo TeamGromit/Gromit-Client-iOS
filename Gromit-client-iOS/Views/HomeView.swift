@@ -15,21 +15,9 @@ struct HomeView: View {
             TodaysCommit()
             
             CharacterView()
+                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
             
-            VStack {
-                HStack(spacing: 0) {
-                    Text("Lv.")
-                    Text("0")
-                    Text(" ")
-                    Text("알")
-                    Text(" ( ")
-                    Text("52")
-                    Text(" / 100 )")
-                }
-                
-                CharacterLevelBar()
-                    .frame(width: 277, height: 55)
-            }
+            CharacterInfo()
         }
     }
 }
@@ -57,17 +45,23 @@ struct HomeButtons: View {
                 Image("collection")
             }
         }
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }
 }
 
 struct TodaysCommit: View {
+    var numOfCommit = 23
+    
     var body: some View {
-        VStack(spacing: 12) {
-            Text("오늘의 커밋")
-                .font(.system(size: 20))
-            Text("23")
-                .font(.system(size: 40))
+        HStack {
+            VStack(spacing: 12) {
+                Text("오늘의 커밋")
+                    .font(.system(size: 20, weight: .semibold))
+                Text("\(numOfCommit)")
+                    .font(.system(size: 40, weight: .semibold))
+            }
         }
+        .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
@@ -85,7 +79,7 @@ struct CharacterView: View {
 
 struct CharacterLevelBar: View {
     @State private var containerWidth: CGFloat = 0
-    @State private var step = 50
+    @State private var step = 52
     private let goal = 100
     
     var maxWidth: Double {
@@ -111,5 +105,29 @@ struct CharacterLevelBar: View {
         .fixedSize(horizontal: false, vertical: true)
         .overlay(RoundedRectangle(cornerRadius: 15)
             .stroke(Color(.black)))
+    }
+}
+
+struct CharacterInfo: View {
+    var level = 0
+    var levelName = "알"
+    var exp = 52
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                HStack(spacing: 0) {
+                    Text("Lv.\(level) \(levelName) ( \(exp) / 100 )")
+                        .font(.system(size: 18, weight: .semibold))
+                }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                
+                CharacterLevelBar()
+                    .frame(width: 277, height: 55)
+            }
+            .frame(width: 277)
+        }
+        .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+        Spacer()
     }
 }
