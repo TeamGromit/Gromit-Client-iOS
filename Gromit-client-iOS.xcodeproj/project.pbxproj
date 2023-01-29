@@ -77,6 +77,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D54C5C1C29868DBE00C3833A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D5F8C211297BF090004C6146 = {
 			isa = PBXGroup;
 			children = (
@@ -98,9 +105,12 @@
 		D5F8C21C297BF090004C6146 /* Gromit-client-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D5F8C221297BF091004C6146 /* Assets.xcassets */,
 				22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */,
-				D5F8C22C297BF172004C6146 /* Source */,
-				D5F8C22B297BF0D6004C6146 /* Resources */,
+				D5F8C22E297BF1A3004C6146 /* Views */,
+				D5F8C22D297BF188004C6146 /* ViewModels */,
+				D54C5C1C29868DBE00C3833A /* Services */,
+				D5F8C22F297BF1A9004C6146 /* Models */,
 				D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */,
 				D5F8C223297BF091004C6146 /* Preview Content */,
 			);
@@ -113,24 +123,6 @@
 				D5F8C224297BF091004C6146 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D5F8C22B297BF0D6004C6146 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D5F8C221297BF091004C6146 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		D5F8C22C297BF172004C6146 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				D5F8C22F297BF1A9004C6146 /* Models */,
-				D5F8C22E297BF1A3004C6146 /* Views */,
-				D5F8C22D297BF188004C6146 /* ViewModels */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		D5F8C22D297BF188004C6146 /* ViewModels */ = {
