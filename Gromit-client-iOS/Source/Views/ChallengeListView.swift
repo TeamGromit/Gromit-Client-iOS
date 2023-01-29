@@ -49,27 +49,21 @@ struct ChallengeButtons: View {
 }
 
 struct ChallengeCell: View {
-    var title = "20자이내로제목을작성해주세요감사합니다"
-    var date = "23/01/03"
-    var goalCommit = 100
-    var currentPeople = 1
-    var maxPeople = 6
-    
     var body: some View {
         List(0..<20) { item in
             VStack(alignment: .leading, spacing: 5) {
-                Text(title)
+                Text("20자이내로제목을작성해주세요감사합니다")
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 HStack {
                     Spacer()
-                    Text(date)
+                    Text("23/01/03")
                 }
                 HStack {
-                    Text("목표 커밋: \(goalCommit)")
+                    Text("목표 커밋: 100")
                     Spacer()
-                    Text("\(currentPeople)/\(maxPeople)")
+                    Text("1/6")
                 }
             }
             .padding(EdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30))
