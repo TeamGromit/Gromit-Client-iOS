@@ -10,6 +10,10 @@
 		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
 		2281F940297DA918000649A9 /* SearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView.swift */; };
 		2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F941297DBC9F000649A9 /* SearchGitUser.swift */; };
+		22C6963D2986F145004F799B /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C6963C2986F145004F799B /* CombineMoya */; };
+		22C6963F2986F145004F799B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C6963E2986F145004F799B /* Moya */; };
+		22C696412986F145004F799B /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C696402986F145004F799B /* ReactiveMoya */; };
+		22C696432986F145004F799B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C696422986F145004F799B /* RxMoya */; };
 		D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */; };
 		D5F8C222297BF091004C6146 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F8C221297BF091004C6146 /* Assets.xcassets */; };
 		D5F8C225297BF091004C6146 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F8C224297BF091004C6146 /* Preview Assets.xcassets */; };
@@ -46,7 +50,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C696432986F145004F799B /* RxMoya in Frameworks */,
+				22C6963D2986F145004F799B /* CombineMoya in Frameworks */,
+				22C696412986F145004F799B /* ReactiveMoya in Frameworks */,
 				224CE19C298459BB007EDD4F /* PopupView in Frameworks */,
+				22C6963F2986F145004F799B /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +164,10 @@
 			name = "Gromit-client-iOS";
 			packageProductDependencies = (
 				224CE19B298459BB007EDD4F /* PopupView */,
+				22C6963C2986F145004F799B /* CombineMoya */,
+				22C6963E2986F145004F799B /* Moya */,
+				22C696402986F145004F799B /* ReactiveMoya */,
+				22C696422986F145004F799B /* RxMoya */,
 			);
 			productName = "Gromit-client-iOS";
 			productReference = D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */;
@@ -187,6 +199,7 @@
 			mainGroup = D5F8C211297BF090004C6146;
 			packageReferences = (
 				224CE19A298459BB007EDD4F /* XCRemoteSwiftPackageReference "PopupView" */,
+				22C6963B2986F145004F799B /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = D5F8C21B297BF090004C6146 /* Products */;
 			projectDirPath = "";
@@ -435,6 +448,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		22C6963B2986F145004F799B /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -442,6 +463,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 224CE19A298459BB007EDD4F /* XCRemoteSwiftPackageReference "PopupView" */;
 			productName = PopupView;
+		};
+		22C6963C2986F145004F799B /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C6963B2986F145004F799B /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		22C6963E2986F145004F799B /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C6963B2986F145004F799B /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		22C696402986F145004F799B /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C6963B2986F145004F799B /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		22C696422986F145004F799B /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C6963B2986F145004F799B /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
