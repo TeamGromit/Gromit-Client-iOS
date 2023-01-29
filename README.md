@@ -2,7 +2,7 @@
 #### 1. 이슈 작성
 #### 2. 작업 내역 커밋
 #### 3. Pull
-- push 전단계에서 항상 pull을 해 내 코드가 main 브랜치의 최신 상태인지 확인해야 합니다.   
+- push 전단계에서 항상 pull을 해 내 코드가 main 브랜치의 최신 상태인지 확인해야 합니다:exclamation:   
 최신 상태가 아닌 코드를 push하고 merge한다면 누군가의 소중한 코드를 영영 떠나보낼 지도...:innocent:
 #### 4. Push
 #### 5. Github 레포에서 PR 날리고 Merge
