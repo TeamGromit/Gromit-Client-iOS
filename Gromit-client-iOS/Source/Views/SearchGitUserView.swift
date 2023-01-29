@@ -6,20 +6,49 @@
 //
 
 import SwiftUI
+import PopupView
 
 struct SearchGitUserView: View {
-    
     enum Field {
         case userName
-      }
+    }
     
+//    @State var shouldShowPopup : Bool = false
     @State private var userName = ""    // State
     @FocusState private var focusField: Field?
     
+//    func createPopup() -> some View {
+//        VStack(spacing: 10) {
+//            Image(systemName: "refresh")
+//                .resizable()
+//                .aspectRatio(contentMode: ContentMode.fit)
+//                .frame(width: 81, height: 81)
+//
+//            Text("해당 유저가 맞습니까?")
+//                .fontWeight(.bold)
+//
+//            Spacer().frame(height: 50)
+//
+//            Button(action: {
+//                self.shouldShowPopup = false
+//            }) {
+//                Text("네")
+//                    .font(.system(size: 14))
+//                    .foregroundColor(.black)
+//                    .fontWeight(.bold)
+//            }
+//            .frame(width: 100, height: 40)
+//            .background(Color.white)
+//            .cornerRadius(20.0)
+//        }
+//    }
+    
     var body: some View {
+        ZStack {
             VStack {
                 Text("GitHub User 이름을 입력해주세요.")
                     .fontWeight(.bold)
+                
                 TextField("User Name", text: $userName)
                     .focused($focusField, equals: .userName)
                     .frame(width: 279, height: 40, alignment: .center)
@@ -37,6 +66,7 @@ struct SearchGitUserView: View {
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .modifier(UserNameFieldClearButton(text: $userName))    // 흠..
+                
                 Button("입력") {
                     if userName.isEmpty {
                         focusField = .userName
@@ -51,6 +81,7 @@ struct SearchGitUserView: View {
                     hideKeyboard()
                 }
             }
+        }
     }
 }
 

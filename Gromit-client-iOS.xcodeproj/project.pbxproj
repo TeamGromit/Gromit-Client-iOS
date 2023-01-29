@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
 		2281F940297DA918000649A9 /* SearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView.swift */; };
 		2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F941297DBC9F000649A9 /* SearchGitUser.swift */; };
 		D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */; };
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224CE19C298459BB007EDD4F /* PopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,9 @@
 			dependencies = (
 			);
 			name = "Gromit-client-iOS";
+			packageProductDependencies = (
+				224CE19B298459BB007EDD4F /* PopupView */,
+			);
 			productName = "Gromit-client-iOS";
 			productReference = D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +185,9 @@
 				Base,
 			);
 			mainGroup = D5F8C211297BF090004C6146;
+			packageReferences = (
+				224CE19A298459BB007EDD4F /* XCRemoteSwiftPackageReference "PopupView" */,
+			);
 			productRefGroup = D5F8C21B297BF090004C6146 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -417,6 +425,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		224CE19A298459BB007EDD4F /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		224CE19B298459BB007EDD4F /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 224CE19A298459BB007EDD4F /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D5F8C212297BF090004C6146 /* Project object */;
 }
