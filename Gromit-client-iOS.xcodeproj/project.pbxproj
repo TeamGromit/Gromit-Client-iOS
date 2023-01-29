@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2281F940297DA918000649A9 /* SearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView.swift */; };
 		2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F941297DBC9F000649A9 /* SearchGitUser.swift */; };
+		59B655BE497A2AB9BAE19FD5 /* Pods_Gromit_client_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77CAD1E5B7E6F3C90D8F07F /* Pods_Gromit_client_iOS.framework */; };
 		D5D3E5C42983A5E600A50E50 /* FinalLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D3E5C32983A5E600A50E50 /* FinalLevelView.swift */; };
 		D5D3E5C62983C45700A50E50 /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D3E5C52983C45700A50E50 /* CollectionListView.swift */; };
 		D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */; };
@@ -28,6 +29,9 @@
 		22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gromit-client-iOS.entitlements"; sourceTree = "<group>"; };
 		2281F93F297DA918000649A9 /* SearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView.swift; sourceTree = "<group>"; };
 		2281F941297DBC9F000649A9 /* SearchGitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUser.swift; sourceTree = "<group>"; };
+		367753C7935144B3056DC1D5 /* Pods-Gromit-client-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gromit-client-iOS.release.xcconfig"; path = "Target Support Files/Pods-Gromit-client-iOS/Pods-Gromit-client-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		C77CAD1E5B7E6F3C90D8F07F /* Pods_Gromit_client_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gromit_client_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5A4F6B841DF77781B7174CD /* Pods-Gromit-client-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gromit-client-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Gromit-client-iOS/Pods-Gromit-client-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D5D3E5C32983A5E600A50E50 /* FinalLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalLevelView.swift; sourceTree = "<group>"; };
 		D5D3E5C52983C45700A50E50 /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
 		D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gromit-client-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,17 +53,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59B655BE497A2AB9BAE19FD5 /* Pods_Gromit_client_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5424D7DE125F8ED6E28F37CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5A4F6B841DF77781B7174CD /* Pods-Gromit-client-iOS.debug.xcconfig */,
+				367753C7935144B3056DC1D5 /* Pods-Gromit-client-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C4AB08E48D9AE30D28A0FDDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C77CAD1E5B7E6F3C90D8F07F /* Pods_Gromit_client_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D5F8C211297BF090004C6146 = {
 			isa = PBXGroup;
 			children = (
 				D5F8C21C297BF090004C6146 /* Gromit-client-iOS */,
 				D5F8C21B297BF090004C6146 /* Products */,
+				5424D7DE125F8ED6E28F37CF /* Pods */,
+				C4AB08E48D9AE30D28A0FDDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5F8C228297BF091004C6146 /* Build configuration list for PBXNativeTarget "Gromit-client-iOS" */;
 			buildPhases = (
+				9C95E550694896168D4B8E0B /* [CP] Check Pods Manifest.lock */,
 				D5F8C216297BF090004C6146 /* Sources */,
 				D5F8C217297BF090004C6146 /* Frameworks */,
 				D5F8C218297BF090004C6146 /* Resources */,
+				6F5256B6DC51FCA0065B2200 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,6 +232,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6F5256B6DC51FCA0065B2200 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gromit-client-iOS/Pods-Gromit-client-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gromit-client-iOS/Pods-Gromit-client-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gromit-client-iOS/Pods-Gromit-client-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C95E550694896168D4B8E0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gromit-client-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D5F8C216297BF090004C6146 /* Sources */ = {
@@ -347,6 +415,7 @@
 		};
 		D5F8C229297BF091004C6146 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5A4F6B841DF77781B7174CD /* Pods-Gromit-client-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -376,6 +445,7 @@
 		};
 		D5F8C22A297BF091004C6146 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 367753C7935144B3056DC1D5 /* Pods-Gromit-client-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
