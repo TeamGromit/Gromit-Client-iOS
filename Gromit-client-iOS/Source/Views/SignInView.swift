@@ -88,9 +88,11 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
             if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
                 print("========================== 첫 로그인")
                 displayLog(credential: appleIdCredential)
+//                registerNewAccount(credential: appleIdCredential) //appleIdCredential에서 정보가 들어있으면 register, 아니면 sign In
             } else {
                 print("========================== 로그인 했었음")
                 displayLog(credential: appleIdCredential)
+//                signInWithExistingAccount(credential: appleIdCredential)
             }
             signInSucceeded(true)
         default :
@@ -142,6 +144,21 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
         }
         return true
     }
+    
+//    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
+//        let userData = UserData(email: credential.email!, name: credential.fullName!, identifier: credential.user)
+//
+//        let keychain = UserDataKeychain()
+//        do {
+//            try keychain.store(userData)
+//        } catch {
+//            self.signInSucceeded(false)
+//        }
+//
+//        do {
+//            let success = try WebApi.Register (
+//        }
+//    }
 }
 
 extension SignInWithAppleDelegate:ASAuthorizationControllerPresentationContextProviding {
