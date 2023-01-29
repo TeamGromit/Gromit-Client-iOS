@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-var title = "20자이내로제목을작성해주세요감사합니다"
-var date = "23/01/03"
-
 struct ParticipatingListView: View {
     var body: some View {
         VStack {
@@ -50,16 +47,18 @@ struct ParticipatingCell: View {
         List(0..<20) { item in
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
-                    Text(title)
+                    Text("20자이내로제목을작성해주세요감사합니다")
                         .fontWeight(.semibold)
                         .lineLimit(1)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 }
                 HStack {
                     Spacer()
-                    Text(date)
+                    Text("23/01/03")
                 }
-                
+                HStack {
+                    Text("80 / 100")
+                }
                 ProgressBar()
             }
             .padding(EdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30))
@@ -72,23 +71,21 @@ struct ParticipatingCell: View {
 }
 
 struct CompletedCell: View {
-    var goalCommit = 100
-    
     var body: some View {
         List(0..<20) { item in
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
-                    Text(title)
+                    Text("20자이내로제목을작성해주세요감사합니다")
                         .fontWeight(.semibold)
                         .lineLimit(1)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 }
                 HStack {
                     Spacer()
-                    Text(title)
+                    Text("챌린지 기한 마감")
                 }
                 HStack {
-                    Text("\(goalCommit) 커밋")
+                    Text("100 커밋")
                     HStack {
                         Text("성공")
                             .padding(EdgeInsets(top: 1, leading: 10, bottom: 1, trailing: 10))
@@ -114,35 +111,29 @@ struct SizePreferenceKey: PreferenceKey{
 
 struct ProgressBar: View {
     @State private var containerWidth: CGFloat = 0
-    @State private var step = 80
-    private let goal = 100
+    @State private var step = 8
+    private let goal = 10
     
     var maxWidth: Double {
         return min((containerWidth / CGFloat(goal) * CGFloat(step)), containerWidth)
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("\(step) / 100")
-                Spacer()
-            }
-            ZStack(alignment: .leading) {
-                GeometryReader { geo in
-                    RoundedRectangle(cornerRadius: 60)
-                        .foregroundColor(.clear)
-                        .onAppear {
-                            containerWidth = geo.size.width
-                        }
-                }
+        ZStack(alignment: .leading) {
+            GeometryReader { geo in
                 RoundedRectangle(cornerRadius: 60)
-                    .fill(Color(.white))
-                    
-                RoundedRectangle(cornerRadius: 60)
-                    .fill(Color("green500"))
-                    .frame(width: maxWidth, height: 27)
+                    .foregroundColor(.clear)
+                    .onAppear {
+                        containerWidth = geo.size.width
+                    }
             }
-            .fixedSize(horizontal: false, vertical: true)
+            RoundedRectangle(cornerRadius: 60)
+                .fill(Color(.white))
+                
+            RoundedRectangle(cornerRadius: 60)
+                .fill(Color("green500"))
+                .frame(width: maxWidth)
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
