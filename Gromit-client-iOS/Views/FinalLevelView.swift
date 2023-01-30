@@ -67,7 +67,7 @@ struct NewCharacterButton: View {
                     primaryButton: .default(Text("좋아요"), action: {
                         
                     }),
-                    secondaryButton: .cancel(Text("아니오")))
+                    secondaryButton: .cancel(Text("아니요")))
             }
         }
         .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))

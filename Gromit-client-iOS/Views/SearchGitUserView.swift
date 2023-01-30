@@ -7,6 +7,8 @@
 
 import SwiftUI
 import PopupView
+import Moya
+import CombineMoya
 
 struct SearchGitUserView: View {
     enum Field {
@@ -16,6 +18,9 @@ struct SearchGitUserView: View {
 //    @State var shouldShowPopup : Bool = false
     @State private var userName = ""    // State
     @FocusState private var focusField: Field?
+    // 기본 알림창
+    @State private var showingAlert = false
+    private let provider = MoyaProvider<UserService>()
     
 //    func createPopup() -> some View {
 //        VStack(spacing: 10) {
@@ -73,13 +78,38 @@ struct SearchGitUserView: View {
                     } else {
                         hideKeyboard()
                         print("Complete Input and sign in...")
+                        self.showingAlert.toggle()
+//                        provider.request(.searchGitUser(param: userName)) { result in
+//                            switch result {
+//                            case .success(let response):
+//                                print("response success! result: \(response)")
+//                                guard let data = try? response.map(DataResponse.self) else {
+//                                    print("mapping failure")
+//                                    return }
+//                                self.userName = data.result.githubNickname
+//                                print(userName)
+//                                self.showingAlert.toggle()
+//                            case .failure(let err):
+//                                print(err.localizedDescription)
+//                            }
+//                        }
                     }
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text("해당 유저가 맞습니까?"),
+                        message: Text("\(userName)"),
+                        primaryButton: .default(Text("네"), action: {
+                            
+                        }),
+                        secondaryButton: .cancel(Text("아니요")))
                 }
                 .buttonStyle(InputButtonStyle())
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
                 .onTapGesture { // <-
                     hideKeyboard()
                 }
+                
             }
         }
     }
