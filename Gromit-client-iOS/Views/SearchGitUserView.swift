@@ -7,8 +7,8 @@
 
 import SwiftUI
 import PopupView
-import Moya
-import CombineMoya
+//import Moya
+//import CombineMoya
 
 struct SearchGitUserView: View {
     enum Field {
@@ -20,7 +20,9 @@ struct SearchGitUserView: View {
     @FocusState private var focusField: Field?
     // 기본 알림창
     @State private var showingAlert = false
-    private let provider = MoyaProvider<UserService>()
+//    private let provider = MoyaProvider<UserService>()
+    // URLSession을 이용해 통신 시도중
+    @StateObject private var network = UserService.shared
     
 //    func createPopup() -> some View {
 //        VStack(spacing: 10) {
@@ -99,6 +101,7 @@ struct SearchGitUserView: View {
                     Alert(
                         title: Text("해당 유저가 맞습니까?"),
                         message: Text("\(userName)"),
+//                        message: Text("\(network.gitName)"),
                         primaryButton: .default(Text("네"), action: {
                             
                         }),

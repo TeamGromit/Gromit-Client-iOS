@@ -10,10 +10,13 @@ import SwiftUI
 struct TempView: View {
     @State private var showSignIn = false
     @State private var showHome = false
+    @State private var showFinalLevel = false
+    @State private var showCollection = false
     @State private var showChallengeList = false
     @State private var showParticipatingList = false
     @State private var showSettings = false
     @State private var showSearchGitUser = false
+    @State private var showTempSearchGitUser = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -31,11 +34,32 @@ struct TempView: View {
                 SearchGitUserView()
             }
             
+            Button("(임시)Git User Name 검색") {
+                showTempSearchGitUser.toggle()
+            }
+            .fullScreenCover(isPresented: $showTempSearchGitUser) {
+                TempSearchGitUserView()
+            }
+            
             Button("홈 페이지") {
                 showHome.toggle()
             }
             .fullScreenCover(isPresented: $showHome) {
                 HomeView()
+            }
+            
+            Button("최종 진화") {
+                showFinalLevel.toggle()
+            }
+            .fullScreenCover(isPresented: $showFinalLevel) {
+                FinalLevelView()
+            }
+            
+            Button("컬렉션") {
+                showCollection.toggle()
+            }
+            .fullScreenCover(isPresented: $showCollection) {
+                CollectionListView()
             }
             
             Button("챌린지 목록") {
