@@ -15,7 +15,7 @@ struct SignInView: View {
     var body: some View {
         
         ZStack {
-            Color(red: 255 / 255, green: 247 / 255, blue: 178 / 255).ignoresSafeArea()
+            Color("yellow500").ignoresSafeArea()
             
             VStack(spacing: 173) { // 99
                 // logo
@@ -23,7 +23,7 @@ struct SignInView: View {
                     .fontWeight(.bold)
                     .background (
                         Circle()
-                            .fill(Color(red: 193 / 255, green: 222 / 255, blue: 146 / 255))
+                            .fill(Color("green500"))
                             .frame(width: 186, height: 186)
                     )
                 
