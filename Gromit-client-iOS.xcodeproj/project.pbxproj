@@ -25,6 +25,7 @@
 		D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */; };
 		D56FE81D2988014700374A9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81C2988014600374A9A /* Constants.swift */; };
 		D56FE81F29882ABD00374A9A /* TempSearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */; };
+		D56FE821298838E400374A9A /* SearchGitUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE820298838E400374A9A /* SearchGitUserViewModel.swift */; };
 		D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */; };
 		D5F8C222297BF091004C6146 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F8C221297BF091004C6146 /* Assets.xcassets */; };
 		D5F8C225297BF091004C6146 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F8C224297BF091004C6146 /* Preview Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserEntity.swift; sourceTree = "<group>"; };
 		D56FE81C2988014600374A9A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSearchGitUserView.swift; sourceTree = "<group>"; };
+		D56FE820298838E400374A9A /* SearchGitUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchGitUserViewModel.swift; path = "Gromit-client-iOS/Views/SearchGitUserViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gromit-client-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gromit_client_iOSApp.swift; sourceTree = "<group>"; };
 		D5F8C221297BF091004C6146 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		D5F8C22D297BF188004C6146 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D56FE820298838E400374A9A /* SearchGitUserViewModel.swift */,
 			);
 			name = ViewModels;
 			path = Source/ViewModels;
@@ -272,6 +275,7 @@
 				D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */,
 				D56FE81D2988014700374A9A /* Constants.swift in Sources */,
 				D5F8C237297BF214004C6146 /* ChallengeListView.swift in Sources */,
+				D56FE821298838E400374A9A /* SearchGitUserViewModel.swift in Sources */,
 				D56FE80F298787AF00374A9A /* LoginWithAppleEntity.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */,
 				D5F8C23D297BF231004C6146 /* GromitMainView.swift in Sources */,

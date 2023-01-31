@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct SearchGitUserEntity: Decodable {
-    let code: Int
-    let isSuccess: Bool
-    let message: String
-    let result: SearchGitUserResponse
+struct SearchGitUserEntity: Codable, CustomStringConvertible {
+    var code: Int
+    var isSuccess: Bool
+    var message: String
+    var result: SearchGitUserResponse
+    
+    var description: String {
+        return "git user name: \(result.githubNickname) / image: \(result.img)"
+    }
 }
 
-struct SearchGitUserResponse: Decodable, Hashable {
-    let githubNickname, img: String
+struct SearchGitUserResponse: Codable {
+    var githubNickname: String
+    var img: String
 }

@@ -15,7 +15,7 @@ struct TempSearchGitUserView: View {
     @State private var userName = ""
     @FocusState private var focusField: Field?
     @State private var showingAlert = false
-    @StateObject private var network = UserService.shared
+    @ObservedObject var searchGitUserViewModel = SearchGitUserViewModel()
     
     var body: some View {
         VStack {
@@ -37,13 +37,11 @@ struct TempSearchGitUserView: View {
                 }
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
-                .modifier(UserNameFieldClearButton(text: $userName))
             
             Button("입력") {
                 if userName.isEmpty {
                     focusField = .userName
                 } else {
-                    hideKeyboard()
                     print("Complete Input and sign in...")
                     self.showingAlert.toggle()
                 }
@@ -52,23 +50,13 @@ struct TempSearchGitUserView: View {
                 Alert(
                     title: Text("해당 유저가 맞습니까?"),
 //                    message: Text("\(userName)"),
-                    message: Text("\(network.gitName)").onAppear {
-                        network.getGitUser(name: userName)
-                        print("View-userName: \(userName)")
-                    } as? Text,
+                    message: Text("\(searchGitUserViewModel.responseGitName)"),
                     primaryButton: .default(Text("네"), action: {
                         
                     }),
                     secondaryButton: .cancel(Text("아니요")))
             }
-            .buttonStyle(InputButtonStyle())
-            .onTapGesture { // <-
-                hideKeyboard()
-            }
         }
-//        .onAppear {
-//            network.getGitUser(name: userName)
-//        }
     }
 }
 
