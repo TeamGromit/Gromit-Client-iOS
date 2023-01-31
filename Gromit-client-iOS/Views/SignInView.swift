@@ -30,7 +30,7 @@ struct SignInView: View {
                 // apple login
                 SignInWithAppleButtonView()
                     .frame(width: 280, height: 60, alignment: .center)
-                    .cornerRadius(5)
+                    .cornerRadius(30)
                     .onTapGesture {
                         self.showAppleLogin()
                     }
