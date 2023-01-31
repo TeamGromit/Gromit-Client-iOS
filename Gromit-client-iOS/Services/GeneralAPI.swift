@@ -8,5 +8,5 @@
 import Foundation
 
 struct GeneralAPI {
-        static let baseURL = "https://gromit.shop/"
+        static let baseURL = "https://gromit.shop"
 }

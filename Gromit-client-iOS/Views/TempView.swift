@@ -10,10 +10,13 @@ import SwiftUI
 struct TempView: View {
     @State private var showSignIn = false
     @State private var showHome = false
+    @State private var showFinalLevel = false
+    @State private var showCollection = false
     @State private var showChallengeList = false
     @State private var showParticipatingList = false
     @State private var showSettings = false
     @State private var showSearchGitUser = false
+    @State private var showTempSearchGitUser = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -24,11 +27,18 @@ struct TempView: View {
                 SignInView()
             }
             
-            Button("Git User Name 검색") {
-                showSearchGitUser.toggle()
+//            Button("Git User Name 검색") {
+//                showSearchGitUser.toggle()
+//            }
+//            .fullScreenCover(isPresented: $showSearchGitUser) {
+//                SearchGitUserView()
+//            }
+            
+            Button("(임시)Git User Name 검색") {
+                showTempSearchGitUser.toggle()
             }
-            .fullScreenCover(isPresented: $showSearchGitUser) {
-                SearchGitUserView()
+            .fullScreenCover(isPresented: $showTempSearchGitUser) {
+                TempSearchGitUserView()
             }
             
             Button("홈 페이지") {
@@ -36,6 +46,20 @@ struct TempView: View {
             }
             .fullScreenCover(isPresented: $showHome) {
                 HomeView()
+            }
+            
+            Button("최종 진화") {
+                showFinalLevel.toggle()
+            }
+            .fullScreenCover(isPresented: $showFinalLevel) {
+                FinalLevelView()
+            }
+            
+            Button("컬렉션") {
+                showCollection.toggle()
+            }
+            .fullScreenCover(isPresented: $showCollection) {
+                CollectionListView()
             }
             
             Button("챌린지 목록") {
