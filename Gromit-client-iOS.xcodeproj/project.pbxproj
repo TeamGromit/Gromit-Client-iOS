@@ -15,13 +15,11 @@
 		22C696412986F145004F799B /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C696402986F145004F799B /* ReactiveMoya */; };
 		22C696432986F145004F799B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C696422986F145004F799B /* RxMoya */; };
 		D561F7632986FDAB009E3639 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561F7622986FDAB009E3639 /* GeneralAPI.swift */; };
-		D561F7652986FDCB009E3639 /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561F7642986FDCB009E3639 /* LoginServices.swift */; };
 		D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE809298781C500374A9A /* LoginWithAppleRequest.swift */; };
 		D56FE80F298787AF00374A9A /* LoginWithAppleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE80E298787AF00374A9A /* LoginWithAppleEntity.swift */; };
 		D56FE8112987F68300374A9A /* FinalLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8102987F68300374A9A /* FinalLevelView.swift */; };
 		D56FE8132987F6AC00374A9A /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8122987F6AC00374A9A /* CollectionListView.swift */; };
 		D56FE8152987FAD300374A9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8142987FAD300374A9A /* User.swift */; };
-		D56FE8192987FC3400374A9A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8182987FC3400374A9A /* UserService.swift */; };
 		D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */; };
 		D56FE81D2988014700374A9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81C2988014600374A9A /* Constants.swift */; };
 		D56FE81F29882ABD00374A9A /* TempSearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */; };
@@ -44,17 +42,16 @@
 		2281F93F297DA918000649A9 /* SearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView.swift; sourceTree = "<group>"; };
 		2281F941297DBC9F000649A9 /* SearchGitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUser.swift; sourceTree = "<group>"; };
 		D561F7622986FDAB009E3639 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
-		D561F7642986FDCB009E3639 /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		D56FE809298781C500374A9A /* LoginWithAppleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleRequest.swift; sourceTree = "<group>"; };
 		D56FE80E298787AF00374A9A /* LoginWithAppleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleEntity.swift; sourceTree = "<group>"; };
 		D56FE8102987F68300374A9A /* FinalLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalLevelView.swift; sourceTree = "<group>"; };
 		D56FE8122987F6AC00374A9A /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
 		D56FE8142987FAD300374A9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D56FE8182987FC3400374A9A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserEntity.swift; sourceTree = "<group>"; };
 		D56FE81C2988014600374A9A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSearchGitUserView.swift; sourceTree = "<group>"; };
 		D56FE820298838E400374A9A /* SearchGitUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchGitUserViewModel.swift; path = "Gromit-client-iOS/Views/SearchGitUserViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		D575D2B029896C660024C6DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gromit-client-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gromit_client_iOSApp.swift; sourceTree = "<group>"; };
 		D5F8C221297BF091004C6146 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,8 +87,6 @@
 			children = (
 				D56FE80D2987878300374A9A /* Entities */,
 				D56FE80C2987864600374A9A /* Requests */,
-				D561F7642986FDCB009E3639 /* LoginServices.swift */,
-				D56FE8182987FC3400374A9A /* UserService.swift */,
 				D561F7622986FDAB009E3639 /* GeneralAPI.swift */,
 			);
 			path = Services;
@@ -141,6 +136,7 @@
 				D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */,
 				D5F8C221297BF091004C6146 /* Assets.xcassets */,
 				22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */,
+				D575D2B029896C660024C6DA /* Info.plist */,
 				D5F8C223297BF091004C6146 /* Preview Content */,
 			);
 			path = "Gromit-client-iOS";
@@ -279,7 +275,6 @@
 				D56FE80F298787AF00374A9A /* LoginWithAppleEntity.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */,
 				D5F8C23D297BF231004C6146 /* GromitMainView.swift in Sources */,
-				D561F7652986FDCB009E3639 /* LoginServices.swift in Sources */,
 				D561F7632986FDAB009E3639 /* GeneralAPI.swift in Sources */,
 				D5F8C231297BF1DE004C6146 /* TempView.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
@@ -294,7 +289,6 @@
 				D56FE81F29882ABD00374A9A /* TempSearchGitUserView.swift in Sources */,
 				2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */,
 				D5F8C23F297BF4CE004C6146 /* Challenge.swift in Sources */,
-				D56FE8192987FC3400374A9A /* UserService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +420,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Gromit-client-iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Gromit-client-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -455,7 +449,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Gromit-client-iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Gromit-client-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

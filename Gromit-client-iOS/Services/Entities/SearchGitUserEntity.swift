@@ -14,11 +14,11 @@ struct SearchGitUserEntity: Codable, CustomStringConvertible {
     var result: SearchGitUserResponse
     
     var description: String {
-        return "git user name: \(result.githubNickname) / image: \(result.img)"
+        return "git user name: \(result.nickname) / image: \(result.img)"
     }
 }
 
 struct SearchGitUserResponse: Codable {
-    var githubNickname: String
+    var nickname: String
     var img: String
 }

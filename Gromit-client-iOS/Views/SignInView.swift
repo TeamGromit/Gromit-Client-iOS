@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AuthenticationServices
-import Moya
 
 struct SignInView: View {
     @State var appleSignInDelegates: SignInWithAppleDelegate! = nil
@@ -95,7 +94,6 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                 displayLog(credential: appleIdCredential)
 //                signInWithExistingAccount(credential: appleIdCredential)
             }
-            loginWithApple(credential: appleIdCredential)
             signInSucceeded(true)
         default :
             break
@@ -145,33 +143,6 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
             }
         }
         return true
-    }
-    
-    // 서버 통신 fix 필요 - Failed to map data to a Decodable object.
-    func loginWithApple(credential: ASAuthorizationAppleIDCredential) {
-        // MoyaTarget과 상호작용하는 MoyaProvider를 생성하기 위해 MoyaProvider인스턴스 생성
-        let authProvider = MoyaProvider<LoginServices>()
-        // ResponseModel를 userData에 넣어주자!
-        var userData: LoginWithAppleEntity?
-        let idToken = credential.identityToken!
-        guard let tokeStr = String(data: idToken, encoding: .utf8) else { return }
-        
-        let param = LoginWithAppleRequest.init(tokeStr)
-        print("Login With Apple Request Body: \(param)")
-        authProvider.request(.loginWithApple(param: param)) { response in
-            switch response {
-                case .success(let result):
-                    print(result)
-                    do {
-                        userData = try result.map(LoginWithAppleEntity.self)
-                        print("userData: \(String(describing: userData))")
-                    } catch(let err) {
-                        print(err.localizedDescription)
-                    }
-                case .failure(let err):
-                    print("Network failure: \(err.localizedDescription)")
-            }
-        }
     }
     
 //    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
