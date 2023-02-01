@@ -11,6 +11,8 @@ import AuthenticationServices
 struct SignInView: View {
     @State var appleSignInDelegates: SignInWithAppleDelegate! = nil
     @State private var showSearchGitUser = false
+    // 데모데이 영상 촬영용 임시 변수
+    @State private var showTempSearchGitUser = false
     
     var body: some View {
         
@@ -34,6 +36,13 @@ struct SignInView: View {
                     .onTapGesture {
                         self.showAppleLogin()
                     }
+                
+                Button("(임시)Git User Name 검색") {
+                    showTempSearchGitUser.toggle()
+                }
+                .fullScreenCover(isPresented: $showTempSearchGitUser) {
+                    TempSearchGitUserView()
+                }
             }
         }
     }

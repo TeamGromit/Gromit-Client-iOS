@@ -17,6 +17,8 @@ struct TempSearchGitUserView: View {
     @State private var showingAlert = false
     @ObservedObject var searchGitUserViewModel = SearchGitUserViewModel()
     @State var alertTitle = ""
+    // 데모데이 영상 촬영용 임시 변수
+    @State private var showGromitMainView = false
     
     var body: some View {
         VStack {
@@ -61,6 +63,13 @@ struct TempSearchGitUserView: View {
                         
                     }),
                     secondaryButton: .cancel(Text("아니요")))
+            }
+            
+            Button("메인 페이지 이동") {
+                showGromitMainView.toggle()
+            }
+            .fullScreenCover(isPresented: $showGromitMainView) {
+                GromitMainView()
             }
         }
     }
