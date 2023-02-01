@@ -17,20 +17,26 @@ struct SignInView: View {
         ZStack {
             Color("yellow500").ignoresSafeArea()
             
-            VStack(spacing: 173) { // 99
-                // logo
-                Text("Gromit Logo")
-                    .fontWeight(.bold)
-                    .background (
-                        Circle()
-                            .fill(Color("green500"))
-                            .frame(width: 186, height: 186)
-                    )
+            VStack(spacing: 100) {
+//                // Ex logo
+//                Text("Gromit Logo")
+//                    .fontWeight(.bold)
+//                    .background (
+//                        Circle()
+//                            .fill(Color("green500"))
+//                            .frame(width: 186, height: 186)
+//                    )
+                // Origin logo
+                Image("gromit_logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(30)
+                    .padding(.all, 15.0)
                 
                 // apple login
                 SignInWithAppleButtonView()
                     .frame(width: 280, height: 60, alignment: .center)
-                    .cornerRadius(30)
+                    .cornerRadius(20)
                     .onTapGesture {
                         self.showAppleLogin()
                     }
