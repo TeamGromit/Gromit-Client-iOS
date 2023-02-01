@@ -16,6 +16,7 @@ struct TempSearchGitUserView: View {
     @FocusState private var focusField: Field?
     @State private var showingAlert = false
     @ObservedObject var searchGitUserViewModel = SearchGitUserViewModel()
+    @State var alertTitle = ""
     
     var body: some View {
         VStack {
@@ -43,13 +44,18 @@ struct TempSearchGitUserView: View {
                     focusField = .userName
                 } else {
                     print("Complete Input and sign in...")
+                    searchGitUserViewModel.getGitUserName(rGitName: userName)
+                    if (searchGitUserViewModel.responseGitName == "") {
+                        self.alertTitle = "해당 유저를 찾을 수 없습니다."
+                    } else {
+                        self.alertTitle = "해당 유저가 맞습니까?"
+                    }
                     self.showingAlert.toggle()
                 }
             }
             .alert(isPresented: $showingAlert) {
                 Alert(
-                    title: Text("해당 유저가 맞습니까?"),
-//                    message: Text("\(userName)"),
+                    title: Text(self.alertTitle),
                     message: Text("\(searchGitUserViewModel.responseGitName)"),
                     primaryButton: .default(Text("네"), action: {
                         
