@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
+		227133E0298AA17C003025E7 /* InputUserNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227133DF298AA17C003025E7 /* InputUserNicknameView.swift */; };
 		2281F940297DA918000649A9 /* SearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView.swift */; };
 		2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F941297DBC9F000649A9 /* SearchGitUser.swift */; };
 		22C6963D2986F145004F799B /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 22C6963C2986F145004F799B /* CombineMoya */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gromit-client-iOS.entitlements"; sourceTree = "<group>"; };
+		227133DF298AA17C003025E7 /* InputUserNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNicknameView.swift; sourceTree = "<group>"; };
 		2281F93F297DA918000649A9 /* SearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView.swift; sourceTree = "<group>"; };
 		2281F941297DBC9F000649A9 /* SearchGitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUser.swift; sourceTree = "<group>"; };
 		D561F7622986FDAB009E3639 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				D56FE8102987F68300374A9A /* FinalLevelView.swift */,
 				D56FE8122987F6AC00374A9A /* CollectionListView.swift */,
 				D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */,
+				227133DF298AA17C003025E7 /* InputUserNicknameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
 				D5F8C239297BF224004C6146 /* ParticipatingListView.swift in Sources */,
 				2281F940297DA918000649A9 /* SearchGitUserView.swift in Sources */,
+				227133E0298AA17C003025E7 /* InputUserNicknameView.swift in Sources */,
 				D5F8C233297BF1FD004C6146 /* SignInView.swift in Sources */,
 				D56FE8132987F6AC00374A9A /* CollectionListView.swift in Sources */,
 				D5F8C235297BF20B004C6146 /* HomeView.swift in Sources */,
@@ -430,6 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = teamgromit.gromit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -459,6 +464,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = teamgromit.gromit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
