@@ -17,6 +17,8 @@ struct TempView: View {
     @State private var showSettings = false
     @State private var showSearchGitUser = false
     @State private var showTempSearchGitUser = false
+    @State private var showInputUserNickname = false
+    @State private var showCreation = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -41,6 +43,13 @@ struct TempView: View {
                 TempSearchGitUserView()
             }
             
+            Button("User Nickname 입력") {
+                showInputUserNickname.toggle()
+            }
+            .fullScreenCover(isPresented: $showInputUserNickname) {
+                InputUserNicknameView()
+            }
+            
             Button("홈 페이지") {
                 showHome.toggle()
             }
@@ -60,6 +69,13 @@ struct TempView: View {
             }
             .fullScreenCover(isPresented: $showCollection) {
                 CollectionListView()
+            }
+            
+            Button("챌린지 생성") {
+                showCreation.toggle()
+            }
+            .fullScreenCover(isPresented: $showCreation) {
+                CreationView()
             }
             
             Button("챌린지 목록") {
