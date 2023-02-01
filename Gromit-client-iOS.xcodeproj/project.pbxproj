@@ -170,9 +170,9 @@
 				D5F8C23A297BF22A004C6146 /* SettingsView.swift */,
 				D5F8C23C297BF231004C6146 /* GromitMainView.swift */,
 				2281F93F297DA918000649A9 /* SearchGitUserView.swift */,
+				D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */,
 				D56FE8102987F68300374A9A /* FinalLevelView.swift */,
 				D56FE8122987F6AC00374A9A /* CollectionListView.swift */,
-				D56FE81E29882ABD00374A9A /* TempSearchGitUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
