@@ -47,7 +47,7 @@ struct TempView: View {
                 showInputUserNickname.toggle()
             }
             .fullScreenCover(isPresented: $showInputUserNickname) {
-                InputUserNicknameView()
+                InputUserNameView()
             }
             
             Button("홈 페이지") {
