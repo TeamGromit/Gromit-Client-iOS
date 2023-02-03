@@ -11,6 +11,8 @@ import AuthenticationServices
 struct SignInView: View {
     @State var appleSignInDelegates: SignInWithAppleDelegate! = nil
     @State private var showSearchGitUser = false
+    // 데모데이 영상 촬영용 임시 변수
+    @State private var showTempSearchGitUser = false
     
     var body: some View {
         
@@ -40,6 +42,13 @@ struct SignInView: View {
                     .onTapGesture {
                         self.showAppleLogin()
                     }
+                
+                Button("(임시)Git User Name 검색") {
+                    showTempSearchGitUser.toggle()
+                }
+                .fullScreenCover(isPresented: $showTempSearchGitUser) {
+                    TempSearchGitUserView()
+                }
             }
         }
     }
@@ -95,6 +104,11 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                 print("========================== 첫 로그인")
                 displayLog(credential: appleIdCredential)
 //                registerNewAccount(credential: appleIdCredential) //appleIdCredential에서 정보가 들어있으면 register, 아니면 sign In
+                
+                // 회원가입 완료 후 로그인 유지를 위해 email을 UserDefaults에 저장. UserDefaults에는 email, provider, nickname, githubName이 저장될 것
+                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
+                UserDefaults.standard.set(credential.email, forKey: "email")
+                UserDefaults.standard.set("APPLE", forKey: "provider")
             } else {
                 print("========================== 로그인 했었음")
                 displayLog(credential: appleIdCredential)

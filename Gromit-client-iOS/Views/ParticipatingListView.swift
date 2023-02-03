@@ -121,18 +121,18 @@ struct ProgressBar: View {
     var body: some View {
         ZStack(alignment: .leading) {
             GeometryReader { geo in
-                RoundedRectangle(cornerRadius: 60)
+                RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.clear)
                     .onAppear {
                         containerWidth = geo.size.width
                     }
             }
-            RoundedRectangle(cornerRadius: 60)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(Color(.white))
                 
-            RoundedRectangle(cornerRadius: 60)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(Color("green500"))
-                .frame(width: maxWidth)
+                .frame(width: maxWidth, height: 29)
         }
         .fixedSize(horizontal: false, vertical: true)
     }

@@ -8,8 +8,7 @@
 import SwiftUI
 import Combine
 
-struct InputUserNicknameView: View {
-    
+struct InputUserNameView: View {
     enum Field {
         case userNickname
       }
@@ -17,6 +16,10 @@ struct InputUserNicknameView: View {
     
     @State private var userNickname = ""    // State
     @FocusState private var focusField: Field?
+    @ObservedObject var inputUserNameViewModel = InputUserNameViewModel()
+    @State private var showingAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     var body: some View {
             VStack {
@@ -46,11 +49,28 @@ struct InputUserNicknameView: View {
                     .modifier(UserNameFieldClearButton(text: $userNickname))    // 흠..
                 Button("입력") {
                     if userNickname.isEmpty {
-                        focusField = .userNickname
+                        self.alertTitle = "닉네임을 입력해주세요."
+                        self.alertMessage = ""
                     } else {
+                        // 동기 작업 필요? 1. 아무것도 입력하지 않고 2. 확인을 누른뒤 3. 닉네임 입력하고 4. 확인 누르면 5. 첫번째 알림창에서 메시지가 안뜨는 오류
                         hideKeyboard()
                         print("Complete Input and sign in...")
+                        print("request user name: \(userNickname)")
+                        inputUserNameViewModel.inputUserName(rUserName: userNickname)
+                        self.alertTitle = inputUserNameViewModel.responseMessage
+                        self.alertMessage = inputUserNameViewModel.responseUserName
                     }
+                    print("userName: \(self.alertMessage) / alertTitle: \(self.alertTitle)")
+                    self.showingAlert.toggle()
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text("\(alertTitle)"),
+                        message: Text("\(alertMessage)"),
+                        dismissButton: .default(Text("확인")) {
+                            UserDefaults.standard.set(userNickname, forKey: "nickname")
+                        }
+                    )
                 }
                 .buttonStyle(InputButtonStyle())
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
@@ -61,9 +81,9 @@ struct InputUserNicknameView: View {
     }
 }
 
-struct SearchGitUserView_Previews: PreviewProvider {
+struct InputUserNameView_Previews: PreviewProvider {
     static var previews: some View {
-        InputUserNicknameView()
+        InputUserNameView()
     }
 }
 
