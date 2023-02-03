@@ -67,7 +67,10 @@ struct InputUserNameView: View {
                     Alert(
                         title: Text("\(alertTitle)"),
                         message: Text("\(alertMessage)"),
-                        dismissButton: .default(Text("확인")))
+                        dismissButton: .default(Text("확인")) {
+                            UserDefaults.standard.set(userNickname, forKey: "nickname")
+                        }
+                    )
                 }
                 .buttonStyle(InputButtonStyle())
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
