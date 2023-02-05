@@ -65,7 +65,7 @@ struct TempSearchGitUserView: View {
                     secondaryButton: .cancel(Text("아니요")))
             }
             
-            Button("그로밋 닉네임 페이지 이동") {
+            Button("(임시)그로밋 닉네임 페이지 이동") {
                 showInputUserNameView.toggle()
             }
             .fullScreenCover(isPresented: $showInputUserNameView) {

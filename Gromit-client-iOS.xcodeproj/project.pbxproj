@@ -22,7 +22,7 @@
 		D52EC0C1298BB903004B999B /* InputUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52EC0C0298BB903004B999B /* InputUserNameViewModel.swift */; };
 		D561F7632986FDAB009E3639 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561F7622986FDAB009E3639 /* GeneralAPI.swift */; };
 		D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE809298781C500374A9A /* LoginWithAppleRequest.swift */; };
-		D56FE80F298787AF00374A9A /* LoginWithAppleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE80E298787AF00374A9A /* LoginWithAppleEntity.swift */; };
+		D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE80E298787AF00374A9A /* SignInEntity.swift */; };
 		D56FE8112987F68300374A9A /* FinalLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8102987F68300374A9A /* FinalLevelView.swift */; };
 		D56FE8132987F6AC00374A9A /* CollectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8122987F6AC00374A9A /* CollectionListView.swift */; };
 		D56FE8152987FAD300374A9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE8142987FAD300374A9A /* User.swift */; };
@@ -55,7 +55,7 @@
 		D52EC0C0298BB903004B999B /* InputUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputUserNameViewModel.swift; path = "Gromit-client-iOS/Services/Entities/InputUserNameViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		D561F7622986FDAB009E3639 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
 		D56FE809298781C500374A9A /* LoginWithAppleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleRequest.swift; sourceTree = "<group>"; };
-		D56FE80E298787AF00374A9A /* LoginWithAppleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleEntity.swift; sourceTree = "<group>"; };
+		D56FE80E298787AF00374A9A /* SignInEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEntity.swift; sourceTree = "<group>"; };
 		D56FE8102987F68300374A9A /* FinalLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalLevelView.swift; sourceTree = "<group>"; };
 		D56FE8122987F6AC00374A9A /* CollectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListView.swift; sourceTree = "<group>"; };
 		D56FE8142987FAD300374A9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		D56FE80D2987878300374A9A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				D56FE80E298787AF00374A9A /* LoginWithAppleEntity.swift */,
+				D56FE80E298787AF00374A9A /* SignInEntity.swift */,
 				D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */,
 				D514C9A8298BB463002E4E5A /* InputUserNameEntity.swift */,
 			);
@@ -290,7 +290,7 @@
 				D56FE81D2988014700374A9A /* Constants.swift in Sources */,
 				D5F8C237297BF214004C6146 /* ChallengeListView.swift in Sources */,
 				D56FE821298838E400374A9A /* SearchGitUserViewModel.swift in Sources */,
-				D56FE80F298787AF00374A9A /* LoginWithAppleEntity.swift in Sources */,
+				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
 				11782481298B8F43000C640E /* CreationView.swift in Sources */,
 				D514C9A9298BB463002E4E5A /* InputUserNameEntity.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */,

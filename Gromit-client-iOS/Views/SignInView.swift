@@ -13,6 +13,7 @@ struct SignInView: View {
     @State private var showSearchGitUser = false
     // 데모데이 영상 촬영용 임시 변수
     @State private var showTempSearchGitUser = false
+    @State private var showGromitMainView = false
     
     var body: some View {
         
@@ -48,6 +49,12 @@ struct SignInView: View {
                 }
                 .fullScreenCover(isPresented: $showTempSearchGitUser) {
                     TempSearchGitUserView()
+                }
+                Button("(임시)홈 화면") {
+                    showGromitMainView.toggle()
+                }
+                .fullScreenCover(isPresented: $showGromitMainView) {
+                    GromitMainView()
                 }
             }
         }

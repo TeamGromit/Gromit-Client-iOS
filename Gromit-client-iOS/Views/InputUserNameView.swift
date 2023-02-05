@@ -20,6 +20,7 @@ struct InputUserNameView: View {
     @State private var showingAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
+    @State private var showSignInView = false
     
     var body: some View {
             VStack {
@@ -76,6 +77,13 @@ struct InputUserNameView: View {
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
                 .onTapGesture { // <-
                     hideKeyboard()
+                }
+                
+                Button("(임시)시작 화면 되돌아가기") {
+                    showSignInView.toggle()
+                }
+                .fullScreenCover(isPresented: $showSignInView) {
+                    SignInView()
                 }
             }
     }
