@@ -10,6 +10,7 @@
 		11782481298B8F43000C640E /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782480298B8F43000C640E /* CreationView.swift */; };
 		11782483298B8F84000C640E /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782482298B8F84000C640E /* SearchApi.swift */; };
 		11782485298B8F9D000C640E /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782484298B8F9D000C640E /* search.swift */; };
+		11F5E37A29961E5000EF4553 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F5E37929961E5000EF4553 /* ChallengeCell.swift */; };
 		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
 		227133E0298AA17C003025E7 /* InputUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227133DF298AA17C003025E7 /* InputUserNameView.swift */; };
 		2281F940297DA918000649A9 /* SearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView.swift */; };
@@ -47,6 +48,7 @@
 		11782480298B8F43000C640E /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
 		11782482298B8F84000C640E /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		11782484298B8F9D000C640E /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
+		11F5E37929961E5000EF4553 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gromit-client-iOS.entitlements"; sourceTree = "<group>"; };
 		227133DF298AA17C003025E7 /* InputUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameView.swift; sourceTree = "<group>"; };
 		2281F93F297DA918000649A9 /* SearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				D5F8C238297BF224004C6146 /* ParticipatingListView.swift */,
 				D5F8C23A297BF22A004C6146 /* SettingsView.swift */,
 				D5F8C230297BF1DE004C6146 /* TempView.swift */,
+				11F5E37929961E5000EF4553 /* ChallengeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				D5F8C237297BF214004C6146 /* ChallengeListView.swift in Sources */,
 				D56FE821298838E400374A9A /* SearchGitUserViewModel.swift in Sources */,
 				D56FE80F298787AF00374A9A /* LoginWithAppleEntity.swift in Sources */,
+				11F5E37A29961E5000EF4553 /* ChallengeCell.swift in Sources */,
 				11782481298B8F43000C640E /* CreationView.swift in Sources */,
 				D514C9A9298BB463002E4E5A /* InputUserNameEntity.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */,

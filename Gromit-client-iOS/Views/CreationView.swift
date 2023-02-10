@@ -4,9 +4,10 @@ struct CreationView: View {
     
     @State private var title: String = ""
     @State var date = Date()
-    @State private var commit = ""
-    @State private var people = ""
-    @State private var passward = ""
+    @State var dates = Date()
+    @State private var commit : String = ""
+    @State private var people : String = ""
+    @State private var passward : String = ""
     @State private var someToggle = true
     @State private var showingToggle = false
     @State private var showingAlert = false
@@ -38,23 +39,25 @@ struct CreationView: View {
                 Text("\n챌린지 기간")
                     .padding(.leading, -195)
                 HStack{
-                    DatePicker(
-                        "   시작일",
-                        selection: $date,
-                        displayedComponents: [.date]
-                    )
-                    DatePicker(
-                        "    마감일",
-                        selection: $date,
-                        displayedComponents: [.date]
-                    )
-                }
+                    Group{
+                        DatePicker(
+                            "   시작일",
+                            selection: $date,
+                            displayedComponents: [.date]
+                        )}
+                        DatePicker(
+                            "    마감일",
+                            selection: $dates,
+                            displayedComponents: [.date]
+                        )
+                    }
             }
             Group{
                 Text("\n목표 커밋 수")
                     .padding(.leading, -195)
                 
-                TextField("목표 커밋 수를 입력해주세요", value: $commit, formatter: formatter)
+                TextField("목표 커밋 수를 입력해주세요", text: $commit)
+                
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.green, lineWidth: 1))
                 
@@ -63,7 +66,7 @@ struct CreationView: View {
                 Text("\n인원 수")
                     .padding(.leading, -195)
                 
-                TextField("인원수를 입력해주세요", value: $people, formatter: formatter)
+                TextField("인원수를 입력해주세요", text: $people)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.green, lineWidth: 1))
             }
@@ -78,7 +81,7 @@ struct CreationView: View {
                 Button(action: {
                 }) {
                     Text("")
-                    TextField("비밀번호를 입력해주세요", value: $passward, formatter: formatter)
+                    TextField("비밀번호를 입력해주세요", text: $passward)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 // 영+숫 가능하게, 제한 추가
@@ -141,3 +144,4 @@ struct CreationView: View {
             CreationView()
         }
     }
+// 목표 커밋 수, 인원 수, 비밀번호 저장 완료. 단 숫자만 입력 가능하게 해야함
