@@ -60,7 +60,7 @@ struct TempSearchGitUserView: View {
                     title: Text(self.alertTitle),
                     message: Text("\(searchGitUserViewModel.responseGitName)"),
                     primaryButton: .default(Text("네"), action: {
-                        UserDefaults.standard.set(userName, forKey: "githubNickname")
+                        UserDefaults.standard.set(userName, forKey: "githubName")
                     }),
                     secondaryButton: .cancel(Text("아니요")))
             }

@@ -11,16 +11,13 @@ struct SignInEntity: Codable, CustomStringConvertible {
     let code: Int
     let isSuccess: Bool
     let message: String
-    let result: LoginWithAppleResponse
+    let result: SignInResponse
     
     var description: String {
-        return ""
+        return "sign in: \(message), user account id: \(result.userAccountId)"
     }
 }
 
-struct LoginWithAppleResponse: Codable {
-    // 기존 회원시
-    let accessToken, refreshToken: String?
-    // 신규 회원시
-    let email, provider: String?
+struct SignInResponse: Codable {
+    let userAccountId, accessToken, refreshToken: String
 }

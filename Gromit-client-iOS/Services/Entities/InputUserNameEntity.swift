@@ -14,7 +14,7 @@ struct InputUserNameEntity: Codable, CustomStringConvertible {
     var result: GromitNickNameResponse
     
     var description: String {
-        return "git user name: \(result.nickname) / message: \(message)"
+        return "gromit user name: \(result.nickname) / message: \(message)"
     }
 }
 

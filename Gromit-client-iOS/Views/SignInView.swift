@@ -7,18 +7,20 @@
 
 import SwiftUI
 import AuthenticationServices
+import Combine
 
 struct SignInView: View {
     @State var appleSignInDelegates: SignInWithAppleDelegate! = nil
     @State private var showSearchGitUser = false
+    
     // 데모데이 영상 촬영용 임시 변수
     @State private var showTempSearchGitUser = false
     @State private var showGromitMainView = false
+    
     // UserDefaults
-    @State private var nickname = UserDefaults.standard.string(forKey: "nickname")
-    @State private var githubNickname = UserDefaults.standard.string(forKey: "githubNickname")
-    @State private var email = UserDefaults.standard.string(forKey: "email")
-    @State private var provider = UserDefaults.standard.string(forKey: "provider")
+  
+    
+    
     
     var body: some View {
         
@@ -125,6 +127,8 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                 print("========================== 로그인 했었음")
                 displayLog(credential: appleIdCredential)
 //                signInWithExistingAccount(credential: appleIdCredential)
+                
+                postSignIn()
             }
             signInSucceeded(true)
         default :
@@ -151,6 +155,16 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
         print("Identity Token : \(String(describing: tokeStr))")
         print("Authorization Code : \(credential.authorizationCode!)")
         print("Credential : \(credential)")
+    }
+    
+    // 과거 로그인했던 사용자면 userDefaults 가져와서 로그인 서버 통신
+    private func postSignIn() {
+        @ObservedObject var signInViewModel = SignInViewModel()
+        guard var nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
+        guard var githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
+        guard var email = UserDefaults.standard.string(forKey: "email") else { return }
+        guard var provider = UserDefaults.standard.string(forKey: "provider") else { return }
+        signInViewModel.postSignIn(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
     }
     
     // 작업중
