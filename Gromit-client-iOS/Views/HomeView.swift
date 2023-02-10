@@ -29,6 +29,8 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct HomeButtons: View {
+    @State private var showParticipating = false
+    
     var body: some View {
         HStack {
             Button {
@@ -38,17 +40,18 @@ struct HomeButtons: View {
             }
             
             Spacer()
-            
             Button {
-                
+                showParticipating.toggle()
             } label: {
                 Image("collection")
             }
         }
+        .fullScreenCover(isPresented: $showParticipating) {
+            CollectionListView()
+        }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }
 }
-
 struct TodaysCommit: View {
     var numOfCommit = 23
     
