@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct SignInEntity: Codable {
+struct SignInEntity: Codable, CustomStringConvertible {
     let code: Int
     let isSuccess: Bool
     let message: String
     let result: LoginWithAppleResponse
+    
+    var description: String {
+        return "git user name: \(result.nickname) / message: \(message)"
+    }
 }
 
 struct LoginWithAppleResponse: Codable {

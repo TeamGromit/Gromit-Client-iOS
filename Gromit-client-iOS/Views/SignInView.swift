@@ -14,6 +14,11 @@ struct SignInView: View {
     // 데모데이 영상 촬영용 임시 변수
     @State private var showTempSearchGitUser = false
     @State private var showGromitMainView = false
+    // UserDefaults
+    @State private var nickname = UserDefaults.standard.string(forKey: "nickname")
+    @State private var githubNickname = UserDefaults.standard.string(forKey: "githubNickname")
+    @State private var email = UserDefaults.standard.string(forKey: "email")
+    @State private var provider = UserDefaults.standard.string(forKey: "provider")
     
     var body: some View {
         
