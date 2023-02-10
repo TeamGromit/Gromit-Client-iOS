@@ -14,7 +14,7 @@ struct SignInEntity: Codable, CustomStringConvertible {
     let result: LoginWithAppleResponse
     
     var description: String {
-        return "git user name: \(result.nickname) / message: \(message)"
+        return ""
     }
 }
 
