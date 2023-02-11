@@ -17,13 +17,7 @@ struct SignInView: View {
     @State private var showTempSearchGitUser = false
     @State private var showGromitMainView = false
     
-    // UserDefaults
-  
-    
-    
-    
     var body: some View {
-        
         ZStack {
             Color("yellow500").ignoresSafeArea()
             
@@ -127,8 +121,6 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                 print("========================== 로그인 했었음")
                 displayLog(credential: appleIdCredential)
 //                signInWithExistingAccount(credential: appleIdCredential)
-                
-                postSignIn()
             }
             signInSucceeded(true)
         default :
@@ -155,16 +147,6 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
         print("Identity Token : \(String(describing: tokeStr))")
         print("Authorization Code : \(credential.authorizationCode!)")
         print("Credential : \(credential)")
-    }
-    
-    // 과거 로그인했던 사용자면 userDefaults 가져와서 로그인 서버 통신
-    private func postSignIn() {
-        @ObservedObject var signInViewModel = SignInViewModel()
-        guard var nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
-        guard var githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
-        guard var email = UserDefaults.standard.string(forKey: "email") else { return }
-        guard var provider = UserDefaults.standard.string(forKey: "provider") else { return }
-        signInViewModel.postSignIn(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
     }
     
     // 작업중

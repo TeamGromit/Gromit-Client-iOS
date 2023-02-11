@@ -69,7 +69,14 @@ struct InputUserNameView: View {
                         title: Text("\(alertTitle)"),
                         message: Text("\(alertMessage)"),
                         dismissButton: .default(Text("확인")) {
+                            // 아래 코드 작동 안됨...
                             UserDefaults.standard.set(userNickname, forKey: "nickname")
+                            guard let nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
+                            guard let githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
+                            guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+                            guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
+                            print("userName: \(nickname) / githubName: \(githubName) / email: \(email) / provider: \(provider)")
+                            inputUserNameViewModel.postSignUp(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
                         }
                     )
                 }
