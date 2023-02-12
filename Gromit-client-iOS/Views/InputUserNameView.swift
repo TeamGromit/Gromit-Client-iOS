@@ -20,6 +20,7 @@ struct InputUserNameView: View {
     @State private var showingAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
+    @State private var showSignInView = false
     
     var body: some View {
             VStack {
@@ -68,7 +69,14 @@ struct InputUserNameView: View {
                         title: Text("\(alertTitle)"),
                         message: Text("\(alertMessage)"),
                         dismissButton: .default(Text("확인")) {
+                            // 아래 코드 작동 안됨...
                             UserDefaults.standard.set(userNickname, forKey: "nickname")
+                            guard let nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
+                            guard let githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
+                            guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+                            guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
+                            print("userName: \(nickname) / githubName: \(githubName) / email: \(email) / provider: \(provider)")
+                            inputUserNameViewModel.postSignUp(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
                         }
                     )
                 }
@@ -76,6 +84,13 @@ struct InputUserNameView: View {
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
                 .onTapGesture { // <-
                     hideKeyboard()
+                }
+                
+                Button("(임시)시작 화면 되돌아가기") {
+                    showSignInView.toggle()
+                }
+                .fullScreenCover(isPresented: $showSignInView) {
+                    SignInView()
                 }
             }
     }
