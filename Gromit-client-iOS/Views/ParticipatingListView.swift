@@ -10,7 +10,7 @@ import SwiftUI
 struct ParticipatingListView: View {
     var body: some View {
         VStack {
-            ParticipatingButton()
+//            ParticipatingButton()
             
             ParticipatingCell()
         }
@@ -33,7 +33,7 @@ struct ParticipatingButton: View {
                 showChallengeList.toggle()
             }
             .fullScreenCover(isPresented: $showChallengeList) {
-                ChallengeListView()
+                ChallengeView()
             }
             .buttonStyle(.bordered)
             .cornerRadius(20)

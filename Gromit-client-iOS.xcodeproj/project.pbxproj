@@ -39,7 +39,6 @@
 		D5F8C231297BF1DE004C6146 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C230297BF1DE004C6146 /* TempView.swift */; };
 		D5F8C233297BF1FD004C6146 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C232297BF1FD004C6146 /* SignInView.swift */; };
 		D5F8C235297BF20B004C6146 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C234297BF20B004C6146 /* HomeView.swift */; };
-		D5F8C237297BF214004C6146 /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C236297BF214004C6146 /* ChallengeListView.swift */; };
 		D5F8C239297BF224004C6146 /* ParticipatingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C238297BF224004C6146 /* ParticipatingListView.swift */; };
 		D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C23A297BF22A004C6146 /* SettingsView.swift */; };
 		D5F8C23D297BF231004C6146 /* GromitMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C23C297BF231004C6146 /* GromitMainView.swift */; };
@@ -77,7 +76,6 @@
 		D5F8C230297BF1DE004C6146 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
 		D5F8C232297BF1FD004C6146 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D5F8C234297BF20B004C6146 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		D5F8C236297BF214004C6146 /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		D5F8C238297BF224004C6146 /* ParticipatingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingListView.swift; sourceTree = "<group>"; };
 		D5F8C23A297BF22A004C6146 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D5F8C23C297BF231004C6146 /* GromitMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GromitMainView.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				D56FE8102987F68300374A9A /* FinalLevelView.swift */,
 				D56FE8122987F6AC00374A9A /* CollectionListView.swift */,
 				D53AC6F2299CB65200470E2A /* ChallengeView.swift */,
-				D5F8C236297BF214004C6146 /* ChallengeListView.swift */,
 				D5F8C238297BF224004C6146 /* ParticipatingListView.swift */,
 				11782480298B8F43000C640E /* CreationView.swift */,
 				D5F8C23A297BF22A004C6146 /* SettingsView.swift */,
@@ -297,7 +294,6 @@
 			files = (
 				D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */,
 				D56FE81D2988014700374A9A /* Constants.swift in Sources */,
-				D5F8C237297BF214004C6146 /* ChallengeListView.swift in Sources */,
 				D56FE821298838E400374A9A /* SearchGitUserViewModel.swift in Sources */,
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,

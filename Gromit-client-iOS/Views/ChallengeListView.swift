@@ -8,9 +8,25 @@
 import SwiftUI
 
 struct ChallengeListView: View {
+    @State var tag : Int? = nil
+    
     var body: some View {
         VStack {
+            ChallengeButtons()
             ChallengeCell()
+            
+            // iOS 16버전은 NavigationStack 사용해야
+//            NavigationView {
+//                VStack {
+//                    NavigationLink(destination: ParticipatingListView(), tag: 1, selection: $tag) {
+//                        EmptyView()
+//                    }
+//                }
+//                .navigationBarTitle("")
+//                .navigationBarHidden(true)
+//                .navigationBarBackButtonHidden(true)
+//            }
+            
         }
     }
 }
@@ -20,34 +36,34 @@ struct ChallengeListView_Previews: PreviewProvider {
         ChallengeListView()
     }
 }
-//
-//struct ChallengeButtons: View {
-//    @State private var showParticipating = false
-//
-//    var body: some View {
-//        HStack {
-//            Group{
-//                Spacer()
-//                Button("참여 챌린지") {
+
+struct ChallengeButtons: View {
+    var body: some View {
+        HStack {
+            Group{
+                Spacer()
+                Button("참여 챌린지") {
 //                    showParticipating.toggle()
-//                }
+                }
 //                .fullScreenCover(isPresented: $showParticipating) {
 //                    CreationView()
 //                }
-//                .buttonStyle(.bordered)
-//                .cornerRadius(20)
-//            }
-//
-//            Group{
-//                Button("+") {
+                .buttonStyle(.bordered)
+                .cornerRadius(20)
+            }
+            
+            Group{
+                Button("+") {
 //                    showParticipating.toggle()
-//                }
+                }
 //                .fullScreenCover(isPresented: $showParticipating) {
 //                    CreationView()
 //                }
-//                .buttonStyle(.bordered)
-//                .cornerRadius(20)
-//            }
-//            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-//        }}
-//}
+                .buttonStyle(.bordered)
+                .cornerRadius(20)
+            }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+        }
+        
+    }
+}

@@ -82,7 +82,7 @@ struct TempView: View {
                 showChallengeList.toggle()
             }
             .fullScreenCover(isPresented: $showChallengeList) {
-                ChallengeListView()
+                ChallengeView()
             }
             
             Button("참여 챌린지 목록") {

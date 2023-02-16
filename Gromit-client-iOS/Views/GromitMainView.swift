@@ -12,7 +12,7 @@ struct GromitMainView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            ChallengeListView()
+            ChallengeView()
                 .tabItem() {
                     Image("challenge")
                 }
