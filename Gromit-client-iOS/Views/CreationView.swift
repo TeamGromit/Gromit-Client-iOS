@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CreationView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var title: String = ""
     @State var date = Date()
@@ -129,6 +130,7 @@ struct CreationView: View {
                             }
                             let secondButton = Alert.Button.cancel(Text("예")) {
                                 print("secondary button pressed")
+                                self.presentationMode.wrappedValue.dismiss()
                             }
                             return Alert(title: Text("챌린지 신청을 취소하시겠습니까?"),
                                          message: Text("취소할 경우 작성 내용이 사라집니다"),

@@ -36,7 +36,6 @@ struct GromitMainView: View {
                 }
                 .tag(3)
         }
-        
     }
 }
 

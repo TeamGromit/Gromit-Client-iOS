@@ -10,8 +10,6 @@ import SwiftUI
 struct ParticipatingListView: View {
     var body: some View {
         VStack {
-//            ParticipatingButton()
-            
             ParticipatingCell()
         }
     }
@@ -23,24 +21,24 @@ struct ParticipatingListView_Previews: PreviewProvider {
     }
 }
 
-struct ParticipatingButton: View {
-    @State private var showChallengeList = false
-    
-    var body: some View {
-        HStack {
-            Spacer()
-            Button("챌린지 목록") {
-                showChallengeList.toggle()
-            }
-            .fullScreenCover(isPresented: $showChallengeList) {
-                ChallengeView()
-            }
-            .buttonStyle(.bordered)
-            .cornerRadius(20)
-        }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-    }
-}
+//struct ParticipatingButton: View {
+//    @State private var showChallengeList = false
+//
+//    var body: some View {
+//        HStack {
+//            Spacer()
+//            Button("챌린지 목록") {
+//                showChallengeList.toggle()
+//            }
+//            .fullScreenCover(isPresented: $showChallengeList) {
+//                ChallengeView()
+//            }
+//            .buttonStyle(.bordered)
+//            .cornerRadius(20)
+//        }
+//        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+//    }
+//}
 
 struct ParticipatingCell: View {
     var body: some View {
