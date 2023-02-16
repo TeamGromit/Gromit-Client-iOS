@@ -49,7 +49,7 @@ struct CollectionCount: View {
             Text("\(String(numOfMyCharacters)) / \(String(numOfAllCharacters))")
                 .font(.system(size: 16))
                 .foregroundColor(Color(.gray))
-                .padding(EdgeInsets(top: 2, leading: 6, bottom: 2, trailing: 6))
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 .overlay(
                     RoundedRectangle(cornerRadius: 30)
                         .stroke(Color(.gray))
