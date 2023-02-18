@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChallengeDetailView: View {
+    var challenge: ParticipatingChallenge
     
     var body: some View {
         VStack(spacing: 0) {
@@ -18,7 +19,7 @@ struct ChallengeDetailView: View {
                     Image(systemName: "multiply")
                 }
                 HStack {
-                    Text("같이 1일 1커밋 하실 분!")
+                    Text(challenge.title)
                     Image("trash")
                 }
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 30, trailing: 0))
@@ -108,6 +109,6 @@ struct ProgressMemberBar: View {
 
 struct ChallengeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeDetailView()
+        ChallengeDetailView(challenge: ParticipatingList.participatingList.first!)
     }
 }
