@@ -1,5 +1,5 @@
 //
-//  ChallengeDetailView.swift
+//  ParticipatingDetailView.swift
 //  Gromit-client-iOS
 //
 //  Created by juhee on 2023/02/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChallengeDetailView: View {
+struct ParticipatingDetailView: View {
     var challenge: ParticipatingChallenge
     
     var body: some View {
@@ -107,8 +107,8 @@ struct ProgressMemberBar: View {
 }
 
 
-struct ChallengeDetailView_Previews: PreviewProvider {
+struct ParticipatingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeDetailView(challenge: ParticipatingList.participatingList.first!)
+        ParticipatingDetailView(challenge: ParticipatingList.participatingList.first!)
     }
 }

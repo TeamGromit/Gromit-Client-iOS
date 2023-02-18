@@ -48,7 +48,7 @@ struct ParticipatingCell: View {
                     .background(Color("yellow500"))
                     .cornerRadius(20)
                     .shadow(color: Color("gray500"), radius: 5, y: 5)
-                    NavigationLink(destination: ChallengeDetailView(challenge: challenge)) {
+                    NavigationLink(destination: ParticipatingDetailView(challenge: challenge)) {
                         EmptyView()
                     }
                     .opacity(0.0)
