@@ -16,7 +16,7 @@ struct ChallengeDetailView: View {
                 HStack {
                     Image("lockopen")
                     Spacer()
-                    Image(systemName: "multiply")
+//                    Image(systemName: "multiply")
                 }
                 HStack {
                     Text(challenge.title)
@@ -73,7 +73,7 @@ struct ChallengeDetailView: View {
                     .stroke(Color("green500"), lineWidth: 2)
             )
         }
-        .padding()
+        .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
     }
 }
 

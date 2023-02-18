@@ -25,9 +25,9 @@ struct ParticipatingCell: View {
     var challenges: [ParticipatingChallenge] = ParticipatingList.participatingList
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             List(challenges, id: \.id) { challenge in
-                NavigationLink(destination: ChallengeDetailView(challenge: challenge)) {
+                ZStack(alignment: .leading) {
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
                             Text(challenge.title)
@@ -48,10 +48,14 @@ struct ParticipatingCell: View {
                     .background(Color("yellow500"))
                     .cornerRadius(20)
                     .shadow(color: Color("gray500"), radius: 5, y: 5)
+                    NavigationLink(destination: ChallengeDetailView(challenge: challenge)) {
+                        EmptyView()
+                    }
+                    .opacity(0.0)
                 }
             }
             .listStyle(PlainListStyle())
-        }
+//        }
         .navigationTitle("참여 챌린지")
     }
 }
