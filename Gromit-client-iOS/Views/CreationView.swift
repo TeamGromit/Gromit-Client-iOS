@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CreationView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var title: String = ""
     @State var date = Date()
@@ -24,8 +25,10 @@ struct CreationView: View {
             Group{
                 Text("챌린지 생성")
                     .padding(.top, -100)
+                    .tint(Color.black)
                 Text("챌린지 제목")
                     .padding(.leading, -195)
+                    .tint(Color.black)
                 TextField(
                     "20자 이내로 제목을 작성해주세요 감사합니다",
                     text: $title)
@@ -38,6 +41,7 @@ struct CreationView: View {
             Group{
                 Text("\n챌린지 기간")
                     .padding(.leading, -195)
+                    .tint(Color.black)
                 HStack{
                     Group{
                         DatePicker(
@@ -55,16 +59,17 @@ struct CreationView: View {
             Group{
                 Text("\n목표 커밋 수")
                     .padding(.leading, -195)
+                    .tint(Color.black)
                 
                 TextField("목표 커밋 수를 입력해주세요", text: $commit)
                 
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.green, lineWidth: 1))
-                
                 //textfield 절반으로 줄이기 구현 필요
                 
                 Text("\n인원 수")
                     .padding(.leading, -195)
+                    .tint(Color.black)
                 
                 TextField("인원수를 입력해주세요", text: $people)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -75,6 +80,7 @@ struct CreationView: View {
             
             Toggle(isOn: $showingToggle) {
                 Text(" 비밀번호")
+                    .tint(Color.black)
             }
             
             if showingToggle {
@@ -129,6 +135,7 @@ struct CreationView: View {
                             }
                             let secondButton = Alert.Button.cancel(Text("예")) {
                                 print("secondary button pressed")
+                                self.presentationMode.wrappedValue.dismiss()
                             }
                             return Alert(title: Text("챌린지 신청을 취소하시겠습니까?"),
                                          message: Text("취소할 경우 작성 내용이 사라집니다"),
