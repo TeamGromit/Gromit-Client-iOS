@@ -14,13 +14,16 @@ struct ParticipatingDetailView: View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    Image("lockopen")
                     Spacer()
+                    
+                    Image("trash")
+                    
 //                    Image(systemName: "multiply")
                 }
                 HStack {
+                    Image("lockopen")
                     Text(challenge.title)
-                    Image("trash")
+                        .font(.system(size: 17, weight: .semibold))
                 }
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 30, trailing: 0))
                 
@@ -68,10 +71,10 @@ struct ParticipatingDetailView: View {
                 .listStyle(PlainListStyle())
             }
             .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color("green500"), lineWidth: 2)
-            )
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 20)
+//                    .stroke(Color("green500"), lineWidth: 2)
+//            )
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
     }
