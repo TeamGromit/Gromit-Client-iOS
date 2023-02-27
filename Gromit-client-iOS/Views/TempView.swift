@@ -75,7 +75,7 @@ struct TempView: View {
                 showCreation.toggle()
             }
             .fullScreenCover(isPresented: $showCreation) {
-                CreationView()
+                ChallengeCreationView()
             }
             
             Button("챌린지 목록") {

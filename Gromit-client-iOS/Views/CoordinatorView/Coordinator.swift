@@ -81,18 +81,18 @@ class Coordinator: ObservableObject {
         switch page {
         case .home:
             NavigationStack {
-                CreationView()
+                ChallengeCreationView()
             }
         }
     }
-
+    
     
     @ViewBuilder
     func build(sheet: Sheet) -> some View {
         switch sheet {
         case .test:
             NavigationStack {
-                CreationView()
+                ChallengeCreationView()
             }
         }
     }
@@ -102,13 +102,12 @@ class Coordinator: ObservableObject {
         switch fullScreenCover {
         case .challengeCreateView:
             NavigationStack {
-                CreationView()
+                ChallengeCreationView()
             }
         case .collectionListView:
             NavigationStack {
                 CollectionListView()
             }
         }
-        
     }
 }

@@ -40,14 +40,12 @@ struct HomeButtons: View {
             }
             
             Spacer()
+            
             Button {
                 showParticipating.toggle()
             } label: {
                 Image("collection")
             }
-        }
-        .fullScreenCover(isPresented: $showParticipating) {
-            CollectionListView()
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }

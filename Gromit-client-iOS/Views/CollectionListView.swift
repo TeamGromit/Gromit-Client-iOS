@@ -10,7 +10,10 @@ import SwiftUI
 var numOfMyCharacters = 2
 var numOfAllCharacters = 10
 
+
 struct CollectionListView: View {
+    @State var tag : Int? = nil
+    
     var body: some View {
         VStack {
             CollectionTitle()

@@ -16,6 +16,7 @@ struct CoordinatorView: View {
         
     }
     var body: some View {
+        
         TabView(selection: $tabSelection) {
             ChallengeListView()
                 .tabItem{
@@ -32,6 +33,7 @@ struct CoordinatorView: View {
                     Image("settings")
                 }.tag(3)
         }
+        
         .fullScreenCover(item: $coordinator.fullScreenCover, content: { fullScreenCover in
             coordinator.build(fullScreenCover: fullScreenCover)
         })

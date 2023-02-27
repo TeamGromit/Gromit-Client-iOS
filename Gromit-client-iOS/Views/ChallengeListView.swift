@@ -53,7 +53,7 @@ struct ChallengeListView: View {
                                 showCreation.toggle()
                             }
                             .sheet(isPresented: $showCreation) {
-                                CreationView()
+                                ChallengeCreationView()
                             }
                             .font(.system(size: 16))
                             .foregroundColor(Color(.gray))
