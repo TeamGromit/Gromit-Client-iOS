@@ -13,50 +13,9 @@ struct ChallengeListView: View {
     @State var showDetail = false
     
     var body: some View {
-        // iOS 16버전은 NavigationStack 사용해야
-//        if showDetail {
-//            ChallengeDetailView(show: $show)
-//        }
         ZStack {
             NavigationView {
                 VStack {
-                    NavigationLink(destination: ParticipatingListView(), tag: 1, selection: $tag) {
-                        HStack {
-                        }
-                        .navigationTitle("챌린지 목록")
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button("참여 챌린지") {
-                                    tag = 1
-                                }
-                                .font(.system(size: 16))
-                                .foregroundColor(Color(.gray))
-                                .padding(EdgeInsets(top: 3, leading: 8, bottom: 3, trailing: 0))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(Color(.gray))
-                                    )
-                                }
-                            ToolbarItem {
-                                Button("챌린지 생성") {
-                                    showCreation.toggle()
-                                }
-                                .sheet(isPresented: $showCreation) {
-                                    CreationView()
-                                }
-                                .font(.system(size: 16))
-                                .foregroundColor(Color(.gray))
-                                .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 8))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(Color(.gray))
-                                    )
-                                }
-                            }
-                        }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                    
                     List(0..<20) { item in
                         VStack(alignment: .leading, spacing: 5) {
                             Text("20자이내로제목을작성해주세요감사합니다")

@@ -8,9 +8,52 @@
 import SwiftUI
 
 struct ParticipatingListView: View {
+    
+    @State var tag : Int? = nil
+    @State private var showCreation = false
+    
     var body: some View {
-        VStack {
-            ParticipatingCell()
+        ZStack {
+            NavigationView {
+                VStack {
+                    NavigationLink(destination: ChallengeListView(), tag: 1, selection: $tag) {
+                        HStack {
+                        }
+                        .navigationTitle("참여 챌린지")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("전체 챌린지") {
+                                    tag = 1
+                                }
+                                .font(.system(size: 16))
+                                .foregroundColor(Color(.gray))
+                                .padding(EdgeInsets(top: 3, leading: 8, bottom: 3, trailing: 0))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(Color(.gray))
+                                )
+                            }
+                            ToolbarItem {
+                                Button("챌린지 생성") {
+                                    showCreation.toggle()
+                                }
+                                .sheet(isPresented: $showCreation) {
+                                    CreationView()
+                                }
+                                .font(.system(size: 16))
+                                .foregroundColor(Color(.gray))
+                                .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 8))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(Color(.gray))
+                                )
+                            }
+                        }
+                    }
+                    ParticipatingCell()
+                }
+            }
         }
     }
 }
@@ -25,7 +68,6 @@ struct ParticipatingCell: View {
     var challenges: [ParticipatingChallenge] = ParticipatingList.participatingList
     
     var body: some View {
-//        NavigationView {
             List(challenges, id: \.id) { challenge in
                 ZStack(alignment: .leading) {
                     VStack(alignment: .leading, spacing: 5) {
