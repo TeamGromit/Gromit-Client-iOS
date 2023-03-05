@@ -31,6 +31,10 @@ struct CollectionListView_Previews: PreviewProvider {
 struct CollectionTitle: View {
     var body: some View {
         VStack {
+            Text("")
+            Text("")
+            Text("")
+            
             HStack {
                 Text("컬렉션")
                     .font(.system(size: 16, weight: .semibold))
