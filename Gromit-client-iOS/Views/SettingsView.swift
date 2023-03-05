@@ -6,6 +6,9 @@ struct SettingsView: View {
     @State private var showingToggle = false
     @State var date = Date()
     @State private var showingAlert = false
+    @State private var showingAlert2 = false
+    @State private var showingAlert3 = false
+    @State private var showSignInView = false
     
     var body: some View {
         
@@ -30,6 +33,14 @@ struct SettingsView: View {
                 
                 Text(" 버전 정보")
                 
+                Button(" 닉네임변경") {
+                showSignInView.toggle()
+            }
+            .fullScreenCover(isPresented: $showSignInView) {
+                ChangeNameView()
+            }
+                .foregroundColor(.black)
+                
                 Button(" 로그아웃") {
                           self.showingAlert.toggle()
                       }
@@ -44,11 +55,12 @@ struct SettingsView: View {
                           return Alert(title: Text("로그아웃 하시겠습니까?"),
                                        primaryButton: firstButton, secondaryButton: secondButton)
                       }
+                
                 Button(" 서비스탈퇴") {
-                          self.showingAlert.toggle()
+                          self.showingAlert2.toggle()
                       }
                       .foregroundColor(.black)
-                      .alert(isPresented: $showingAlert) {
+                      .alert(isPresented: $showingAlert2) {
                           let firstButton = Alert.Button.default(Text("돌아가기")) {
                               print("primary button pressed")
                           }
