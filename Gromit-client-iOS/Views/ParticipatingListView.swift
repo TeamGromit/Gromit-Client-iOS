@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ParticipatingListView: View {
-    
     @State var tag : Int? = nil
     @State private var showCreation = false
     
