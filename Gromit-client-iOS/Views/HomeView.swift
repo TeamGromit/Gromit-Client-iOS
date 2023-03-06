@@ -30,8 +30,10 @@ struct HomeView_Previews: PreviewProvider {
 
 struct HomeButtons: View {
     @State private var showParticipating = false
+    @State private var showingSheet = false
     
     var body: some View {
+        
         HStack {
             Button {
                 
@@ -40,15 +42,28 @@ struct HomeButtons: View {
             }
             
             Spacer()
-            Button {
-                showParticipating.toggle()
-            } label: {
-                Image("collection")
-            }
+            Button("collection") {
+                        self.showingSheet.toggle()
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.black)
+                    .cornerRadius(30)
+                    .font(.system(size: 10))
+            
+//            Spacer()
+//            Button {
+//                showParticipating.toggle()
+//            } label: {
+//                Image("collection")
+//            }
+            .sheet(isPresented: $showingSheet) {
+                        CollectionListView()
+                    }
         }
-        .fullScreenCover(isPresented: $showParticipating) {
-            CollectionListView()
-        }
+//        .fullScreenCover(isPresented: $showParticipating) {
+//            CollectionListView()
+//        }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }
 }

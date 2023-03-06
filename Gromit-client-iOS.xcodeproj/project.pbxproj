@@ -10,6 +10,7 @@
 		11782481298B8F43000C640E /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782480298B8F43000C640E /* CreationView.swift */; };
 		11782483298B8F84000C640E /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782482298B8F84000C640E /* SearchApi.swift */; };
 		11782485298B8F9D000C640E /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782484298B8F9D000C640E /* search.swift */; };
+		11C7299B29B2627000EB0DE2 /* ChangeNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */; };
 		20AC076D29A26F44009519A1 /* InputUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC076C29A26F44009519A1 /* InputUserNameViewModel.swift */; };
 		20AC077029A27003009519A1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC076F29A27003009519A1 /* Coordinator.swift */; };
 		20AC077229A2700D009519A1 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC077129A2700D009519A1 /* CoordinatorView.swift */; };
@@ -54,6 +55,7 @@
 		11782480298B8F43000C640E /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
 		11782482298B8F84000C640E /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		11782484298B8F9D000C640E /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
+		11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameView.swift; sourceTree = "<group>"; };
 		20AC076C29A26F44009519A1 /* InputUserNameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUserNameViewModel.swift; sourceTree = "<group>"; };
 		20AC076F29A27003009519A1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		20AC077129A2700D009519A1 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				D5F8C238297BF224004C6146 /* ParticipatingListView.swift */,
 				D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */,
 				11782480298B8F43000C640E /* CreationView.swift */,
+				11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */,
 				D5F8C23A297BF22A004C6146 /* SettingsView.swift */,
 				D5F8C230297BF1DE004C6146 /* TempView.swift */,
 			);
@@ -335,6 +338,7 @@
 				D5F8C23D297BF231004C6146 /* GromitMainView.swift in Sources */,
 				D561F7632986FDAB009E3639 /* GeneralAPI.swift in Sources */,
 				D5F8C231297BF1DE004C6146 /* TempView.swift in Sources */,
+				11C7299B29B2627000EB0DE2 /* ChangeNameView.swift in Sources */,
 				D592104729967ADF00E637C6 /* SignInViewModel.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
 				D5F8C239297BF224004C6146 /* ParticipatingListView.swift in Sources */,
