@@ -2,79 +2,66 @@
 //  SignInViewModel.swift
 //  Gromit-client-iOS
 //
-//  Created by juhee on 2023/02/10.
+//  Created by 김태성 on 2023/02/26.
 //
 
 import Foundation
-import Combine
-import Alamofire
+import AuthenticationServices
 
 class SignInViewModel: ObservableObject {
-    var subscription = Set<AnyCancellable>()
-//    var nickname = String()
-//    var githubName = String()
-//    var email = String()
-//    var provider = String()
-    @Published var accessToken = String()
-    @Published var refreshToken = String()
-
-//    init() {
-//        print(#fileID, #function, #line, "")
-//        postSignIn(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
-//    }
     
-    init() {
-        print(#fileID, #function, #line, "")
-        postSignIn(rNickname: "", rgithubName: "", rEmail: "", rProvider: "")
+    enum OutputEvent {
+        case checkNewMember, checkMember, errorNetwork, errorAppleToken, errorServer
     }
     
-//    func postSignIn(rNickname: String, rgithubName: String, rEmail: String, rProvider: String) {
-//        print(#fileID, #function, #line, "")
-//        AF.request("\(GeneralAPI.baseURL)/users")
-//            .publishDecodable(type: SignInEntity.self)
-//            .compactMap { $0.value }
-//            .sink(receiveCompletion: { complete in
-//                print("데이터스트림 완료")
-//            }, receiveValue: { receivedValue in
-//                print("받은 값: \(receivedValue.description)")
-//                if (receivedValue.code == 1000) { // 성공
-//                    self.accessToken = receivedValue.result.accessToken
-//                    self.refreshToken = receivedValue.result.refreshToken
-//                } else { // 실패
-//
-//                }
-//                print("code: \(receivedValue.code) / message: \(receivedValue.message)")
-//            }).store(in: &subscription)
-//    }
+    @Published var outputEvent: OutputEvent? = nil
+    private var appleSignInDelegates: SignInWithAppleDelegate! = nil
     
-    func postSignIn(rNickname: String, rgithubName: String, rEmail: String, rProvider: String) {
-        print(#fileID, #function, #line, "")
+    
+    func appleLogin() {
+        appleSignInDelegates = SignInWithAppleDelegate(onSignedIn: requestLogin)
         
-        var request = URLRequest(url: URL(string: "\(GeneralAPI.baseURL)/users")!)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 10
-        let params = ["nickname":rNickname, "githubName":rgithubName, "email":rEmail, "provider":rProvider] as Dictionary
-        do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        } catch {
-            print("http Body Error")
-        }
-        
-        AF.request("\(GeneralAPI.baseURL)/users")
-            .publishDecodable(type: SignInEntity.self)
-            .compactMap { $0.value }
-            .sink(receiveCompletion: { complete in
-                print("데이터스트림 완료")
-            }, receiveValue: { receivedValue in
-                print("받은 값: \(receivedValue.description)")
-                if (receivedValue.code == 1000) { // 성공
-                    self.accessToken = receivedValue.result.accessToken
-                    self.refreshToken = receivedValue.result.refreshToken
-                } else { // 실패
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.email, .fullName]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = appleSignInDelegates
+        authorizationController.performRequests()
+    }
+    
+    func requestLogin(token: String) {
+        NetworkingClinet.shared.request(serviceURL: .requestPostLogin, httpMethod: .post, parameter: RequestLoginMessage(token: token), type: ResponseLoginMessage.self) { responseData, error in
+            if let error = error {
+                
+            } else {
+                if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
+                    if let debugMessage = responseData.0 {
+                        print(debugMessage)
+                    }
                     
+                    if(code == 1000) {
+                        // 기존 회원
+                        // 테스트를 위함
+                        self.outputEvent = .checkNewMember
+                        
+                        //self.outputEvent = .checkMember
+                    } else if(code == 3005) {
+                        // 신규 회원
+                        self.outputEvent = .checkNewMember
+                    } else if(code == 3002) {
+                        // 애플 통신 실패
+                        self.outputEvent = .errorNetwork
+                    } else if(code == 3005) {
+                        // 가입되지 않은 유저
+                        self.outputEvent = .errorAppleToken
+                    } else if(code == 500) {
+                        // 서버 내부 오류
+                        self.outputEvent = .errorServer
+                    }
                 }
-                print("code: \(receivedValue.code) / message: \(receivedValue.message)")
-            }).store(in: &subscription)
+            }
+        }
     }
 }
+
+

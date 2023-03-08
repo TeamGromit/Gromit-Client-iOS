@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoordinatorView: View {
+struct GromitMainView: View {
     
     @StateObject private var coordinator = Coordinator()
     @State private var tabSelection = 2
@@ -36,12 +36,13 @@ struct CoordinatorView: View {
             coordinator.build(fullScreenCover: fullScreenCover)
         })
         .environmentObject(coordinator)
+        .navigationBarHidden(true)
         //.toolbarBackground(Color.clear, for: .tabBar)
     }
 }
 
-struct CoordinatorView_Previews: PreviewProvider {
+struct GromitMainView_Previews: PreviewProvider {
     static var previews: some View {
-        CoordinatorView()
+        GromitMainView()
     }
 }
