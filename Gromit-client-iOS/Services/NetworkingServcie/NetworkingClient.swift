@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
 
 class NetworkingClinet {
     static let shared = NetworkingClinet()
@@ -38,6 +39,21 @@ class NetworkingClinet {
         
     }
 
+    
+    func requestURLImage(imageURL: String, completion: @escaping (UIImage?) -> Void) {
+        AF.request(imageURL, method: .get).response { responseData in
+            switch responseData.result {
+            case let .success(data):
+                if let data = data {
+                    completion(UIImage(data: data, scale:1))
+                }
+                
+            case let .failure(error):
+                completion(nil)
+            }
+         }
+    }
+    
     // 파라미터 존재하지 않는 경우
     func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         let urlString = serviceURL.urlString
@@ -61,11 +77,13 @@ class NetworkingClinet {
     
     func request<Output: Decodable>(serviceURL: ServiceURL, pathVariable: [String] ,httpMethod: HTTPMethod, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         var urlString = serviceURL.urlString
+        print("request urlString: \(urlString)")
         pathVariable.forEach { variable in
             urlString += "/\(variable)"
         }
-        
+        print("AF Request")
         AF.request(urlString, method: httpMethod).response { responseData in
+            debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
                 do {

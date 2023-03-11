@@ -62,6 +62,8 @@ class SearchGitUserViewModel: ObservableObject {
                         if let reponseMessageResult = responseMessage.result {
                             self.responseGithubNickName = reponseMessageResult.nickname
                             self.responseGithubImg = reponseMessageResult.img
+                            UserDefaults.standard.set(self.responseGithubNickName, forKey: "githubUserName")
+                            UserDefaults.standard.set(self.responseGithubImg, forKey: "githubImage")
                             self.outputEvent = .isExistGitUser
                         }
 
@@ -73,9 +75,12 @@ class SearchGitUserViewModel: ObservableObject {
         }
     }
     
-    func confirmGitUser() {
-        UserDefaults.standard.set(self.responseGithubNickName, forKey: "githubName")
-        UserDefaults.standard.set(self.responseGithubImg, forKey: "githubImage")
-        self.outputEvent = .nextViewPage
+    func confirmGitUser(isConfirm: Bool) {
+        if(isConfirm) {
+            self.outputEvent = .nextViewPage
+        } else {
+            UserDefaults.standard.set("", forKey: "githubUserName")
+            UserDefaults.standard.set("", forKey: "githubImage")
+        }
     }
 }

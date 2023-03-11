@@ -22,23 +22,24 @@ struct InputUserNameView: View {
     //@State private var alertTitle = ""
     //@State private var alertMessage = ""
     //@State private var showSignInView = false
-    
+    @AppStorage("rootPage") var rootPage: RootPage = .signInView
     @EnvironmentObject private var coordinator: Coordinator
 
     var body: some View {
             VStack {
                 Text("사용할 닉네임을 입력해주세요.")
                     .fontWeight(.bold)
-                TextField("User Nickname", text: $userNickname)
+                TextField("한글, 숫자, 영어 8자 이하..", text: $userNickname)
 //                    .focused($focusField, equals: .userNickname)
                     .frame(width: 279, height: 40, alignment: .center)
                     .padding(EdgeInsets(top: 10, leading: 20, bottom: 111, trailing: 20))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    .onReceive(Just($userNickname), perform: { _ in
-//                                    if maxLength < userNickname.count {
-//                                        userNickname = String(userNickname.prefix(maxLength))
-//                                    }
-//                                })
+                    .onReceive(Just($userNickname), perform: { _ in
+                                    if maxLength < userNickname.count {
+                                        userNickname = String(userNickname.prefix(maxLength))
+                                    }
+                                })
+                // 특수문자 필터 처리 필요
                     .textCase(.none)
                     .truncationMode(.middle)
                     .lineLimit(1)
@@ -82,7 +83,7 @@ struct InputUserNameView: View {
 //                        }
 //                    )
 //                }
-                .buttonStyle(InputButtonStyle())
+                .buttonStyle(InputButtonStyle(width: 250, height: 50))
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
                 .onTapGesture { // <-
                     hideKeyboard()
@@ -104,23 +105,35 @@ struct InputUserNameView: View {
 
 extension InputUserNameView {
     private func receiveViewModelEvent(_ event: InputUserNameViewModel.OutputEvent) {
+        print(event)
         switch event {
         case .requestError:
             coordinator.stopLoading()
-            coordinator.present(alertPopup: .requesetServerError)
+            //coordinator.present(alertPopup: .requesetServerError)
+            coordinator.openPopup(popup: .requestServerError, okAction: {
+                coordinator.closePopup()
+            })
         case .isExistGromitUser:
             // 팝업을 통해 해당 닉네임은 중복 된 것임을 알림
             coordinator.stopLoading()
-            coordinator.present(alertPopup: .isExistGromitUser)
+            //coordinator.present(alertPopup: .isExistGromitUser)
+            coordinator.openPopup(popup: .isExistGromitUser
+            , okAction: {
+                coordinator.closePopup()
+            })
         case .isNotExistGromitUser:
             // 팝업을 통해 정말 해당 닉네임으로 할지 물어보기
             coordinator.stopLoading()
-            coordinator.present(alertPopup: .isNotExistGromitUser) {
-                coordinator.stopLoading()
-                inputUserNameViewModel.requestSignUpUser()
-            }
+            coordinator.openPopup(popup: .isNotExistGromitUser, okAction: {
+                coordinator.closePopup()
+                inputUserNameViewModel.requestSignUpUser(userNickname)
+            }, cancleAction: {
+                coordinator.closePopup()
+            })
+           
         case .createGromitUser:
             coordinator.stopLoading()
+            self.rootPage = .gromitMainView
             coordinator.push(page: .gromitMainView)
         }
     }

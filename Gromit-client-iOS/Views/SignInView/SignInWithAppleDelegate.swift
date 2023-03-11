@@ -123,6 +123,7 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
     
     private func getToken(credential: ASAuthorizationAppleIDCredential) -> String? {
         if let idToken = credential.identityToken {
+            
             let tokenString = String(data: idToken, encoding: .utf8)
             //갑자기 되다가 안됨 describing Optional 이 그대로 딸려옴
             //return String(describing: tokenString)

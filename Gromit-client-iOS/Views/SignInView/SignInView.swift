@@ -15,7 +15,8 @@ struct SignInView: View {
     @StateObject private var signInViewModel = SignInViewModel()
     
     @State private var showSearchGitUser = false
-    
+    @AppStorage("rootPage") var rootPage: RootPage = .signInView
+
     // 데모데이 영상 촬영용 임시 변수
     @State private var showTempSearchGitUser = false
     @State private var showGromitMainView = false
@@ -52,9 +53,13 @@ struct SignInView: View {
         case .checkNewMember:
             coordinator.push(page: .gitHubNameCheckView)
         case .checkMember:
+            rootPage = .gromitMainView
             coordinator.push(page: .gromitMainView)
         case .errorNetwork, .errorAppleToken, .errorServer:
-            coordinator.present(alertPopup: .signInError)
+            coordinator.openPopup(popup: .signInError, okAction: {
+                coordinator.closePopup()
+            })
+            //coordinator.present(alertPopup: .signInError)
         
         }
     }

@@ -26,7 +26,6 @@ class InputUserNameViewModel: ObservableObject {
     @Published var accessToken = String()
     @Published var refreshToken = String()
     
-    @AppStorage("rootPage") var rootPage: RootPage = .signInView
 
     init() {
         print(#fileID, #function, #line, "")
@@ -85,7 +84,10 @@ class InputUserNameViewModel: ObservableObject {
 //    }
     /// ================================================================================================
     func requestCheckUserNickName(_ nickName: String) {
+        print("requestCheckUserNickName run / nickName : \(nickName)")
         NetworkingClinet.shared.request(serviceURL: .requestGetNickName, pathVariable: [nickName], httpMethod: .get, type: InputUserNameEntity.self) { responseData, error in
+            debugPrint(responseData)
+            debugPrint(error)
             if let error = error {
                 self.outputEvent = .requestError
             } else {
@@ -103,28 +105,33 @@ class InputUserNameViewModel: ObservableObject {
         }
     }
     
-    func requestSignUpUser() {
-        guard let githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
+    func requestSignUpUser(_ nickName: String) {
+        print("requestSignUpUser run / nickName : \(nickName)")
+        guard let githubName = UserDefaults.standard.string(forKey: "githubUserName") else { return }
+        print("githubName : \(githubName)")
         guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+        print("email : \(email)")
         guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
+        print("provider : \(provider)")
+        
 // 킴쿡 : 테스트를 위해서 주석처리
 // 주석을 해제 할 경우 서버 DB에 등록돼 재테스트시 문제가 발생 할 수 있음
-//        NetworkingClinet.shared.request(serviceURL: .requestPostSignUp, httpMethod: .post, parameter: signUpUser, type: SignUpEntity.self) { responseData, error in
-//            if let error = error {
-//
-//            } else {
-//                if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
-//                    print(response)
-//                    if(responseMessage.code == 1000) {
-//                        self.outputEvent = .createGromitUser
-//                    } else {
-//
-//                    }
-//                }
-//            }
-//        }
-        self.rootPage = .gromitMainView
-        self.outputEvent = .createGromitUser
+        NetworkingClinet.shared.request(serviceURL: .requestPostSignUp, httpMethod: .post, parameter: RequestSignUpUser(nickname: nickName, githubName: githubName, email: email, provider: provider), type: SignUpEntity.self) { responseData, error in
+            if let error = error {
+
+            } else {
+                if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
+                    print(response)
+                    if(responseMessage.code == 1000) {
+                        self.outputEvent = .createGromitUser
+                    } else {
+
+                    }
+                }
+            }
+        }
+        //self.rootPage = .gromitMainView
+       // self.outputEvent = .createGromitUser
     }
                                         
 }

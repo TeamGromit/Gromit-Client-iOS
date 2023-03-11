@@ -82,7 +82,7 @@ struct InputUserNameView_Backup: View {
 //                        }
 //                    )
 //                }
-                .buttonStyle(InputButtonStyle())
+                .buttonStyle(InputButtonStyle(width: 250, height: 50))
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
                 .onTapGesture { // <-
                     hideKeyboard()
@@ -139,12 +139,17 @@ struct InputButtonStyle: ButtonStyle {
 
     var backgroundColor = Color(red: 255 / 255, green: 247 / 255, blue: 178 / 255)
     var cornerRadius: CGFloat = 10
+    var width: CGFloat
+    var height: CGFloat
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.black)
-            .padding(EdgeInsets(top: 16, leading: 123, bottom: 16, trailing: 123))
-            .background(RoundedRectangle(cornerRadius: cornerRadius).fill(backgroundColor))
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            .background(RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(backgroundColor)
+                .frame(width: width, height: height)
+            )
             .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
             .shadow(radius: 2.5)
             .fontWeight(.bold)

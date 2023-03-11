@@ -18,6 +18,7 @@ class SignInViewModel: ObservableObject {
     private var appleSignInDelegates: SignInWithAppleDelegate! = nil
     
     
+    
     func appleLogin() {
         appleSignInDelegates = SignInWithAppleDelegate(onSignedIn: requestLogin)
         
@@ -38,11 +39,11 @@ class SignInViewModel: ObservableObject {
                     if let debugMessage = responseData.0 {
                         print(debugMessage)
                     }
-                    
+
                     if(code == 1000) {
                         // 기존 회원
                         // 테스트를 위함
-                        self.outputEvent = .checkNewMember
+                        self.outputEvent = .checkMember
                         
                         //self.outputEvent = .checkMember
                     } else if(code == 3005) {

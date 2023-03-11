@@ -21,13 +21,19 @@ struct RootCoordinatorView: View {
             }
             .fullScreenCover(item: $coordinator.fullScreenCover) { fullScrrenCover in
                 coordinator.build(fullScreenCover: fullScrrenCover)
-            }.alert(item: $coordinator.alertPopup, content: { alert in
-                coordinator.build(alert: alert)
-            })
+            }
+//            .alert(item: $coordinator.alertPopup, content: { alert in
+//                coordinator.build(alert: alert)
+//            })
             .environmentObject(coordinator)
             
             if coordinator.isLoading {
                 coordinator.buildLoadingView()
+            }
+            
+            if coordinator.isPopuping {
+                coordinator.buildPopupView()
+                    
             }
         }
     }

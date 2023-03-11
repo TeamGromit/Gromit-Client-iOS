@@ -49,7 +49,8 @@ struct SearchGitUserView: View {
             Button("입력") {
                 if userName.isEmpty {
                     focusField = .userName
-                    coordinator.present(alertPopup: .emptyUserName)
+                    //coordinator.present(alertPopup: .emptyUserName)
+                    coordinator.openPopup(popup: .emptyUserName, okAction: coordinator.closePopup)
                 } else {
                     print("Complete Input and sign in...")
 //                    킴쿡 수정 : 로그인 기능 추가
@@ -74,7 +75,7 @@ struct SearchGitUserView: View {
 //                    }),
 //                    secondaryButton: .cancel(Text("아니요")))
 //            }
-            .buttonStyle(InputButtonStyle())
+            .buttonStyle(InputButtonStyle(width: 250, height: 50))
 
             //
 //            Button("(임시)그로밋 닉네임 페이지 이동") {
@@ -100,15 +101,30 @@ extension SearchGitUserView {
         switch event {
         case .isExistGitUser:
             coordinator.stopLoading()
-            coordinator.present(alertPopup: .isExistGitUser) {
-                searchGitUserViewModel.confirmGitUser()
-            }
+            coordinator.openPopup(popup: .isCheckGitUser
+            , okAction: {
+                searchGitUserViewModel.confirmGitUser(isConfirm: true)
+                coordinator.closePopup()
+            }, cancleAction: {
+                searchGitUserViewModel.confirmGitUser(isConfirm: false)
+                coordinator.closePopup()
+            })
+            
+//            coordinator.present(alertPopup: .isExistGitUser) {
+//                searchGitUserViewModel.confirmGitUser()
+//            }
         case .isNotExistGitUser:
             coordinator.stopLoading()
-            coordinator.present(alertPopup: .isNotExistGitUser)
+            coordinator.openPopup(popup: .isNotExistGitUser, okAction: {
+                coordinator.closePopup()
+            })
+            //coordinator.present(alertPopup: .isNotExistGitUser)
         case .requestError:
             coordinator.stopLoading()
-            coordinator.present(alertPopup: .requesetServerError)
+            coordinator.openPopup(popup: .requestServerError, okAction: {
+                coordinator.closePopup()
+            })
+            //coordinator.present(alertPopup: .requesetServerError)
         case .nextViewPage:
             coordinator.push(page: .inputUserNameView)
         }
