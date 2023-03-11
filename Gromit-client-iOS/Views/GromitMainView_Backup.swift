@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GromitMainView: View {
+struct GromitMainView_Backup: View {
     @State private var selection = 1
     
     var body: some View {
@@ -39,8 +39,8 @@ struct GromitMainView: View {
     }
 }
 
-struct GromitMainView_Previews: PreviewProvider {
+struct GromitMainView_Backup_Previews: PreviewProvider {
     static var previews: some View {
-        GromitMainView()
+        GromitMainView_Backup()
     }
 }

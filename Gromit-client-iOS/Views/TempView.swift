@@ -40,7 +40,7 @@ struct TempView: View {
                 showTempSearchGitUser.toggle()
             }
             .fullScreenCover(isPresented: $showTempSearchGitUser) {
-                TempSearchGitUserView()
+                SearchGitUserView()
             }
             
             Button("User Nickname 입력") {
