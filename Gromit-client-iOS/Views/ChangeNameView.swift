@@ -85,7 +85,7 @@ struct ChangeNameView: View {
                         }
                     )
                 }
-                .buttonStyle(InputButtonStyle())
+                .buttonStyle(InputButtonStyle(width: 250, height: 50))
                 //.frame(maxWidth: .infinity, maxHeight: .infinity) // <-
                 .onTapGesture { // <-
                     hideKeyboard()
