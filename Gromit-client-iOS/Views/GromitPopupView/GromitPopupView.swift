@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+// Push 테스트를 위함
 struct GromitPopupView<Content: View>: View {
     
     enum ButtonType {
