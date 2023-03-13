@@ -11,13 +11,14 @@ struct GromitMainView: View {
     
     @StateObject private var coordinator = Coordinator()
     @State private var tabSelection = 2
+    
     init() {
         UITabBar.appearance().backgroundColor = UIColor.clear
-        
     }
+    
     var body: some View {
         TabView(selection: $tabSelection) {
-            ChallengeListView()
+            ParticipatingListView()
                 .tabItem{
                     Image("challenge")
                 }.tag(1)
