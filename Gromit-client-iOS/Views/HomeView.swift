@@ -15,8 +15,7 @@ struct HomeView: View {
             TodaysCommit()
             
             CharacterView()
-                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
-            
+                
             CharacterInfo()
         }
     }
@@ -42,31 +41,19 @@ struct HomeButtons: View {
             }
             
             Spacer()
-            Button("collection") {
-                        self.showingSheet.toggle()
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.black)
-                    .cornerRadius(30)
-                    .font(.system(size: 10))
-            
-//            Spacer()
-//            Button {
-//                showParticipating.toggle()
-//            } label: {
-//                Image("collection")
-//            }
-            .sheet(isPresented: $showingSheet) {
-                        CollectionListView()
-                    }
+            Button {
+                showParticipating.toggle()
+            } label: {
+                Image("collection")
+            }
         }
-//        .fullScreenCover(isPresented: $showParticipating) {
-//            CollectionListView()
-//        }
+        .sheet(isPresented: $showParticipating) {
+            CollectionListView()
+        }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }
 }
+
 struct TodaysCommit: View {
     var numOfCommit = 23
     
@@ -92,6 +79,7 @@ struct CharacterView: View {
                 .overlay(RoundedRectangle(cornerRadius: 30)
                     .stroke(Color("green500"), lineWidth: 5))
         }
+        .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
