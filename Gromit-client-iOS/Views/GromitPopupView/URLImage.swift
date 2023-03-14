@@ -8,7 +8,7 @@
 import SwiftUI
 
 // test "https://avatars.githubusercontent.com/u/94947?v=4"
-struct UR22LImage: View {
+struct URLImage: View {
     
     @State private var image: UIImage?
     let urlString: String

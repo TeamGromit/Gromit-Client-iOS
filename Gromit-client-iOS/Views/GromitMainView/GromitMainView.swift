@@ -11,6 +11,17 @@ struct GromitMainView: View {
     
     @StateObject private var coordinator = Coordinator()
     @State private var tabSelection = 2
+    private var navigationBarTitle: String {
+        if(tabSelection == 1) {
+            return "참여 챌린지"
+        } else if (tabSelection == 2) {
+            return "홈"
+        } else if (tabSelection == 3) {
+            return "설정"
+        } else {
+            return "홈"
+        }
+    }
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.clear
@@ -22,12 +33,12 @@ struct GromitMainView: View {
                 .tabItem{
                     Image("challenge")
                 }.tag(1)
-            
+                
             HomeView()
                 .tabItem{
                     Image("home")
                 }.tag(2)
-            
+                
             SettingsView()
                 .tabItem{
                     Image("settings")
@@ -37,6 +48,7 @@ struct GromitMainView: View {
             coordinator.build(fullScreenCover: fullScreenCover)
         })
         .environmentObject(coordinator)
+        .navigationBarTitle(navigationBarTitle)
         .navigationBarHidden(true)
         //.toolbarBackground(Color.clear, for: .tabBar)
     }
