@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GromitMainView: View {
     
-    @StateObject private var coordinator = Coordinator()
+    @EnvironmentObject private var coordinator: Coordinator
     @State private var tabSelection = 2
     private var navigationBarTitle: String {
         if(tabSelection == 1) {
@@ -24,12 +24,13 @@ struct GromitMainView: View {
     }
     
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.clear
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
     
     var body: some View {
         TabView(selection: $tabSelection) {
-            ParticipatingListView()
+            //ParticipatingListView()
+            TempParticipatingListView()
                 .tabItem{
                     Image("challenge")
                 }.tag(1)
@@ -44,11 +45,12 @@ struct GromitMainView: View {
                     Image("settings")
                 }.tag(3)
         }
+        
         .fullScreenCover(item: $coordinator.fullScreenCover, content: { fullScreenCover in
             coordinator.build(fullScreenCover: fullScreenCover)
         })
         .environmentObject(coordinator)
-        .navigationBarTitle(navigationBarTitle)
+        //.navigationBarTitle(navigationBarTitle)
         .navigationBarHidden(true)
         //.toolbarBackground(Color.clear, for: .tabBar)
     }

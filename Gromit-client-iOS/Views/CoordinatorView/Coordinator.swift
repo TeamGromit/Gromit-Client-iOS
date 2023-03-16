@@ -12,14 +12,14 @@ import SwiftUI
 // 일반 View
 
 enum RootPage: String, Identifiable {
-    case gromitMainView, signInView
+    case signInView, homeView, participatingListView, settingView
     var id: String {
         self.rawValue
     }
 }
 
 enum Page: String, Identifiable {
-    case gromitMainView, signInView, gitHubNameCheckView, inputUserNameView
+    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, homeView, settingView
     var id: String {
         self.rawValue
     }
@@ -62,9 +62,13 @@ enum Popup: String, Identifiable {
 
 // 객체의 변화를 감지하기 위해서는 ObservableObject 프로토콜을 채택해야한다.
 class Coordinator: ObservableObject {
-    
+    // signInView, homeView, participatingListView, settingView
     // @Published @ObservableObject 프로토콜 준수해야 사용 가능
-    @Published var path = NavigationPath()
+    @Published var sigInViewPath = NavigationPath()
+    @Published var homeViewPath = NavigationPath()
+    @Published var participatingListViewPath = NavigationPath()
+    @Published var settingViewPath = NavigationPath()
+    
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
     @Published var alertPopup: AlertPopup?
@@ -82,12 +86,24 @@ class Coordinator: ObservableObject {
     
     
     init() {
-        print(rootPage)
+        print("Coordinator Init!! \(rootPage)")
     }
     
-    func push(page: Page) {
-        self.path.append(page)
+    
+    func push(_ rootPage: RootPage, page: Page) {
+        switch rootPage {
+        case .signInView:
+            sigInViewPath.append(page)
+        case .homeView:
+            homeViewPath.append(page)
+        case .participatingListView:
+            participatingListViewPath.append(page)
+        case .settingView:
+            settingViewPath.append(page)
+        }
     }
+    
+    
     
     func present(sheet: Sheet) {
         self.sheet = sheet
@@ -103,13 +119,37 @@ class Coordinator: ObservableObject {
     }
     
     
-    func pop() {
-        if(path.isEmpty == false) {
-            path.removeLast()
+    func pop(_ rootPage: RootPage) {
+        switch rootPage {
+        case .signInView:
+            if(sigInViewPath.isEmpty == false) {
+                sigInViewPath.removeLast()
+            }
+        case .homeView:
+            if(homeViewPath.isEmpty == false) {
+                homeViewPath.removeLast()
+            }
+        case .participatingListView:
+            if(participatingListViewPath.isEmpty == false) {
+                participatingListViewPath.removeLast()
+            }
+        case .settingView:
+            if(settingViewPath.isEmpty == false) {
+                settingViewPath.removeLast()
+            }
         }
     }
     func popToRoot() {
-        path.removeLast(path.count)
+        switch rootPage {
+        case .signInView:
+            sigInViewPath.removeLast(sigInViewPath.count)
+        case .homeView:
+            homeViewPath.removeLast(homeViewPath.count)
+        case .participatingListView:
+            participatingListViewPath.removeLast(participatingListViewPath.count)
+        case .settingView:
+            settingViewPath.removeLast(settingViewPath.count)
+        }
     }
     
     func dismissSheet() {
@@ -139,28 +179,37 @@ class Coordinator: ObservableObject {
         isPopuping = false
     }
     
-    @ViewBuilder
-    func rootBuild() -> some View {
-        switch rootPage {
-        case .gromitMainView:
-            GromitMainView()
-        case .signInView:
-            SignInView()
-        }
-    }
+    //    @ViewBuilder
+    //    func rootBuild() -> some View {
+    //        switch rootPage {
+    //        case .homeView
+    //            HomeView()
+    //        case .participatingListView
+    //
+    //        case .signInView:
+    //            SignInView()
+    //        }
+    //    }
     
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
-        case .gromitMainView:
-            GromitMainView()
         case .signInView:
             SignInView()
         case .gitHubNameCheckView:
             SearchGitUserView()
         case .inputUserNameView:
             InputUserNameView()
+        case .challengeListView:
+            TempChallengeListView()
+        case .participatingListView:
+            TempParticipatingListView()
+        case .homeView:
+            HomeView()
+        case .settingView:
+            SettingsView()
         }
+        
     }
     
     
@@ -192,52 +241,52 @@ class Coordinator: ObservableObject {
         }
     }
     
-//    func build(alert: AlertPopup) -> Alert {
-//        switch alert {
-//        case .signInError:
-//            return Alert(
-//                title: Text("로그인 실패!"),
-//                message: Text("애플리케이션 관리자에게 보고해주세요.")
-//                //               ,dismissButton: .default(Text("확인")) {
-//                //                    // 아래 코드 작동 안됨...
-//                //                    UserDefaults.standard.set(userNickname, forKey: "nickname")
-//                //                    guard let nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
-//                //                    guard let githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
-//                //                    guard let email = UserDefaults.standard.string(forKey: "email") else { return }
-//                //                    guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
-//                //                    print("userName: \(nickname) / githubName: \(githubName) / email: \(email) / provider: \(provider)")
-//                //                    inputUserNameViewModel.postSignUp(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
-//                //                }
-//            )
-//        case .requesetServerError:
-//            return Alert(
-//                title: Text("로그인 실패!"),
-//                message: Text("애플리케이션 관리자에게 보고해주세요.")
-//            )
-//        case .emptyUserName:
-//            return Alert(title: Text("유저명을 입력해주세요!"))
-//        case .isNotExistGitUser:
-//            return Alert(title: Text("유저명 오류!") , message: Text("Git 유저명을 다시 한번 확인해주세요."))
-//        case .isExistGitUser:
-//            return Alert(title: Text("유저명 확인!"), message: Text("해당 유저로 등록하시겠습니까?"),
-//                         primaryButton: .default(Text("확인"), action: {
-//                if let alertOKAction = self.alertOKAction {
-//                    alertOKAction()
-//                }
-//            }), secondaryButton: .cancel(Text("취소"))
-//            )
-//        case .isExistGromitUser:
-//            return Alert(title: Text("유저명 중복!") , message: Text("다른 Gromit 유저명을 시도해주세요."))
-//        case .isNotExistGromitUser:
-//            return Alert(title: Text("유저명 확인!"), message: Text("해당 Gromit 유저명으로 등록하시겠습니까?"),
-//                         primaryButton: .default(Text("확인"), action: {
-//                if let alertOKAction = self.alertOKAction {
-//                    alertOKAction()
-//                }
-//            }), secondaryButton: .cancel(Text("취소"))
-//            )
-//        }
-//    }
+    //    func build(alert: AlertPopup) -> Alert {
+    //        switch alert {
+    //        case .signInError:
+    //            return Alert(
+    //                title: Text("로그인 실패!"),
+    //                message: Text("애플리케이션 관리자에게 보고해주세요.")
+    //                //               ,dismissButton: .default(Text("확인")) {
+    //                //                    // 아래 코드 작동 안됨...
+    //                //                    UserDefaults.standard.set(userNickname, forKey: "nickname")
+    //                //                    guard let nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
+    //                //                    guard let githubName = UserDefaults.standard.string(forKey: "githubName") else { return }
+    //                //                    guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+    //                //                    guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
+    //                //                    print("userName: \(nickname) / githubName: \(githubName) / email: \(email) / provider: \(provider)")
+    //                //                    inputUserNameViewModel.postSignUp(rNickname: nickname, rgithubName: githubName, rEmail: email, rProvider: provider)
+    //                //                }
+    //            )
+    //        case .requesetServerError:
+    //            return Alert(
+    //                title: Text("로그인 실패!"),
+    //                message: Text("애플리케이션 관리자에게 보고해주세요.")
+    //            )
+    //        case .emptyUserName:
+    //            return Alert(title: Text("유저명을 입력해주세요!"))
+    //        case .isNotExistGitUser:
+    //            return Alert(title: Text("유저명 오류!") , message: Text("Git 유저명을 다시 한번 확인해주세요."))
+    //        case .isExistGitUser:
+    //            return Alert(title: Text("유저명 확인!"), message: Text("해당 유저로 등록하시겠습니까?"),
+    //                         primaryButton: .default(Text("확인"), action: {
+    //                if let alertOKAction = self.alertOKAction {
+    //                    alertOKAction()
+    //                }
+    //            }), secondaryButton: .cancel(Text("취소"))
+    //            )
+    //        case .isExistGromitUser:
+    //            return Alert(title: Text("유저명 중복!") , message: Text("다른 Gromit 유저명을 시도해주세요."))
+    //        case .isNotExistGromitUser:
+    //            return Alert(title: Text("유저명 확인!"), message: Text("해당 Gromit 유저명으로 등록하시겠습니까?"),
+    //                         primaryButton: .default(Text("확인"), action: {
+    //                if let alertOKAction = self.alertOKAction {
+    //                    alertOKAction()
+    //                }
+    //            }), secondaryButton: .cancel(Text("취소"))
+    //            )
+    //        }
+    //    }
     
     @ViewBuilder
     func buildLoadingView() -> some View {

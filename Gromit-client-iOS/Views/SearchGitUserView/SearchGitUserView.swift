@@ -126,7 +126,8 @@ extension SearchGitUserView {
             })
             //coordinator.present(alertPopup: .requesetServerError)
         case .nextViewPage:
-            coordinator.push(page: .inputUserNameView)
+            //coordinator.push(page: .inputUserNameView)
+            coordinator.push(.signInView, page: .inputUserNameView)
         }
     }
 }
