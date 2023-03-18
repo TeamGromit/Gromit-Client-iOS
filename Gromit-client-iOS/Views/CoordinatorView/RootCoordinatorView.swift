@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootCoordinatorView: View {
     @StateObject private var coordinator = Coordinator()
-    
+
     var body: some View {
         ZStack {
             if(coordinator.rootPage == .signInView) {
@@ -22,7 +22,7 @@ struct RootCoordinatorView: View {
                         }
                 }
             } else {
-                TabView {
+                TabView(selection: $coordinator.tabSelection) {
                     NavigationStack(path: $coordinator.participatingListViewPath) {
                         coordinator.build(page: .participatingListView)
                             .navigationDestination(for: Page.self) { page in
@@ -74,6 +74,10 @@ struct RootCoordinatorView: View {
         }
         .fullScreenCover(item: $coordinator.fullScreenCover) { fullScrrenCover in
             coordinator.build(fullScreenCover: fullScrrenCover)
+        }
+        .sheet(item: $coordinator.sheet) {
+            sheet in
+            coordinator.build(sheet: sheet)
         }
         .environmentObject(coordinator)
     }

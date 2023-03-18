@@ -19,7 +19,7 @@ enum RootPage: String, Identifiable {
 }
 
 enum Page: String, Identifiable {
-    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, homeView, settingView
+    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView
     var id: String {
         self.rawValue
     }
@@ -29,7 +29,7 @@ enum Page: String, Identifiable {
 // Modal과 흡사
 // 호출 뷰와 상속 관계가 아닌..?
 enum Sheet: String, Identifiable {
-    case test
+    case test, creationView
     var id: String {
         self.rawValue
     }
@@ -77,6 +77,8 @@ class Coordinator: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isPopuping: Bool = false
     
+    @Published var tabSelection = 2
+
     
     @AppStorage("rootPage") var rootPage: RootPage = .signInView
     
@@ -84,13 +86,14 @@ class Coordinator: ObservableObject {
     var popupOKAction: (() -> Void)?
     var popupCancleAction: (() -> Void)?
     
+    var selectChallenge: ParticipatingChallenge?
     
     init() {
         print("Coordinator Init!! \(rootPage)")
     }
     
     
-    func push(_ rootPage: RootPage, page: Page) {
+    func push(_ rootPage: RootPage, page: Page, challenge: ParticipatingChallenge? = nil) {
         switch rootPage {
         case .signInView:
             sigInViewPath.append(page)
@@ -101,9 +104,11 @@ class Coordinator: ObservableObject {
         case .settingView:
             settingViewPath.append(page)
         }
+        
+        if let challenge = challenge {
+            selectChallenge = challenge
+        }
     }
-    
-    
     
     func present(sheet: Sheet) {
         self.sheet = sheet
@@ -208,6 +213,12 @@ class Coordinator: ObservableObject {
             HomeView()
         case .settingView:
             SettingsView()
+        case .participatingDetailView:
+            if let selectChallenge = selectChallenge {
+                TempParticipatingDetailView(challenge: selectChallenge)
+            } else {
+                EmptyView()
+            }
         }
         
     }
@@ -220,6 +231,8 @@ class Coordinator: ObservableObject {
             NavigationStack {
                 CreationView()
             }
+        case .creationView:
+            CreationView()
         }
     }
     

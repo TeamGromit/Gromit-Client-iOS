@@ -15,6 +15,8 @@
 		2071C01A29BC97D30099A63C /* GitProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01929BC97D30099A63C /* GitProfileView.swift */; };
 		2071C01E29BCB2650099A63C /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01D29BCB2650099A63C /* MessageView.swift */; };
 		20866DBC29BC7E6300C44B7F /* GromitPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20866DBB29BC7E6300C44B7F /* GromitPopupView.swift */; };
+		208C765C29C5A47300CAEC57 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208C765B29C5A47300CAEC57 /* NavigationBarView.swift */; };
+		208C766029C5BC3F00CAEC57 /* TempParticipatingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208C765F29C5BC3F00CAEC57 /* TempParticipatingDetailView.swift */; };
 		20AC076D29A26F44009519A1 /* InputUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC076C29A26F44009519A1 /* InputUserNameViewModel.swift */; };
 		20AC077029A27003009519A1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC076F29A27003009519A1 /* Coordinator.swift */; };
 		20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC077129A2700D009519A1 /* GromitMainView.swift */; };
@@ -74,6 +76,8 @@
 		2071C01929BC97D30099A63C /* GitProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProfileView.swift; sourceTree = "<group>"; };
 		2071C01D29BCB2650099A63C /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		20866DBB29BC7E6300C44B7F /* GromitPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GromitPopupView.swift; sourceTree = "<group>"; };
+		208C765B29C5A47300CAEC57 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		208C765F29C5BC3F00CAEC57 /* TempParticipatingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempParticipatingDetailView.swift; sourceTree = "<group>"; };
 		20AC076C29A26F44009519A1 /* InputUserNameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUserNameViewModel.swift; sourceTree = "<group>"; };
 		20AC076F29A27003009519A1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		20AC077129A2700D009519A1 /* GromitMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GromitMainView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,29 @@
 				2071C01D29BCB2650099A63C /* MessageView.swift */,
 			);
 			path = GromitPopupView;
+			sourceTree = "<group>";
+		};
+		208C765A29C5A44700CAEC57 /* NavigationBarView */ = {
+			isa = PBXGroup;
+			children = (
+				208C765B29C5A47300CAEC57 /* NavigationBarView.swift */,
+			);
+			path = NavigationBarView;
+			sourceTree = "<group>";
+		};
+		208C765D29C5B68B00CAEC57 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		208C765E29C5B98900CAEC57 /* ParticipatingDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				208C765F29C5BC3F00CAEC57 /* TempParticipatingDetailView.swift */,
+			);
+			path = ParticipatingDetailView;
 			sourceTree = "<group>";
 		};
 		20AC076E29A26FEE009519A1 /* CoordinatorView */ = {
@@ -312,6 +339,8 @@
 		D5F8C22E297BF1A3004C6146 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				208C765E29C5B98900CAEC57 /* ParticipatingDetailView */,
+				208C765A29C5A44700CAEC57 /* NavigationBarView */,
 				20B0E37C29C354B800B4FEE1 /* ChallengeListView */,
 				20E199BD29C204D600FE6DCD /* ParticipatingListView */,
 				20866DBA29BC7E3600C44B7F /* GromitPopupView */,
@@ -326,11 +355,12 @@
 				D5F8C234297BF20B004C6146 /* HomeView.swift */,
 				D56FE8102987F68300374A9A /* FinalLevelView.swift */,
 				D56FE8122987F6AC00374A9A /* CollectionListView.swift */,
+				D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */,
 				D53AC6F2299CB65200470E2A /* ChallengeListView.swift */,
 				D514837329A4AAA3005F05B2 /* ChallengeDetailView.swift */,
 				D5F8C238297BF224004C6146 /* ParticipatingListView.swift */,
-				D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */,
 				11782480298B8F43000C640E /* CreationView.swift */,
+				208C765D29C5B68B00CAEC57 /* New Group */,
 				11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */,
 				D5F8C23A297BF22A004C6146 /* SettingsView.swift */,
 				D5F8C230297BF1DE004C6146 /* TempView.swift */,
@@ -435,6 +465,7 @@
 				D56FE81D2988014700374A9A /* Constants.swift in Sources */,
 				20B2F21A29AB52E4007E947D /* SearchGitUserViewModel.swift in Sources */,
 				20866DBC29BC7E6300C44B7F /* GromitPopupView.swift in Sources */,
+				208C765C29C5A47300CAEC57 /* NavigationBarView.swift in Sources */,
 				D56FE821298838E400374A9A /* SearchGitUserViewModel_Backup.swift in Sources */,
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
 				20AC076D29A26F44009519A1 /* InputUserNameViewModel.swift in Sources */,
@@ -483,6 +514,7 @@
 				11782485298B8F9D000C640E /* search.swift in Sources */,
 				20B2F21429AB2A2B007E947D /* SignInViewModel.swift in Sources */,
 				2071C01E29BCB2650099A63C /* MessageView.swift in Sources */,
+				208C766029C5BC3F00CAEC57 /* TempParticipatingDetailView.swift in Sources */,
 				D5A7F191299E862700EC6A49 /* ParticipatingDetailView.swift in Sources */,
 				11782483298B8F84000C640E /* SearchApi.swift in Sources */,
 				D5F8C23F297BF4CE004C6146 /* Challenge.swift in Sources */,

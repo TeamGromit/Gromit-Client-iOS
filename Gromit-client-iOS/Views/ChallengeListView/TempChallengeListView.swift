@@ -17,42 +17,45 @@ struct TempChallengeListView: View {
         ZStack {
             NavigationView {
                 VStack {
-                    HStack {
-                        Spacer()
-                        Button("뒤로가기") {
-                            coordinator.pop(.participatingListView)
-                        }
-                        .frame(width: 100, height: 40)
-                        .font(.system(size: 18))
-                        .foregroundColor(Color(.gray))
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(.gray))
-                        )
-                        
-                        Spacer(minLength: 40)
-                        Text("전체 챌린지")
-                            .fontWeight(.bold)
-                            .font(.system(size: 18))
-                        
-                        Spacer(minLength: 40)
-                        
-                        Button("오른쪽버튼") {
-                            
-                        }
-                        .frame(width: 100, height: 40)
-                        .font(.system(size: 18))
-                        .foregroundColor(Color(.gray))
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(.gray))
-                        )
-                        .hidden()
-                        Spacer()
-                        
-                    }
+                    NavigationBarView(isActiveLeftButton: true, isActiveRightButton: false, title: "전체 챌린지", leftButtonTitle: "뒤로가기", leftButtonTapped: {
+                        coordinator.pop(.participatingListView)
+                    })
+//                    HStack {
+//                        Spacer()
+//                        Button("뒤로가기") {
+//                            coordinator.pop(.participatingListView)
+//                        }
+//                        .frame(width: 100, height: 40)
+//                        .font(.system(size: 18))
+//                        .foregroundColor(Color(.gray))
+//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 30)
+//                                .stroke(Color(.gray))
+//                        )
+//
+//                        Spacer(minLength: 40)
+//                        Text("전체 챌린지")
+//                            .fontWeight(.bold)
+//                            .font(.system(size: 18))
+//
+//                        Spacer(minLength: 40)
+//
+//                        Button("오른쪽버튼") {
+//
+//                        }
+//                        .frame(width: 100, height: 40)
+//                        .font(.system(size: 18))
+//                        .foregroundColor(Color(.gray))
+//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 30)
+//                                .stroke(Color(.gray))
+//                        )
+//                        .hidden()
+//                        Spacer()
+//
+//                    }
                     Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1, alignment: .center).padding(EdgeInsets(top: 3, leading: 20, bottom: 3, trailing: 20))
                     ChallengeCell()
                 }
