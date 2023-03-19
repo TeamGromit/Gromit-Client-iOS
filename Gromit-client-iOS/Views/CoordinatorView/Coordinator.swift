@@ -19,7 +19,7 @@ enum RootPage: String, Identifiable {
 }
 
 enum Page: String, Identifiable {
-    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView
+    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView
     var id: String {
         self.rawValue
     }
@@ -54,7 +54,7 @@ enum AlertPopup: String, Identifiable {
 }
 
 enum Popup: String, Identifiable {
-    case isCheckGitUser, requestServerError, emptyUserName, isNotExistGitUser, isExistGromitUser, isNotExistGromitUser, signInError
+    case isCheckGitUser, requestServerError, emptyUserName, isNotExistGitUser, isExistGromitUser, isNotExistGromitUser, signInError, changeGromitUserName
     var id: String {
         self.rawValue
     }
@@ -212,15 +212,16 @@ class Coordinator: ObservableObject {
         case .homeView:
             HomeView()
         case .settingView:
-            SettingsView()
+            TempSettingsView()
         case .participatingDetailView:
             if let selectChallenge = selectChallenge {
                 TempParticipatingDetailView(challenge: selectChallenge)
             } else {
                 EmptyView()
             }
+        case .changeGromitUserNameView:
+            TempChangeNameView()
         }
-        
     }
     
     
@@ -314,110 +315,39 @@ class Coordinator: ObservableObject {
         }
     }
     
+    
     // 이 방법 밖에 없나.....
     @ViewBuilder
     func buildPopupView() -> some View {
-        
+
         switch self.popup{
         case .isCheckGitUser:
-            GromitPopupView<GitProfileView>(buttonType: .twoButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                let userName = UserDefaults.standard.string(forKey: "githubUserName")
-                let userImage = UserDefaults.standard.string(forKey: "githubImage")
-                
-                GitProfileView(userName: userName ?? "" , urlString: userImage ?? "")
-            })
+            let userName = AppDataService.shared.getData(appData: .gromitUserName)
+            let userImage = AppDataService.shared.getData(appData: .githubProfileImage)
+            GromitPopupView(popupType: .gitProfileView, userName: userName ?? "" , urlString: userImage ?? "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .isNotExistGitUser:
-            GromitPopupView<MessageView>(buttonType: .oneButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "존재하지 않는 유저명!", message: "유저명을 확인 해주세요.")
-            })
+            GromitPopupView(popupType: .message, title: "존재하지 않는 유저명!", message: "유저명을 확인해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .requestServerError:
-            GromitPopupView<MessageView>(buttonType: .oneButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "네트워크 서버 오류!", message: "관리자에게 오류를 보고해주세요!")
-            })
+            GromitPopupView(popupType: .message, title: "네트워크 서버 오류!", message: "관리자에게 오류를 보고해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .emptyUserName:
-            GromitPopupView<MessageView>(buttonType: .oneButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "입력 오류!", message: "값을 입력해주세요!")
-            })
+            GromitPopupView(popupType: .message, title: "입력 오류!", message: "값을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .none:
-            GromitPopupView<MessageView>(buttonType: .oneButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "", message: "")
-            })
+            GromitPopupView(popupType: .message, title: "", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .isExistGromitUser:
-            GromitPopupView<MessageView>(buttonType: .oneButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "유저명 중복!", message: "다른 유저명을 입력해주세요!")
-            })
+            GromitPopupView(popupType: .message, title: "유저명 중복!", message: "다른 유저명을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .isNotExistGromitUser:
-            GromitPopupView<MessageView>(buttonType: .twoButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "유저명 확인!", message: "해당 유저명으로 가입하시겠습니까?")
-            })
+            GromitPopupView(popupType: .message, buttonType: .twoButton, title: "유저명 확인!", message: "해당 유저명으로 가입하시겠습니까!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         case .signInError:
-            GromitPopupView<MessageView>(buttonType: .twoButton, okDelegate: {
-                if let popupOKAction = self.popupOKAction {
-                    popupOKAction()
-                }
-            }, cancleDelegate: {
-                if let popupCancleAction = self.popupCancleAction {
-                    popupCancleAction()
-                }
-            }, content: {
-                MessageView(title: "가입 오류!", message: "관리자에게 오류를 보고해주세요!")
-            })
+            GromitPopupView(popupType: .message, title: "가입 오류!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+        case .changeGromitUserName:
+            GromitPopupView(popupType: .message, title: "닉네임 변경 완료!", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         }
     }
 }

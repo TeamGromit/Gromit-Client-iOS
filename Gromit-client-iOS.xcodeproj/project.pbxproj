@@ -11,9 +11,14 @@
 		11782483298B8F84000C640E /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782482298B8F84000C640E /* SearchApi.swift */; };
 		11782485298B8F9D000C640E /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782484298B8F9D000C640E /* search.swift */; };
 		11C7299B29B2627000EB0DE2 /* ChangeNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */; };
+		206244CF29C5ED1E00B5B828 /* AppDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206244CE29C5ED1E00B5B828 /* AppDataService.swift */; };
 		2071C01829BC977C0099A63C /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01729BC977C0099A63C /* URLImage.swift */; };
 		2071C01A29BC97D30099A63C /* GitProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01929BC97D30099A63C /* GitProfileView.swift */; };
 		2071C01E29BCB2650099A63C /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01D29BCB2650099A63C /* MessageView.swift */; };
+		207FEA1629C5F95500E838E4 /* TempSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1529C5F95500E838E4 /* TempSettingsView.swift */; };
+		207FEA1829C5F9F200E838E4 /* TempChangeNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1729C5F9F200E838E4 /* TempChangeNameView.swift */; };
+		207FEA1A29C5FD7400E838E4 /* ChangeNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */; };
+		207FEA1C29C605AD00E838E4 /* RequestChangeNickNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */; };
 		20866DBC29BC7E6300C44B7F /* GromitPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20866DBB29BC7E6300C44B7F /* GromitPopupView.swift */; };
 		208C765C29C5A47300CAEC57 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208C765B29C5A47300CAEC57 /* NavigationBarView.swift */; };
 		208C766029C5BC3F00CAEC57 /* TempParticipatingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208C765F29C5BC3F00CAEC57 /* TempParticipatingDetailView.swift */; };
@@ -72,9 +77,14 @@
 		11782482298B8F84000C640E /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		11782484298B8F9D000C640E /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
 		11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameView.swift; sourceTree = "<group>"; };
+		206244CE29C5ED1E00B5B828 /* AppDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataService.swift; sourceTree = "<group>"; };
 		2071C01729BC977C0099A63C /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		2071C01929BC97D30099A63C /* GitProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProfileView.swift; sourceTree = "<group>"; };
 		2071C01D29BCB2650099A63C /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		207FEA1529C5F95500E838E4 /* TempSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSettingsView.swift; sourceTree = "<group>"; };
+		207FEA1729C5F9F200E838E4 /* TempChangeNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempChangeNameView.swift; sourceTree = "<group>"; };
+		207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewModel.swift; sourceTree = "<group>"; };
+		207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChangeNickNameEntity.swift; sourceTree = "<group>"; };
 		20866DBB29BC7E6300C44B7F /* GromitPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GromitPopupView.swift; sourceTree = "<group>"; };
 		208C765B29C5A47300CAEC57 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		208C765F29C5BC3F00CAEC57 /* TempParticipatingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempParticipatingDetailView.swift; sourceTree = "<group>"; };
@@ -142,6 +152,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		206244CD29C5ED0D00B5B828 /* AppDataService */ = {
+			isa = PBXGroup;
+			children = (
+				206244CE29C5ED1E00B5B828 /* AppDataService.swift */,
+			);
+			path = AppDataService;
+			sourceTree = "<group>";
+		};
+		207FEA1429C5F94200E838E4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				207FEA1529C5F95500E838E4 /* TempSettingsView.swift */,
+				207FEA1729C5F9F200E838E4 /* TempChangeNameView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		20866DBA29BC7E3600C44B7F /* GromitPopupView */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,13 +186,6 @@
 				208C765B29C5A47300CAEC57 /* NavigationBarView.swift */,
 			);
 			path = NavigationBarView;
-			sourceTree = "<group>";
-		};
-		208C765D29C5B68B00CAEC57 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		208C765E29C5B98900CAEC57 /* ParticipatingDetailView */ = {
@@ -245,6 +265,7 @@
 		D52DB51C2986FCF200B7A3CC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				206244CD29C5ED0D00B5B828 /* AppDataService */,
 				20B2F20D29AB235B007E947D /* NetworkingServcie */,
 				D56FE80D2987878300374A9A /* Entities */,
 				D56FE80C2987864600374A9A /* Requests */,
@@ -270,6 +291,7 @@
 				D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */,
 				D514C9A8298BB463002E4E5A /* InputUserNameEntity.swift */,
 				20B2F21529AB2FC7007E947D /* RequestLoginEntity.swift */,
+				207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -332,6 +354,7 @@
 				D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */,
 				20B2F21329AB2A2B007E947D /* SignInViewModel.swift */,
 				20B2F21929AB52E4007E947D /* SearchGitUserViewModel.swift */,
+				207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -339,6 +362,7 @@
 		D5F8C22E297BF1A3004C6146 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				207FEA1429C5F94200E838E4 /* Settings */,
 				208C765E29C5B98900CAEC57 /* ParticipatingDetailView */,
 				208C765A29C5A44700CAEC57 /* NavigationBarView */,
 				20B0E37C29C354B800B4FEE1 /* ChallengeListView */,
@@ -360,7 +384,6 @@
 				D514837329A4AAA3005F05B2 /* ChallengeDetailView.swift */,
 				D5F8C238297BF224004C6146 /* ParticipatingListView.swift */,
 				11782480298B8F43000C640E /* CreationView.swift */,
-				208C765D29C5B68B00CAEC57 /* New Group */,
 				11C7299A29B2627000EB0DE2 /* ChangeNameView.swift */,
 				D5F8C23A297BF22A004C6146 /* SettingsView.swift */,
 				D5F8C230297BF1DE004C6146 /* TempView.swift */,
@@ -461,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				207FEA1629C5F95500E838E4 /* TempSettingsView.swift in Sources */,
 				D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */,
 				D56FE81D2988014700374A9A /* Constants.swift in Sources */,
 				20B2F21A29AB52E4007E947D /* SearchGitUserViewModel.swift in Sources */,
@@ -470,6 +494,7 @@
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
 				20AC076D29A26F44009519A1 /* InputUserNameViewModel.swift in Sources */,
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
+				207FEA1C29C605AD00E838E4 /* RequestChangeNickNameEntity.swift in Sources */,
 				11782481298B8F43000C640E /* CreationView.swift in Sources */,
 				D514C9A9298BB463002E4E5A /* InputUserNameEntity.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */,
@@ -488,12 +513,14 @@
 				20AC077029A27003009519A1 /* Coordinator.swift in Sources */,
 				D5C02EB629A7695E000BB76E /* Extension+View.swift in Sources */,
 				2281F940297DA918000649A9 /* SearchGitUserView_Backup.swift in Sources */,
+				206244CF29C5ED1E00B5B828 /* AppDataService.swift in Sources */,
 				227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */,
 				20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */,
 				D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
 				D5F8C239297BF224004C6146 /* ParticipatingListView.swift in Sources */,
 				20AC077029A27003009519A1 /* Coordinator.swift in Sources */,
+				207FEA1829C5F9F200E838E4 /* TempChangeNameView.swift in Sources */,
 				2281F940297DA918000649A9 /* SearchGitUserView_Backup.swift in Sources */,
 				227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */,
 				20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */,
@@ -516,6 +543,7 @@
 				2071C01E29BCB2650099A63C /* MessageView.swift in Sources */,
 				208C766029C5BC3F00CAEC57 /* TempParticipatingDetailView.swift in Sources */,
 				D5A7F191299E862700EC6A49 /* ParticipatingDetailView.swift in Sources */,
+				207FEA1A29C5FD7400E838E4 /* ChangeNameViewModel.swift in Sources */,
 				11782483298B8F84000C640E /* SearchApi.swift in Sources */,
 				D5F8C23F297BF4CE004C6146 /* Challenge.swift in Sources */,
 				20B2F22329AB93B2007E947D /* SignUpEntity.swift in Sources */,

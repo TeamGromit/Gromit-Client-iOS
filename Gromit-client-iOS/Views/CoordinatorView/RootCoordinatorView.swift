@@ -82,6 +82,10 @@ struct RootCoordinatorView: View {
         .environmentObject(coordinator)
     }
     
+    init() {
+        AppDataService.shared.printInfo()
+    }
+    
 }
 
 struct RootCoordinatorView_Previews: PreviewProvider {

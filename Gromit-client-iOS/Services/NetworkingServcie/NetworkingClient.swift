@@ -14,7 +14,7 @@ class NetworkingClinet {
     private init() { }
     
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName,testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, testGetURL, testPostURL, testPatchURL
         
         // https://gromit.shop
         var urlString: String {
@@ -27,6 +27,8 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/users/github"
             case .requestGetNickName:
                 return "\(GeneralAPI.baseURL)/users/check"
+            case .requestChangeGromitNickName:
+                return "\(GeneralAPI.baseURL)/users/change/nickname"
             case .testGetURL:
                 return "https://jsonplaceholder.typicode.com/posts"
             case .testPatchURL:
@@ -105,6 +107,28 @@ class NetworkingClinet {
     func request<Input: Encodable, Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, parameter: Input, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> ()) {
         let urlString = serviceURL.urlString
         AF.request(urlString, method: httpMethod, parameters: parameter, encoder: .json()).response { responseData in
+            debugPrint(responseData)
+            switch responseData.result {
+            case let .success(data):
+                do {
+                    if let decodingData = try self.decodeData(type, data: data) {
+                        completion((responseData.debugDescription, decodingData), nil)
+                    }
+                }
+                catch {
+                    completion((responseData.debugDescription, nil), nil)
+                }
+            case let .failure(error):
+                completion(nil, error)
+            }
+            sleep(1)
+        }
+    }
+    
+    
+    func request<Input: Encodable, Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, parameter: Input, headers: HTTPHeaders, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> ()) {
+        let urlString = serviceURL.urlString
+        AF.request(urlString, method: httpMethod, parameters: parameter, encoder: .json(), headers: headers).response { responseData in
             switch responseData.result {
             case let .success(data):
                 do {

@@ -60,10 +60,21 @@ class SearchGitUserViewModel: ObservableObject {
                     }
                     if(code == 1000) {
                         if let reponseMessageResult = responseMessage.result {
-                            self.responseGithubNickName = reponseMessageResult.nickname
-                            self.responseGithubImg = reponseMessageResult.img
-                            UserDefaults.standard.set(self.responseGithubNickName, forKey: "githubUserName")
-                            UserDefaults.standard.set(self.responseGithubImg, forKey: "githubImage")
+                            guard let githubUserName = reponseMessageResult.nickname else {
+                                print("Guard Error githubUserName is nil")
+                                return
+                            }
+                            self.responseGithubNickName = githubUserName
+                            
+                            guard let githubProfileImage = reponseMessageResult.img else {
+                                print("Guard Error githubUserName is nil")
+                                return
+                            }
+                            self.responseGithubImg = githubProfileImage
+                            //UserDefaults.standard.set(self.responseGithubNickName, forKey: "githubUserName")
+                            //UserDefaults.standard.set(self.responseGithubImg, forKey: "githubImage")
+                            AppDataService.shared.setData(appData: .githubUserName, value: githubUserName)
+                            AppDataService.shared.setData(appData: .githubProfileImage, value: githubProfileImage)
                             self.outputEvent = .isExistGitUser
                         }
 
@@ -79,8 +90,10 @@ class SearchGitUserViewModel: ObservableObject {
         if(isConfirm) {
             self.outputEvent = .nextViewPage
         } else {
-            UserDefaults.standard.set("", forKey: "githubUserName")
-            UserDefaults.standard.set("", forKey: "githubImage")
+            //            UserDefaults.standard.set("", forKey: "githubUserName")
+            //            UserDefaults.standard.set("", forKey: "githubImage")
+            AppDataService.shared.setData(appData: .githubUserName, value: "")
+            AppDataService.shared.setData(appData: .githubProfileImage, value: "")
         }
     }
 }

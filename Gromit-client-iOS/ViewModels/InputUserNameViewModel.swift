@@ -107,11 +107,26 @@ class InputUserNameViewModel: ObservableObject {
     
     func requestSignUpUser(_ nickName: String) {
         print("requestSignUpUser run / nickName : \(nickName)")
-        guard let githubName = UserDefaults.standard.string(forKey: "githubUserName") else { return }
+        //guard let githubName = UserDefaults.standard.string(forKey: "githubUserName") else { return }
+        guard let githubName = AppDataService.shared.getData(appData: .githubUserName) else  {
+            print("Guard Error! githubUserName is nil")
+            return
+        }
         print("githubName : \(githubName)")
-        guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+        
+        //guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+        guard let email = AppDataService.shared.getData(appData: .email) else {
+            print("Guard Error! email is nil")
+            return
+        }
         print("email : \(email)")
-        guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
+        
+        
+        //guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
+        guard let provider = AppDataService.shared.getData(appData: .provider) else {
+            print("Guard Error! provider is nil")
+            return
+        }
         print("provider : \(provider)")
         
 // 킴쿡 : 테스트를 위해서 주석처리
@@ -123,7 +138,16 @@ class InputUserNameViewModel: ObservableObject {
                 if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
                     print(response)
                     if(responseMessage.code == 1000) {
-                        self.outputEvent = .createGromitUser
+                        AppDataService.shared.setData(appData: .gromitUserName, value: nickName)
+                        if let result = responseMessage.result {
+                            if let acessToken = result.accessToken {
+                                AppDataService.shared.setData(appData: .accessToken, value: acessToken)
+                            }
+                            if let refreshToken = result.refreshToken {
+                                AppDataService.shared.setData(appData: .refreshToken, value: refreshToken)
+                            }
+                            self.outputEvent = .createGromitUser
+                        }
                     } else {
 
                     }

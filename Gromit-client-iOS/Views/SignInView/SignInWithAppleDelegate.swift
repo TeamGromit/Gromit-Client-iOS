@@ -10,8 +10,8 @@ import AuthenticationServices
 import SwiftUI
 
 class SignInWithAppleDelegate: NSObject {
-    @AppStorage("email") var email: String = ""
-    @AppStorage("provider") var provider: String = ""
+//    @AppStorage("email") var email: String = ""
+//    @AppStorage("provider") var provider: String = ""
 
     
     private let signInSucceeded: (String) -> Void
@@ -39,11 +39,10 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                 
                 if let email = credential.email {
                     print("AppStorage Save Email")
-                    self.email = email
-                    self.provider = "APPLE"
-                    
-                    UserDefaults.standard.set(credential.email, forKey: "email")
-                    UserDefaults.standard.set("APPLE", forKey: "provider")
+                
+                    AppDataService.shared.setData(appData: .email, value: email)
+                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
+         
                 }
               
                 
@@ -53,10 +52,10 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                 guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
                 
                 if let tokenString = String(data: credential.identityToken ?? Data(), encoding: .utf8) {
-                    email = decode(tokenString: tokenString)["email"] as? String ?? ""
-                    print(email)
-                    UserDefaults.standard.set(email, forKey: "email")
-                    UserDefaults.standard.set("APPLE", forKey: "provider")
+                    let email = decode(tokenString: tokenString)["email"] as? String ?? ""
+                    
+                    AppDataService.shared.setData(appData: .email, value: email)
+                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
                     
                 }
             }
