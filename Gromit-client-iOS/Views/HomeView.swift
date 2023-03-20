@@ -52,6 +52,11 @@ struct HomeButtons: View {
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }
+    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+        navigationBarHidden(false)
+    }
 }
 
 struct TodaysCommit: View {

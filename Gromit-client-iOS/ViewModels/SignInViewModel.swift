@@ -44,7 +44,15 @@ class SignInViewModel: ObservableObject {
                         // 기존 회원
                         // 테스트를 위함
                         self.outputEvent = .checkMember
-                        
+                        if let result = responseMessage.result {
+                            if let accessToken = result.accessToken {
+                                AppDataService.shared.setData(appData: .accessToken, value: accessToken)
+                            }
+                            
+                            if let refreshToken = result.refreshToken {
+                                AppDataService.shared.setData(appData: .refreshToken, value: refreshToken)
+                            }
+                        }
                         //self.outputEvent = .checkMember
                     } else if(code == 3005) {
                         // 신규 회원

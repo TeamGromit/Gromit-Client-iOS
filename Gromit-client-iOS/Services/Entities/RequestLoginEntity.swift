@@ -22,5 +22,6 @@ struct ResponseLoginMessage: Codable {
 // MARK: - Result
 struct Result: Codable {
     let email, provider: String?
+    let accessToken, refreshToken: String?
 }
 

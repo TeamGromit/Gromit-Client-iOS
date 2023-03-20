@@ -133,8 +133,9 @@ extension InputUserNameView {
            
         case .createGromitUser:
             coordinator.stopLoading()
-            self.rootPage = .gromitMainView
-            coordinator.push(page: .gromitMainView)
+//            self.rootPage = .gromitMainView
+//            coordinator.push(page: .gromitMainView)
+            coordinator.rootPage = .homeView
         }
     }
 }

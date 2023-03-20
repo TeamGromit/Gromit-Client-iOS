@@ -97,7 +97,7 @@ struct ParticipatingCell: View {
             }
             .listStyle(PlainListStyle())
 //        }
-        .navigationTitle("참여 챌린지")
+        //.navigationTitle("참여 챌린지")
     }
 }
 

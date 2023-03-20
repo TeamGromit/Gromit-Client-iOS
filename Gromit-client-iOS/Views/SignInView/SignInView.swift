@@ -21,6 +21,10 @@ struct SignInView: View {
     @State private var showTempSearchGitUser = false
     @State private var showGromitMainView = false
     
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+        navigationBarHidden(false)
+    }
     var body: some View {
         ZStack {
             Color("yellow500").ignoresSafeArea()
@@ -51,10 +55,13 @@ struct SignInView: View {
     private func receiveViewModelEvent(_ event: SignInViewModel.OutputEvent) {
         switch event {
         case .checkNewMember:
-            coordinator.push(page: .gitHubNameCheckView)
+            //coordinator.push(page: .gitHubNameCheckView)
+            coordinator.push(.signInView, page: .gitHubNameCheckView)
         case .checkMember:
-            rootPage = .gromitMainView
-            coordinator.push(page: .gromitMainView)
+            //rootPage = .gromitMainView
+            rootPage = .homeView
+            //coordinator.push(page: .gromitMainView)
+            
         case .errorNetwork, .errorAppleToken, .errorServer:
             coordinator.openPopup(popup: .signInError, okAction: {
                 coordinator.closePopup()
