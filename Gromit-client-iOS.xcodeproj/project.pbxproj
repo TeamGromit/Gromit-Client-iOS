@@ -47,6 +47,8 @@
 		D514C9A9298BB463002E4E5A /* InputUserNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D514C9A8298BB463002E4E5A /* InputUserNameEntity.swift */; };
 		D52EC0C1298BB903004B999B /* InputUserNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52EC0C0298BB903004B999B /* InputUserNameEntity.swift */; };
 		D53AC6F3299CB65200470E2A /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53AC6F2299CB65200470E2A /* ChallengeListView.swift */; };
+		D5553DCB29CA80D7006945CB /* CreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5553DCA29CA80D7006945CB /* CreationViewModel.swift */; };
+		D5553DCD29CA80F0006945CB /* CreationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5553DCC29CA80F0006945CB /* CreationEntity.swift */; };
 		D561F7632986FDAB009E3639 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561F7622986FDAB009E3639 /* GeneralAPI.swift */; };
 		D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE809298781C500374A9A /* LoginWithAppleRequest.swift */; };
 		D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE80E298787AF00374A9A /* SignInEntity.swift */; };
@@ -109,6 +111,8 @@
 		D514C9A8298BB463002E4E5A /* InputUserNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameEntity.swift; sourceTree = "<group>"; };
 		D52EC0C0298BB903004B999B /* InputUserNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputUserNameEntity.swift; path = "Gromit-client-iOS/Services/Entities/InputUserNameEntity.swift"; sourceTree = SOURCE_ROOT; };
 		D53AC6F2299CB65200470E2A /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
+		D5553DCA29CA80D7006945CB /* CreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationViewModel.swift; sourceTree = "<group>"; };
+		D5553DCC29CA80F0006945CB /* CreationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationEntity.swift; sourceTree = "<group>"; };
 		D561F7622986FDAB009E3639 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
 		D56FE809298781C500374A9A /* LoginWithAppleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleRequest.swift; sourceTree = "<group>"; };
 		D56FE80E298787AF00374A9A /* SignInEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEntity.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				D514C9A8298BB463002E4E5A /* InputUserNameEntity.swift */,
 				20B2F21529AB2FC7007E947D /* RequestLoginEntity.swift */,
 				207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */,
+				D5553DCC29CA80F0006945CB /* CreationEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				20B2F21329AB2A2B007E947D /* SignInViewModel.swift */,
 				20B2F21929AB52E4007E947D /* SearchGitUserViewModel.swift */,
 				207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */,
+				D5553DCA29CA80D7006945CB /* CreationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -506,6 +512,8 @@
 				D561F7632986FDAB009E3639 /* GeneralAPI.swift in Sources */,
 				D5F8C231297BF1DE004C6146 /* TempView.swift in Sources */,
 				11C7299B29B2627000EB0DE2 /* ChangeNameView.swift in Sources */,
+				D5553DCB29CA80D7006945CB /* CreationViewModel.swift in Sources */,
+				D5553DCD29CA80F0006945CB /* CreationEntity.swift in Sources */,
 				D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
 				20B0E37E29C354D400B4FEE1 /* TempChallengeListView.swift in Sources */,

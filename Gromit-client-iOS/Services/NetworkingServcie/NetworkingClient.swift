@@ -14,7 +14,7 @@ class NetworkingClinet {
     private init() { }
     
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestPostCreation, testGetURL, testPostURL, testPatchURL
         
         // https://gromit.shop
         var urlString: String {
@@ -29,6 +29,9 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/users/check"
             case .requestChangeGromitNickName:
                 return "\(GeneralAPI.baseURL)/users/change/nickname"
+            case .requestPostCreation:
+                return "\(GeneralAPI.baseURL)/challenges"
+        
             case .testGetURL:
                 return "https://jsonplaceholder.typicode.com/posts"
             case .testPatchURL:
@@ -37,8 +40,6 @@ class NetworkingClinet {
                 return "https://jsonplaceholder.typicode.com/posts"
             }
         }
-        
-        
     }
 
     
@@ -102,7 +103,7 @@ class NetworkingClinet {
             sleep(1)
         }
     }
-//
+
     // 파라미터가 존재하는 경우
     func request<Input: Encodable, Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, parameter: Input, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> ()) {
         let urlString = serviceURL.urlString
