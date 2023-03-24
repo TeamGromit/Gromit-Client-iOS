@@ -9,12 +9,17 @@ import Foundation
 import Alamofire
 import SwiftUI
 
+// request 정리 할 필요성이 있음 중복 코드가 많은거 같음
 class NetworkingClinet {
     static let shared = NetworkingClinet()
     private init() { }
     
+    enum httpMetod {
+        case get, post, patch, none
+    }
+    
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, testGetURL, testPostURL, testPatchURL
         
         // https://gromit.shop
         var urlString: String {
@@ -29,6 +34,8 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/users/check"
             case .requestChangeGromitNickName:
                 return "\(GeneralAPI.baseURL)/users/change/nickname"
+            case .requestUserInfo:
+                return "\(GeneralAPI.baseURL)/home"
             case .testGetURL:
                 return "https://jsonplaceholder.typicode.com/posts"
             case .testPatchURL:
@@ -60,6 +67,27 @@ class NetworkingClinet {
     func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         let urlString = serviceURL.urlString
         AF.request(urlString, method: httpMethod).response { responseData in
+            switch responseData.result {
+            case let .success(data):
+                do {
+                    if let decodingData = try self.decodeData(type, data: data) {
+                        completion((responseData.debugDescription, decodingData), nil)
+                    }
+                }
+                catch {
+                    completion((responseData.debugDescription, nil), nil)
+                }
+            case let .failure(error):
+                completion(nil, error)
+            }
+            sleep(1)
+        }
+    }
+    
+    func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, headers: HTTPHeaders, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
+        let urlString = serviceURL.urlString
+        AF.request(urlString, method: httpMethod, headers: headers).response { responseData in
+            debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
                 do {

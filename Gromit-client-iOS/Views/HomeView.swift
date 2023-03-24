@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var homeViewModel = HomeViewModel()
+    
     var body: some View {
         VStack {
             HomeButtons()
@@ -17,6 +21,26 @@ struct HomeView: View {
             CharacterView()
                 
             CharacterInfo()
+        }
+        .environmentObject(homeViewModel)
+        .onReceive(homeViewModel.$outputEvent) { event in
+            if let event = event {
+                receiveViewModelEvent(event)
+            }
+        }
+    }
+ 
+}
+
+extension HomeView {
+    private func receiveViewModelEvent(_ event: HomeViewModel.OutputEvent) {
+        switch event {
+        case .requestError:
+            break
+        case .loading:
+            coordinator.startLoading()
+        case .loaded:
+            coordinator.stopLoading()
         }
     }
 }
@@ -60,14 +84,14 @@ struct HomeButtons: View {
 }
 
 struct TodaysCommit: View {
-    var numOfCommit = 23
-    
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     var body: some View {
         HStack {
             VStack(spacing: 12) {
                 Text("오늘의 커밋")
                     .font(.system(size: 20, weight: .semibold))
-                Text("\(numOfCommit)")
+                Text(homeViewModel.todayCommit)
                     .font(.system(size: 40, weight: .semibold))
             }
         }
@@ -120,6 +144,8 @@ struct CharacterLevelBar: View {
 }
 
 struct CharacterInfo: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+    
     var level = 0
     var levelName = "알"
     var exp = 52
@@ -128,7 +154,7 @@ struct CharacterInfo: View {
         HStack {
             VStack(alignment: .leading) {
                 HStack(spacing: 0) {
-                    Text("Lv.\(level) \(levelName) ( \(exp) / 100 )")
+                    Text("\(homeViewModel.levelString)")
                         .font(.system(size: 18, weight: .semibold))
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))

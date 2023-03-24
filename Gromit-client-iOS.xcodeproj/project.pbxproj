@@ -34,6 +34,9 @@
 		20B2F21A29AB52E4007E947D /* SearchGitUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2F21929AB52E4007E947D /* SearchGitUserViewModel.swift */; };
 		20B2F22129AB90DC007E947D /* InputUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2F22029AB90DC007E947D /* InputUserNameView.swift */; };
 		20B2F22329AB93B2007E947D /* SignUpEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2F22229AB93B2007E947D /* SignUpEntity.swift */; };
+		20D138A929CD50E700FC7A9C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D138A829CD50E700FC7A9C /* HomeViewModel.swift */; };
+		20D138AB29CD59EB00FC7A9C /* RequestUserInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D138AA29CD59EB00FC7A9C /* RequestUserInfoEntity.swift */; };
+		20D138AD29CD5A4500FC7A9C /* ResultEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D138AC29CD5A4500FC7A9C /* ResultEntity.swift */; };
 		20E199BF29C204FD00FE6DCD /* TempParticipatingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E199BE29C204FD00FE6DCD /* TempParticipatingListView.swift */; };
 		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
 		227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227133DF298AA17C003025E7 /* InputUserNameView_Backup.swift */; };
@@ -100,6 +103,9 @@
 		20B2F21929AB52E4007E947D /* SearchGitUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserViewModel.swift; sourceTree = "<group>"; };
 		20B2F22029AB90DC007E947D /* InputUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameView.swift; sourceTree = "<group>"; };
 		20B2F22229AB93B2007E947D /* SignUpEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEntity.swift; sourceTree = "<group>"; };
+		20D138A829CD50E700FC7A9C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		20D138AA29CD59EB00FC7A9C /* RequestUserInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUserInfoEntity.swift; sourceTree = "<group>"; };
+		20D138AC29CD5A4500FC7A9C /* ResultEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEntity.swift; sourceTree = "<group>"; };
 		20E199BE29C204FD00FE6DCD /* TempParticipatingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempParticipatingListView.swift; sourceTree = "<group>"; };
 		22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gromit-client-iOS.entitlements"; sourceTree = "<group>"; };
 		227133DF298AA17C003025E7 /* InputUserNameView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameView_Backup.swift; sourceTree = "<group>"; };
@@ -291,7 +297,9 @@
 				D56FE81A2987FFC200374A9A /* SearchGitUserEntity.swift */,
 				D514C9A8298BB463002E4E5A /* InputUserNameEntity.swift */,
 				20B2F21529AB2FC7007E947D /* RequestLoginEntity.swift */,
+				20D138AA29CD59EB00FC7A9C /* RequestUserInfoEntity.swift */,
 				207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */,
+				20D138AC29CD5A4500FC7A9C /* ResultEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 				20B2F21329AB2A2B007E947D /* SignInViewModel.swift */,
 				20B2F21929AB52E4007E947D /* SearchGitUserViewModel.swift */,
 				207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */,
+				20D138A829CD50E700FC7A9C /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -492,6 +501,7 @@
 				208C765C29C5A47300CAEC57 /* NavigationBarView.swift in Sources */,
 				D56FE821298838E400374A9A /* SearchGitUserViewModel_Backup.swift in Sources */,
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
+				20D138A929CD50E700FC7A9C /* HomeViewModel.swift in Sources */,
 				20AC076D29A26F44009519A1 /* InputUserNameViewModel.swift in Sources */,
 				D56FE80F298787AF00374A9A /* SignInEntity.swift in Sources */,
 				207FEA1C29C605AD00E838E4 /* RequestChangeNickNameEntity.swift in Sources */,
@@ -524,6 +534,7 @@
 				2281F940297DA918000649A9 /* SearchGitUserView_Backup.swift in Sources */,
 				227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */,
 				20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */,
+				20D138AB29CD59EB00FC7A9C /* RequestUserInfoEntity.swift in Sources */,
 				D5F8C233297BF1FD004C6146 /* SignInView.swift in Sources */,
 				D56FE8132987F6AC00374A9A /* CollectionListView.swift in Sources */,
 				D5F8C235297BF20B004C6146 /* HomeView.swift in Sources */,
@@ -535,6 +546,7 @@
 				2071C01829BC977C0099A63C /* URLImage.swift in Sources */,
 				D56FE8152987FAD300374A9A /* User.swift in Sources */,
 				D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */,
+				20D138AD29CD5A4500FC7A9C /* ResultEntity.swift in Sources */,
 				D56FE81F29882ABD00374A9A /* SearchGitUserView.swift in Sources */,
 				20E199BF29C204FD00FE6DCD /* TempParticipatingListView.swift in Sources */,
 				2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */,

@@ -55,9 +55,6 @@ class SearchGitUserViewModel: ObservableObject {
 
             } else {
                 if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
-                    if let debugMessage = responseData.0 {
-                        print(debugMessage)
-                    }
                     if(code == 1000) {
                         if let reponseMessageResult = responseMessage.result {
                             guard let githubUserName = reponseMessageResult.nickname else {
