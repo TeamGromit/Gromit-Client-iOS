@@ -15,17 +15,30 @@ class HomeViewModel: ObservableObject {
         case requestError, loading, loaded
     }
     
+    enum CharecterName: String {
+        case egg, none
+        
+        var name: String  {
+            switch self {
+            case .egg:
+                return "알"
+            case .none:
+                return ""
+            }
+        }
+        
+    }
+    
     @Published var outputEvent: OutputEvent? = nil
-    @Published var commits: Int? = nil
     @Published var todayCommit: String = ""
-   
-
     @Published var levelString: String = ""
+    @Published var levelBarPercent: Double = 0
     
     var level: Int? = nil
     var name: String? = nil
     var charecter: UIImage? = nil
     var goal: Int? = nil
+    var commits: Int? = nil
     
 //    "commits": 0,
 //            "todayCommit": 0,
@@ -34,13 +47,14 @@ class HomeViewModel: ObservableObject {
 //            "img": "/home/ubuntu/characters/level1_egg.png",
 //            "goal": 10
     init() {
-        outputEvent = .loading
         requestUserInfo()
     }
     
     func requestUserInfo() {
+        outputEvent = .loading
         guard let token = AppDataService.shared.getData(appData: .accessToken) else {
             print("Guard Error token is nil")
+            outputEvent = .loaded
             return
         }
         let headers: HTTPHeaders = [
@@ -76,6 +90,7 @@ class HomeViewModel: ObservableObject {
                             }
                             
                             self.updateLevelString()
+                            self.updateLevelBar()
                             self.outputEvent = .loaded
                         }
                     }
@@ -86,11 +101,19 @@ class HomeViewModel: ObservableObject {
     
     func updateLevelString() {
         let level = self.level ?? 0
-        let name = self.name ?? ""
+        let charecterName = CharecterName(rawValue: self.name ?? "") ?? .none
         let goal = self.goal ?? 0
+        let commits = self.commits ?? 0
         
         
-        self.levelString = "Lv.\(level) \(name) ( \(goal) / 100 )"
+        self.levelString = "Lv.\(level) \(charecterName.name) ( \(commits) / \(goal) )"
+    }
+    
+    func updateLevelBar() {
+        let goal = self.goal ?? 0
+        let commits = self.commits ?? 0
+
+        self.levelBarPercent = Double(commits) / Double(goal)
     }
     
     func requestCharecterImg(url: String) {
@@ -99,3 +122,4 @@ class HomeViewModel: ObservableObject {
         })
     }
 }
+

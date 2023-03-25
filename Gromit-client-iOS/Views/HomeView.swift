@@ -54,12 +54,14 @@ struct HomeView_Previews: PreviewProvider {
 struct HomeButtons: View {
     @State private var showParticipating = false
     @State private var showingSheet = false
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     
     var body: some View {
         
         HStack {
             Button {
-                
+                homeViewModel.requestUserInfo()
             } label: {
                 Image("refresh")
             }
@@ -113,6 +115,8 @@ struct CharacterView: View {
 }
 
 struct CharacterLevelBar: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     @State private var containerWidth: CGFloat = 0
     @State private var step = 52
     private let goal = 100
@@ -135,7 +139,7 @@ struct CharacterLevelBar: View {
                 
             RoundedRectangle(cornerRadius: 15)
                 .fill(Color("green500"))
-                .frame(width: maxWidth, height: 55)
+                .frame(width: homeViewModel.levelBarPercent * containerWidth, height: 55)
         }
         .fixedSize(horizontal: false, vertical: true)
         .overlay(RoundedRectangle(cornerRadius: 15)
@@ -145,11 +149,7 @@ struct CharacterLevelBar: View {
 
 struct CharacterInfo: View {
     @EnvironmentObject private var homeViewModel: HomeViewModel
-    
-    var level = 0
-    var levelName = "알"
-    var exp = 52
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
