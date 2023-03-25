@@ -64,7 +64,7 @@ struct GromitPopupView: View {
                                 }
                             }.buttonStyle(InputButtonStyle(width: 120, height: 50))
                                 .frame(width: 120, height: 50)
-                            Button("Cancle") {
+                            Button("Cancel") {
                                 if let cancleDelegate = cancleDelegate {
                                     cancleDelegate()
                                 }
