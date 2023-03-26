@@ -217,11 +217,11 @@ class Coordinator: ObservableObject {
         case .challengeListView:
             ChallengeListView()
         case .participatingListView:
-            TempParticipatingListView()
+            ParticipatingListView()
         case .homeView:
             HomeView()
         case .settingView:
-            TempSettingsView()
+            SettingsView()
         case .participatingDetailView:
             if let selectChallenge = selectChallenge {
                 TempParticipatingDetailView(challenge: selectChallenge)
@@ -229,7 +229,7 @@ class Coordinator: ObservableObject {
                 EmptyView()
             }
         case .changeGromitUserNameView:
-            TempChangeNameView()
+            ChangeNameView()
         }
     }
     

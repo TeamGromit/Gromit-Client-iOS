@@ -49,7 +49,7 @@ class HomeViewModel: ObservableObject {
 //            "goal": 10
     init() {
         print("HomeViewModel init !")
-        //requestUserInfo()
+        requestUserInfo()
     }
     
     func requestUserInfo() {

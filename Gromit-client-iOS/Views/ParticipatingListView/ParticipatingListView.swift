@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TempParticipatingListView: View {
+struct ParticipatingListView: View {
     @State var tag : Int? = nil
     @EnvironmentObject private var coordinator: Coordinator
 
@@ -36,7 +36,7 @@ struct TempParticipatingListView: View {
 
 struct TempParticipatingListView_Previews: PreviewProvider {
     static var previews: some View {
-        TempParticipatingListView()
+        ParticipatingListView()
     }
 }
 

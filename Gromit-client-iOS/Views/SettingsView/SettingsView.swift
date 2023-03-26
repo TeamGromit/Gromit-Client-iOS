@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct TempSettingsView: View {
+struct SettingsView: View {
     @State private var toggling = false
     @State private var showingToggle = false
     @State var date = Date()
@@ -81,8 +81,8 @@ struct TempSettingsView: View {
               }
                         }
                         }
-struct TempSettingsView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        TempSettingsView()
+        SettingsView()
     }
 }
