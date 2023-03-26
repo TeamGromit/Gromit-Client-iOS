@@ -59,6 +59,8 @@
 		D56FE81D2988014700374A9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81C2988014600374A9A /* Constants.swift */; };
 		D56FE81F29882ABD00374A9A /* SearchGitUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE81E29882ABD00374A9A /* SearchGitUserView.swift */; };
 		D56FE821298838E400374A9A /* SearchGitUserViewModel_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE820298838E400374A9A /* SearchGitUserViewModel_Backup.swift */; };
+		D582FF8629D06EA0005448F8 /* ChallengeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */; };
+		D582FF8829D07290005448F8 /* ChallengesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8729D07290005448F8 /* ChallengesEntity.swift */; };
 		D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */; };
 		D5A7F191299E862700EC6A49 /* ParticipatingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */; };
 		D5C02EB629A7695E000BB76E /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C02EB529A7695E000BB76E /* Extension+View.swift */; };
@@ -124,6 +126,8 @@
 		D56FE81E29882ABD00374A9A /* SearchGitUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView.swift; sourceTree = "<group>"; };
 		D56FE820298838E400374A9A /* SearchGitUserViewModel_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchGitUserViewModel_Backup.swift; path = "Gromit-client-iOS/ViewModels/SearchGitUserViewModel_Backup.swift"; sourceTree = SOURCE_ROOT; };
 		D575D2B029896C660024C6DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListViewModel.swift; sourceTree = "<group>"; };
+		D582FF8729D07290005448F8 /* ChallengesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesEntity.swift; sourceTree = "<group>"; };
 		D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewModel_Backup.swift; path = "Gromit-client-iOS/ViewModels/SignInViewModel_Backup.swift"; sourceTree = SOURCE_ROOT; };
 		D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingDetailView.swift; sourceTree = "<group>"; };
 		D5C02EB529A7695E000BB76E /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				20B2F21529AB2FC7007E947D /* RequestLoginEntity.swift */,
 				207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */,
 				D5553DCC29CA80F0006945CB /* CreationEntity.swift */,
+				D582FF8729D07290005448F8 /* ChallengesEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				20B2F21929AB52E4007E947D /* SearchGitUserViewModel.swift */,
 				207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */,
 				D5553DCA29CA80D7006945CB /* CreationViewModel.swift */,
+				D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */,
 				D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
+				D582FF8829D07290005448F8 /* ChallengesEntity.swift in Sources */,
 				D5F8C239297BF224004C6146 /* ParticipatingListView.swift in Sources */,
 				20AC077029A27003009519A1 /* Coordinator.swift in Sources */,
 				207FEA1829C5F9F200E838E4 /* TempChangeNameView.swift in Sources */,
@@ -536,6 +543,7 @@
 				D56FE8132987F6AC00374A9A /* CollectionListView.swift in Sources */,
 				D5F8C235297BF20B004C6146 /* HomeView.swift in Sources */,
 				D53AC6F3299CB65200470E2A /* ChallengeListView.swift in Sources */,
+				D582FF8629D06EA0005448F8 /* ChallengeListViewModel.swift in Sources */,
 				20B2F20F29AB236E007E947D /* NetworkingClient.swift in Sources */,
 				D56FE8112987F68300374A9A /* FinalLevelView.swift in Sources */,
 				D514837429A4AAA3005F05B2 /* ChallengeDetailView.swift in Sources */,

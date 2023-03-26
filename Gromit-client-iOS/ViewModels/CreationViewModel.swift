@@ -31,7 +31,7 @@ class CreationViewModel: ObservableObject {
 //        let params = ["title":title, "startDate":startDate, "endDate":endDate, "goal":goal,
 //                      "recruits":recruits, "isPassword":isPassword, "password":password] as Dictionary
         
-        NetworkingClinet.shared.request(serviceURL: .requestPostCreation, httpMethod: .post, parameter: RequestCreationMessage(title: title, startDate: startDate, endDate: endDate, goal: goal, recruits: recruits, isPassword: isPassword, password: password), headers: headers, type: ResponseCreationMessage.self) { responseData, error in
+        NetworkingClinet.shared.request(serviceURL: .requestChallenges, httpMethod: .post, parameter: RequestCreationMessage(title: title, startDate: startDate, endDate: endDate, goal: goal, recruits: recruits, isPassword: isPassword, password: password), headers: headers, type: ResponseCreationMessage.self) { responseData, error in
             if let error = error {
                 
             } else {
@@ -43,8 +43,6 @@ class CreationViewModel: ObservableObject {
                         // 챌린지 생성 성공
                         // 테스트를 위함
                         self.outputEvent = .createChallenge
-                            
-                        //self.outputEvent = .checkMember
                     } else if(code == 400) {
                         // 신규 회원
                         self.outputEvent = .errorChallengeInfo
