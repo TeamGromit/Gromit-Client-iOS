@@ -29,6 +29,7 @@ struct TempParticipatingListView: View {
             }
     }
     init() {
+        print("TempParticipatingListView init!")
         UITabBar.appearance().backgroundColor = UIColor.white
     }
 }

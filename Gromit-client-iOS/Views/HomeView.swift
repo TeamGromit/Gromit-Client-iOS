@@ -12,14 +12,18 @@ struct HomeView: View {
     @EnvironmentObject private var coordinator: Coordinator
     @StateObject var homeViewModel = HomeViewModel()
     
+    init() {
+        print("HomeView init!")
+    }
+    
     var body: some View {
         VStack {
             HomeButtons()
             
             TodaysCommit()
-            
+
             CharacterView()
-                
+
             CharacterInfo()
         }
         .environmentObject(homeViewModel)
@@ -102,13 +106,23 @@ struct TodaysCommit: View {
 }
 
 struct CharacterView: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     var body: some View {
-        HStack {
+        ZStack {
             RoundedRectangle(cornerRadius: 30)
                 .fill(Color("green300"))
                 .frame(width: 277, height: 277)
                 .overlay(RoundedRectangle(cornerRadius: 30)
                     .stroke(Color("green500"), lineWidth: 5))
+            
+            Image(uiImage: homeViewModel.charecter)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 270, height: 270)
+                .cornerRadius(50)
+
+            
         }
         .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
     }

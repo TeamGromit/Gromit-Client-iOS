@@ -166,13 +166,13 @@
 			path = AppDataService;
 			sourceTree = "<group>";
 		};
-		207FEA1429C5F94200E838E4 /* Settings */ = {
+		207FEA1429C5F94200E838E4 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
 				207FEA1529C5F95500E838E4 /* TempSettingsView.swift */,
 				207FEA1729C5F9F200E838E4 /* TempChangeNameView.swift */,
 			);
-			path = Settings;
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		20866DBA29BC7E3600C44B7F /* GromitPopupView */ = {
@@ -371,7 +371,7 @@
 		D5F8C22E297BF1A3004C6146 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				207FEA1429C5F94200E838E4 /* Settings */,
+				207FEA1429C5F94200E838E4 /* SettingsView */,
 				208C765E29C5B98900CAEC57 /* ParticipatingDetailView */,
 				208C765A29C5A44700CAEC57 /* NavigationBarView */,
 				20B0E37C29C354B800B4FEE1 /* ChallengeListView */,

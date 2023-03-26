@@ -64,20 +64,20 @@ enum Popup: String, Identifiable {
 class Coordinator: ObservableObject {
     // signInView, homeView, participatingListView, settingView
     // @Published @ObservableObject 프로토콜 준수해야 사용 가능
-    @Published var sigInViewPath = NavigationPath()
-    @Published var homeViewPath = NavigationPath()
-    @Published var participatingListViewPath = NavigationPath()
-    @Published var settingViewPath = NavigationPath()
+    @Published var sigInViewPath: NavigationPath
+    @Published var homeViewPath: NavigationPath
+    @Published var participatingListViewPath: NavigationPath
+    @Published var settingViewPath: NavigationPath
     
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
     @Published var alertPopup: AlertPopup?
     @Published var popup: Popup?
     
-    @Published var isLoading: Bool = false
-    @Published var isPopuping: Bool = false
+    @Published var isLoading: Bool
+    @Published var isPopuping: Bool
     
-    @Published var tabSelection = 2
+    @Published var tabSelection: Int
 
     
     @AppStorage("rootPage") var rootPage: RootPage = .signInView
@@ -89,6 +89,15 @@ class Coordinator: ObservableObject {
     var selectChallenge: ParticipatingChallenge?
     
     init() {
+
+        self.sigInViewPath = NavigationPath()
+        self.homeViewPath = NavigationPath()
+        self.participatingListViewPath = NavigationPath()
+        self.settingViewPath = NavigationPath()
+        self.isLoading = false
+        self.isPopuping = false
+        self.tabSelection = 2
+        
         print("Coordinator Init!! \(rootPage)")
     }
     
@@ -324,7 +333,7 @@ class Coordinator: ObservableObject {
         case .isCheckGitUser:
             let userName = AppDataService.shared.getData(appData: .gromitUserName)
             let userImage = AppDataService.shared.getData(appData: .githubProfileImage)
-            GromitPopupView(popupType: .gitProfileView, userName: userName ?? "" , urlString: userImage ?? "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            GromitPopupView(popupType: .gitProfileView, buttonType: .twoButton, userName: userName ?? "" , urlString: userImage ?? "",  okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
             
         case .isNotExistGitUser:
             GromitPopupView(popupType: .message, title: "존재하지 않는 유저명!", message: "유저명을 확인해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)

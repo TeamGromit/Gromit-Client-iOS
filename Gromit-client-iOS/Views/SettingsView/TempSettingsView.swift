@@ -12,7 +12,9 @@ struct TempSettingsView: View {
     
     @EnvironmentObject private var coordinator: Coordinator
 
-    
+    init() {
+        print("SettingView init!")
+    }
     var body: some View {
         
         NavigationView {

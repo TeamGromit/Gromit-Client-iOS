@@ -33,10 +33,11 @@ class HomeViewModel: ObservableObject {
     @Published var todayCommit: String = ""
     @Published var levelString: String = ""
     @Published var levelBarPercent: Double = 0
+    @Published var charecter: UIImage = UIImage()
+
     
     var level: Int? = nil
     var name: String? = nil
-    var charecter: UIImage? = nil
     var goal: Int? = nil
     var commits: Int? = nil
     
@@ -47,7 +48,8 @@ class HomeViewModel: ObservableObject {
 //            "img": "/home/ubuntu/characters/level1_egg.png",
 //            "goal": 10
     init() {
-        requestUserInfo()
+        print("HomeViewModel init !")
+        //requestUserInfo()
     }
     
     func requestUserInfo() {
@@ -91,7 +93,6 @@ class HomeViewModel: ObservableObject {
                             
                             self.updateLevelString()
                             self.updateLevelBar()
-                            self.outputEvent = .loaded
                         }
                     }
                 }
@@ -117,8 +118,11 @@ class HomeViewModel: ObservableObject {
     }
     
     func requestCharecterImg(url: String) {
-        NetworkingClinet.shared.requestURLImage(imageURL: "\(GeneralAPI.baseURL)/\(url)", completion: { image in
-            self.charecter = image
+        NetworkingClinet.shared.requestURLImage(imageURL: url, completion: { image in
+            if let image = image {
+                self.charecter = image
+                self.outputEvent = .loaded
+            }
         })
     }
 }
