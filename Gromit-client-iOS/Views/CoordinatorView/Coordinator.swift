@@ -206,7 +206,7 @@ class Coordinator: ObservableObject {
         case .inputUserNameView:
             InputUserNameView()
         case .challengeListView:
-            TempChallengeListView()
+            ChallengeListView()
         case .participatingListView:
             TempParticipatingListView()
         case .homeView:

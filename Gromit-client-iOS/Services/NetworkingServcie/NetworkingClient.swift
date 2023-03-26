@@ -14,7 +14,9 @@ class NetworkingClinet {
     private init() { }
     
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName,
+             requestChangeGromitNickName, requestChallenges,
+             testGetURL, testPostURL, testPatchURL
         
         // https://gromit.shop
         var urlString: String {
@@ -29,6 +31,9 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/users/check"
             case .requestChangeGromitNickName:
                 return "\(GeneralAPI.baseURL)/users/change/nickname"
+            case .requestChallenges:
+                return "\(GeneralAPI.baseURL)/challenges"
+        
             case .testGetURL:
                 return "https://jsonplaceholder.typicode.com/posts"
             case .testPatchURL:
@@ -37,8 +42,6 @@ class NetworkingClinet {
                 return "https://jsonplaceholder.typicode.com/posts"
             }
         }
-        
-        
     }
 
     
@@ -102,7 +105,30 @@ class NetworkingClinet {
             sleep(1)
         }
     }
-//
+    
+    func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, type: Output.Type, headers: HTTPHeaders, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
+        var urlString = serviceURL.urlString
+        print("request urlString: \(urlString)")
+        print("AF Request")
+        AF.request(urlString, method: httpMethod).response { responseData in
+            debugPrint(responseData)
+            switch responseData.result {
+            case let .success(data):
+                do {
+                    if let decodingData = try self.decodeData(type, data: data) {
+                        completion((responseData.debugDescription, decodingData), nil)
+                    }
+                }
+                catch {
+                    completion((responseData.debugDescription, nil), nil)
+                }
+            case let .failure(error):
+                completion(nil, error)
+            }
+            sleep(1)
+        }
+    }
+
     // 파라미터가 존재하는 경우
     func request<Input: Encodable, Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, parameter: Input, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> ()) {
         let urlString = serviceURL.urlString
