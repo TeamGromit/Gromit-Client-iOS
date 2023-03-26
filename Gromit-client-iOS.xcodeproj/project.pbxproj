@@ -35,6 +35,8 @@
 		20B2F22129AB90DC007E947D /* InputUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2F22029AB90DC007E947D /* InputUserNameView.swift */; };
 		20B2F22329AB93B2007E947D /* SignUpEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2F22229AB93B2007E947D /* SignUpEntity.swift */; };
 		20E199BF29C204FD00FE6DCD /* TempParticipatingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E199BE29C204FD00FE6DCD /* TempParticipatingListView.swift */; };
+		223253E729CF6B28002BDE0F /* SignOutEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223253E629CF6B28002BDE0F /* SignOutEntity.swift */; };
+		223253E929CF6C2D002BDE0F /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */; };
 		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
 		227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227133DF298AA17C003025E7 /* InputUserNameView_Backup.swift */; };
 		2281F940297DA918000649A9 /* SearchGitUserView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView_Backup.swift */; };
@@ -105,6 +107,8 @@
 		20B2F22029AB90DC007E947D /* InputUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameView.swift; sourceTree = "<group>"; };
 		20B2F22229AB93B2007E947D /* SignUpEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEntity.swift; sourceTree = "<group>"; };
 		20E199BE29C204FD00FE6DCD /* TempParticipatingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempParticipatingListView.swift; sourceTree = "<group>"; };
+		223253E629CF6B28002BDE0F /* SignOutEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutEntity.swift; sourceTree = "<group>"; };
+		223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
 		22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gromit-client-iOS.entitlements"; sourceTree = "<group>"; };
 		227133DF298AA17C003025E7 /* InputUserNameView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameView_Backup.swift; sourceTree = "<group>"; };
 		2281F93F297DA918000649A9 /* SearchGitUserView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView_Backup.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 				207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */,
 				D5553DCC29CA80F0006945CB /* CreationEntity.swift */,
 				D582FF8729D07290005448F8 /* ChallengesEntity.swift */,
+				223253E629CF6B28002BDE0F /* SignOutEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */,
 				D5553DCA29CA80D7006945CB /* CreationViewModel.swift */,
 				D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */,
+				223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				11C7299B29B2627000EB0DE2 /* ChangeNameView.swift in Sources */,
 				D5553DCB29CA80D7006945CB /* CreationViewModel.swift in Sources */,
 				D5553DCD29CA80F0006945CB /* CreationEntity.swift in Sources */,
+				223253E729CF6B28002BDE0F /* SignOutEntity.swift in Sources */,
 				D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
 				20B0E37E29C354D400B4FEE1 /* TempChallengeListView.swift in Sources */,
@@ -557,6 +564,7 @@
 				11782485298B8F9D000C640E /* search.swift in Sources */,
 				20B2F21429AB2A2B007E947D /* SignInViewModel.swift in Sources */,
 				2071C01E29BCB2650099A63C /* MessageView.swift in Sources */,
+				223253E929CF6C2D002BDE0F /* SignOutViewModel.swift in Sources */,
 				208C766029C5BC3F00CAEC57 /* TempParticipatingDetailView.swift in Sources */,
 				D5A7F191299E862700EC6A49 /* ParticipatingDetailView.swift in Sources */,
 				207FEA1A29C5FD7400E838E4 /* ChangeNameViewModel.swift in Sources */,
