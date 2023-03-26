@@ -29,8 +29,7 @@ struct GromitMainView: View {
     
     var body: some View {
         TabView(selection: $tabSelection) {
-            //ParticipatingListView()
-            TempParticipatingListView()
+            ParticipatingListView()
                 .tabItem{
                     Image("challenge")
                 }.tag(1)
