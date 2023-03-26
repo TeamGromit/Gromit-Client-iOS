@@ -11,11 +11,16 @@ struct ChallengeListView: View {
     @State var tag : Int? = nil
     @State private var showCreation = false
     @State var showDetail = false
+    @EnvironmentObject private var coordinator: Coordinator
     
     var body: some View {
         ZStack {
             NavigationView {
                 VStack {
+                    NavigationBarView(isActiveLeftButton: true, isActiveRightButton: false, title: "전체 챌린지", leftButtonTitle: "뒤로가기", leftButtonTapped: {
+                        coordinator.pop(.participatingListView)
+                    })
+                    Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1, alignment: .center).padding(EdgeInsets(top: 3, leading: 20, bottom: 3, trailing: 20))
                     ChallengeCell()
                 }
             }
@@ -26,11 +31,16 @@ struct ChallengeListView: View {
 
 struct ChallengeCell: View {
     @State var showDetail = false
-    var challenges: [Challenge] = AllChallengeList.allChallengeList
-
+    @StateObject var challengeListViewModel = ChallengeListViewModel()
+    // dummy data
+//    var challenges: [Challenge] = AllChallengeList.allChallengeList
+    
     var body: some View {
         // Detail view와 Model 연결 작업중...
-        List(challenges, id: \.id) { challenge in
+//        List(challenges, id: \.id) { challenge in
+        List(challengeListViewModel.challenges, id: \.id) { challenge in
+            // 로그 출력이 안됨... 왜지?
+            let _ = print("챌린지: \(challenge)")
             VStack(alignment: .leading, spacing: 5) {
                 Text(challenge.title)
                     .fontWeight(.semibold)
