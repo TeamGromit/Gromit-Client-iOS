@@ -100,6 +100,54 @@ class HomeViewModel: ObservableObject {
         })
     }
     
+    func requestReloadUserInfo() {
+        outputEvent = .loading
+        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
+            print("Guard Error token is nil")
+            outputEvent = .loaded
+            return
+        }
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "X-AUTH-TOKEN": token
+        ]
+        
+        NetworkingClinet.shared.request(serviceURL: .requestReloadUserInfo, httpMethod: .get, headers: headers, type: RequestUserInfoEntity.self, completion: {
+            responseData, error in
+            if let error = error {
+                self.outputEvent = .requestError
+            } else {
+                if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
+                    if(code == 1000) {
+                        if let reponseMessageResult = responseMessage.result {
+                            if let commits = reponseMessageResult.commits {
+                                self.commits = commits
+                            }
+                            if let todayCommit = reponseMessageResult.todayCommit {
+                                self.todayCommit = "\(todayCommit)"
+                            }
+                            if let level = reponseMessageResult.level {
+                                self.level = level
+                            }
+                            if let name = reponseMessageResult.name {
+                                self.name = name
+                            }
+                            if let imageURL = reponseMessageResult.img {
+                                self.requestCharecterImg(url: imageURL)
+                            }
+                            if let goal = reponseMessageResult.goal {
+                                self.goal = goal
+                            }
+                            
+                            self.updateLevelString()
+                            self.updateLevelBar()
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
     func updateLevelString() {
         let level = self.level ?? 0
         let charecterName = CharecterName(rawValue: self.name ?? "") ?? .none

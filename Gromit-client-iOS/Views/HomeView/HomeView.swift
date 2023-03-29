@@ -65,7 +65,7 @@ struct HomeButtons: View {
         
         HStack {
             Button {
-                homeViewModel.requestUserInfo()
+                homeViewModel.requestReloadUserInfo()
             } label: {
                 Image("refresh")
             }
