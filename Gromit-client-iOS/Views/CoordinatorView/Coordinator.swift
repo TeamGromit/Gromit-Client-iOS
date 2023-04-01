@@ -29,7 +29,7 @@ enum Page: String, Identifiable {
 // Modal과 흡사
 // 호출 뷰와 상속 관계가 아닌..?
 enum Sheet: String, Identifiable {
-    case test, creationView
+    case test, creationView, collectionView
     var id: String {
         self.rawValue
     }
@@ -224,7 +224,7 @@ class Coordinator: ObservableObject {
             SettingsView()
         case .participatingDetailView:
             if let selectChallenge = selectChallenge {
-                TempParticipatingDetailView(challenge: selectChallenge)
+                ParticipatingDetailView(challenge: selectChallenge)
             } else {
                 EmptyView()
             }
@@ -243,6 +243,8 @@ class Coordinator: ObservableObject {
             }
         case .creationView:
             CreationView()
+        case .collectionView:
+            CollectionListView()
         }
     }
     

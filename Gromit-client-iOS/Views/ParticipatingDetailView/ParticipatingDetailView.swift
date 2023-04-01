@@ -9,17 +9,17 @@ import SwiftUI
 
 struct ParticipatingDetailView: View {
     var challenge: ParticipatingChallenge
+    @EnvironmentObject private var coordinator: Coordinator
+
     
     var body: some View {
         VStack(spacing: 0) {
+            NavigationBarView(isActiveLeftButton: true, isActiveRightButton: true, title: "참여 챌린지", leftButtonTitle: "뒤로가기", rightButtonTitle: "삭제", leftButtonTapped: {
+                    coordinator.pop(.participatingListView)
+            }, rightButtonTapped: {
+                
+            })
             VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Spacer()
-                    
-                    Image("trash")
-                    
-//                    Image(systemName: "multiply")
-                }
                 HStack {
                     Image("lockopen")
                     Text(challenge.title)
@@ -70,13 +70,14 @@ struct ParticipatingDetailView: View {
                 }
                 .listStyle(PlainListStyle())
             }
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
             .padding()
 //            .overlay(
 //                RoundedRectangle(cornerRadius: 20)
 //                    .stroke(Color("green500"), lineWidth: 2)
 //            )
         }
-        .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
+        
     }
 }
 

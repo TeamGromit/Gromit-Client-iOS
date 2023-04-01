@@ -57,9 +57,8 @@ struct HomeView_Previews: PreviewProvider {
 
 struct HomeButtons: View {
     @State private var showParticipating = false
-    @State private var showingSheet = false
     @EnvironmentObject private var homeViewModel: HomeViewModel
-
+    @EnvironmentObject private var coordinator: Coordinator
     
     var body: some View {
         
@@ -72,13 +71,10 @@ struct HomeButtons: View {
             
             Spacer()
             Button {
-                showParticipating.toggle()
+                coordinator.present(sheet: .collectionView)
             } label: {
                 Image("collection")
             }
-        }
-        .sheet(isPresented: $showParticipating) {
-            CollectionListView()
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }

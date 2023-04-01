@@ -11,13 +11,41 @@ var numOfMyCharacters = 2
 var numOfAllCharacters = 10
 
 struct CollectionListView: View {
+    
+    @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var collectionListViewModel = CollectionListViewModel()
+
+    init() {
+        print("CollectionListView init!")
+    }
     var body: some View {
-        VStack {
-            CollectionTitle()
+        ZStack {
+            VStack {
+                CollectionTitle()
+                
+                CollectionCount()
+                
+                CollectionCell()
+            }
             
-            CollectionCount()
-            
-            CollectionCell()
+            if collectionListViewModel.isLoading {
+                coordinator.buildLoadingView()
+            }
+        }
+        .environmentObject(collectionListViewModel)
+        .onReceive(collectionListViewModel.$outputEvent) { event in
+            if let event = event {
+                receiveViewModelEvent(event)
+            }
+        }
+    }
+}
+
+extension CollectionListView {
+    private func receiveViewModelEvent(_ event: CollectionListViewModel.OutputEvent) {
+        switch event {
+        case .requestError:
+            break
         }
     }
 }
@@ -47,6 +75,9 @@ struct CollectionTitle: View {
 }
 
 struct CollectionCount: View {
+    @EnvironmentObject private var collectionListViewModel: CollectionListViewModel
+
+    
     var body: some View {
         HStack {
             Spacer()
