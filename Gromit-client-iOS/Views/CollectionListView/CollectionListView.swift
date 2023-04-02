@@ -81,7 +81,7 @@ struct CollectionCount: View {
     var body: some View {
         HStack {
             Spacer()
-            Text("\(String(numOfMyCharacters)) / \(String(numOfAllCharacters))")
+            Text("\(String(collectionListViewModel.collectionCharacters.count)) / \(String(numOfAllCharacters))")
                 .font(.system(size: 16))
                 .foregroundColor(Color(.gray))
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -96,6 +96,8 @@ struct CollectionCount: View {
 
 struct CollectionCell: View {
     @State private var containerWidth: CGFloat = 0
+    @EnvironmentObject private var collectionListViewModel: CollectionListViewModel
+
     let myArray = Array(1...numOfMyCharacters).map { "목록 \($0)"}
     let unKnownArray = Array(numOfMyCharacters...numOfAllCharacters).map { "목록 \($0)"}
     let columns = [
@@ -113,18 +115,27 @@ struct CollectionCell: View {
             }
             
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(myArray, id: \.self) { i in
+                
+                ForEach(collectionListViewModel.collectionCharacters) { character in
                     VStack {
+                        ZStack {
                         RoundedRectangle(cornerRadius: 30)
                             .fill(Color("green300"))
                             .frame(width: containerWidth, height: containerWidth)
                             .overlay(RoundedRectangle(cornerRadius: 30)
                                 .stroke(Color("gray500")))
                             
-                        Text("캐릭터 이름")
+                            URLImage(urlString: character.image)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: containerWidth - 10, height: containerWidth - 10)
+                                .cornerRadius(30)
+                            
+                        }
+                        Text(character.name)
                             .font(.system(size: 16))
                     }
                 }
+                
                 ForEach(unKnownArray, id: \.self) { i in
                     VStack {
                         RoundedRectangle(cornerRadius: 30)

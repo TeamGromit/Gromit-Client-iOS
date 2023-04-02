@@ -17,6 +17,6 @@ struct ResponseMessage<T: Codable>: Codable {
 
 // MARK: - Result
 struct CollectionResult: Codable {
-    let chid: Int?
-    let characterImg, totalSize, size: String?
+    let name, img: String?
+   
 }

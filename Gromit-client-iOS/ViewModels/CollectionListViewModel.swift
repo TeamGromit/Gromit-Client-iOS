@@ -16,7 +16,7 @@ class CollectionListViewModel: ObservableObject {
     
     @Published var outputEvent: OutputEvent? = nil
     @Published var isLoading: Bool = false
-    @Published var collectionCount: Int = 0
+    @Published var collectionCharacters: [CollectionCharacter] = []
     
     init() {
         print("CollectionListViewModel")
@@ -45,9 +45,10 @@ class CollectionListViewModel: ObservableObject {
                 if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
                     if(code == 1000) {
                         if let responseResults = responseMessage.result{
-                            self.collectionCount = responseResults.count
+                            self.collectionCharacters = responseResults.map{ element in
+                                return CollectionCharacter(name: element.name ?? "", image: element.img ?? "")
+                            }
                         }
-                        
                         self.isLoading = false
                     }
                 }

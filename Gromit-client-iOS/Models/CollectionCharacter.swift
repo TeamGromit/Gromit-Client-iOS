@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct CollectionCharacter: Identifiable {
+    var name: String
+    var image: String
+    var id: String {
+        self.name
+    }
+}
+
