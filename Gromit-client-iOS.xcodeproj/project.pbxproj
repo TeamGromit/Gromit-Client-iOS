@@ -64,6 +64,7 @@
 		D582FF8629D06EA0005448F8 /* ChallengeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */; };
 		D582FF8829D07290005448F8 /* ChallengesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8729D07290005448F8 /* ChallengesEntity.swift */; };
 		D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */; };
+		D596B40029D9BFBB0052C41D /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */; };
 		D5A7F191299E862700EC6A49 /* ParticipatingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */; };
 		D5C02EB629A7695E000BB76E /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C02EB529A7695E000BB76E /* Extension+View.swift */; };
 		D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */; };
@@ -133,6 +134,7 @@
 		D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListViewModel.swift; sourceTree = "<group>"; };
 		D582FF8729D07290005448F8 /* ChallengesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesEntity.swift; sourceTree = "<group>"; };
 		D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewModel_Backup.swift; path = "Gromit-client-iOS/ViewModels/SignInViewModel_Backup.swift"; sourceTree = SOURCE_ROOT; };
+		D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
 		D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingDetailView.swift; sourceTree = "<group>"; };
 		D5C02EB529A7695E000BB76E /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gromit-client-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -373,6 +375,7 @@
 				D5553DCA29CA80D7006945CB /* CreationViewModel.swift */,
 				D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */,
 				223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */,
+				D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				207FEA1C29C605AD00E838E4 /* RequestChangeNickNameEntity.swift in Sources */,
 				11782481298B8F43000C640E /* CreationView.swift in Sources */,
 				D514C9A9298BB463002E4E5A /* InputUserNameEntity.swift in Sources */,
+				D596B40029D9BFBB0052C41D /* ChallengeDetailViewModel.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView.swift in Sources */,
 				2071C01A29BC97D30099A63C /* GitProfileView.swift in Sources */,
 				20B2F21829AB3644007E947D /* RootCoordinatorView.swift in Sources */,
