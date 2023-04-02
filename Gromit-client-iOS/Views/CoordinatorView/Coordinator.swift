@@ -86,14 +86,14 @@ class Coordinator: ObservableObject {
     var popupOKAction: (() -> Void)?
     var popupCancleAction: (() -> Void)?
     
-    var selectChallenge: ParticipatingChallenge?
+    var selectChallenge: Challenge?
     
     init() {
         print("Coordinator Init!! \(rootPage)")
     }
     
     
-    func push(_ rootPage: RootPage, page: Page, challenge: ParticipatingChallenge? = nil) {
+    func push(_ rootPage: RootPage, page: Page, challenge: Challenge? = nil) {
         switch rootPage {
         case .signInView:
             sigInViewPath.append(page)

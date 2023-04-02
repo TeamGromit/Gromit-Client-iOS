@@ -15,6 +15,7 @@ class CreationViewModel: ObservableObject {
         case createChallenge, errorChallengeInfo, errorAppleToken, errorServer
     }
     
+    @Published var challenges = [Challenge]()
     @Published var outputEvent: OutputEvent? = nil
     @Published var responseCreation: String? = nil
     
@@ -42,6 +43,10 @@ class CreationViewModel: ObservableObject {
                     if(code == 1000) {
                         // 챌린지 생성 성공
                         // 테스트를 위함
+//                        let challenge = Challenge(title: title, date: startDate, goal: goal, headCount: "1", maxHead: recruits)
+                        let challenge = Challenge(title: title, startDate: startDate, endDate: endDate, goal: goal, recuits: recruits, currentMemberNum: 1, isPassword: isPassword, password: password)
+                        self.challenges.append(challenge)
+                        
                         self.outputEvent = .createChallenge
                     } else if(code == 400) {
                         // 신규 회원
@@ -70,5 +75,10 @@ class CreationViewModel: ObservableObject {
     func stringToInt(string: String) -> Int {
         guard let int = Int(string) else { return 0 }
         return int
+    }
+    
+    func intToString(int: Int) -> String {
+        let string = String(int)
+        return string
     }
 }

@@ -43,7 +43,7 @@ struct TempParticipatingListView_Previews: PreviewProvider {
 struct TempParticipatingCell: View {
     @EnvironmentObject private var coordinator: Coordinator
 
-    var challenges: [ParticipatingChallenge] = ParticipatingList.participatingList
+    var challenges: [Challenge] = ChallengeList.participatingList
     
     var body: some View {
             List(challenges, id: \.id) { challenge in
@@ -57,10 +57,10 @@ struct TempParticipatingCell: View {
                         }
                         HStack {
                             Spacer()
-                            Text(challenge.date)
+                            Text(challenge.startDate)
                         }
                         HStack {
-                            Text("\(challenge.progress) / \(challenge.goal)")
+                            Text("10 / 100")
                         }
                         ProgressBar()
                     }

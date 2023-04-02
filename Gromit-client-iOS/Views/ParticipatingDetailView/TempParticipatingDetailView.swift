@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TempParticipatingDetailView: View {
-    var challenge: ParticipatingChallenge
+    var challenge: Challenge
     @EnvironmentObject private var coordinator: Coordinator
 
     
@@ -113,6 +113,6 @@ struct TempProgressMemberBar: View {
 
 struct TempParticipatingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TempParticipatingDetailView(challenge: ParticipatingList.participatingList.first!)
+        TempParticipatingDetailView(challenge: ChallengeList.participatingList.first!)
     }
 }
