@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TempParticipatingListView: View {
+struct ParticipatingListView: View {
     @State var tag : Int? = nil
     @EnvironmentObject private var coordinator: Coordinator
 
@@ -29,13 +29,14 @@ struct TempParticipatingListView: View {
             }
     }
     init() {
+        print("TempParticipatingListView init!")
         UITabBar.appearance().backgroundColor = UIColor.white
     }
 }
 
 struct TempParticipatingListView_Previews: PreviewProvider {
     static var previews: some View {
-        TempParticipatingListView()
+        ParticipatingListView()
     }
 }
 

@@ -8,15 +8,43 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var homeViewModel = HomeViewModel()
+    
+    init() {
+        print("HomeView init!")
+    }
+    
     var body: some View {
         VStack {
             HomeButtons()
             
             TodaysCommit()
-            
+
             CharacterView()
-                
+
             CharacterInfo()
+        }
+        .environmentObject(homeViewModel)
+        .onReceive(homeViewModel.$outputEvent) { event in
+            if let event = event {
+                receiveViewModelEvent(event)
+            }
+        }
+    }
+ 
+}
+
+extension HomeView {
+    private func receiveViewModelEvent(_ event: HomeViewModel.OutputEvent) {
+        switch event {
+        case .requestError:
+            break
+        case .loading:
+            coordinator.startLoading()
+        case .loaded:
+            coordinator.stopLoading()
         }
     }
 }
@@ -30,12 +58,14 @@ struct HomeView_Previews: PreviewProvider {
 struct HomeButtons: View {
     @State private var showParticipating = false
     @State private var showingSheet = false
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     
     var body: some View {
         
         HStack {
             Button {
-                
+                homeViewModel.requestReloadUserInfo()
             } label: {
                 Image("refresh")
             }
@@ -60,14 +90,14 @@ struct HomeButtons: View {
 }
 
 struct TodaysCommit: View {
-    var numOfCommit = 23
-    
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     var body: some View {
         HStack {
             VStack(spacing: 12) {
                 Text("오늘의 커밋")
                     .font(.system(size: 20, weight: .semibold))
-                Text("\(numOfCommit)")
+                Text(homeViewModel.todayCommit)
                     .font(.system(size: 40, weight: .semibold))
             }
         }
@@ -76,19 +106,31 @@ struct TodaysCommit: View {
 }
 
 struct CharacterView: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     var body: some View {
-        HStack {
+        ZStack {
             RoundedRectangle(cornerRadius: 30)
                 .fill(Color("green300"))
                 .frame(width: 277, height: 277)
                 .overlay(RoundedRectangle(cornerRadius: 30)
                     .stroke(Color("green500"), lineWidth: 5))
+            
+            Image(uiImage: homeViewModel.charecter)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 270, height: 270)
+                .cornerRadius(50)
+
+            
         }
         .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
 struct CharacterLevelBar: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     @State private var containerWidth: CGFloat = 0
     @State private var step = 52
     private let goal = 100
@@ -111,7 +153,7 @@ struct CharacterLevelBar: View {
                 
             RoundedRectangle(cornerRadius: 15)
                 .fill(Color("green500"))
-                .frame(width: maxWidth, height: 55)
+                .frame(width: homeViewModel.levelBarPercent * containerWidth, height: 55)
         }
         .fixedSize(horizontal: false, vertical: true)
         .overlay(RoundedRectangle(cornerRadius: 15)
@@ -120,15 +162,13 @@ struct CharacterLevelBar: View {
 }
 
 struct CharacterInfo: View {
-    var level = 0
-    var levelName = "알"
-    var exp = 52
-    
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 HStack(spacing: 0) {
-                    Text("Lv.\(level) \(levelName) ( \(exp) / 100 )")
+                    Text("\(homeViewModel.levelString)")
                         .font(.system(size: 18, weight: .semibold))
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))

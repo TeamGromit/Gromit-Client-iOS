@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct TempChangeNameView: View {
+struct ChangeNameView: View {
     enum Field {
         case userNickname
       }
@@ -116,7 +116,7 @@ struct TempChangeNameView: View {
     }
 }
 
-extension TempChangeNameView {
+extension ChangeNameView {
     private func receiveViewModelEvent(_ event: ChangeNameViewModel.OutputEvent) {
         print(event)
             coordinator.stopLoading()
@@ -149,8 +149,8 @@ extension TempChangeNameView {
     }
 }
 
-struct TempChangeNameView_Previews: PreviewProvider {
+struct ChangeNameView_Previews: PreviewProvider {
     static var previews: some View {
-        TempChangeNameView()
+        ChangeNameView()
     }
 }

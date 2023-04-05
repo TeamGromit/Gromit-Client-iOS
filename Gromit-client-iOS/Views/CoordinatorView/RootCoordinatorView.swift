@@ -10,6 +10,7 @@ import SwiftUI
 struct RootCoordinatorView: View {
     @StateObject private var coordinator = Coordinator()
 
+
     var body: some View {
         ZStack {
             if(coordinator.rootPage == .signInView) {
@@ -83,6 +84,7 @@ struct RootCoordinatorView: View {
     }
     
     init() {
+        print("RootCoordinatorView init")
         AppDataService.shared.printInfo()
     }
     
