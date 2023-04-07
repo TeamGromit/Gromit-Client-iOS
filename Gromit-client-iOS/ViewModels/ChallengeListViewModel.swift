@@ -12,7 +12,7 @@ import SwiftUI
 
 class ChallengeListViewModel: ObservableObject {
     
-    @Published var challenges = [Challenge]()
+//    @Published var challenges = [Challenge]()
     
     init() {
         getChallenges()
@@ -38,8 +38,9 @@ class ChallengeListViewModel: ObservableObject {
                     }
                     if(code == 1000) {
                         // 챌린지 get 성공
-                        let challenge = Challenge(title: responseMessage.result.title!, date: responseMessage.result.startDate!, goal: responseMessage.result.goal!, headCount: responseMessage.result.currentMemberNum!, maxHead: responseMessage.result.recruits!)
-                        self.challenges.append(challenge)
+//                        let challenge = Challenge(title: responseMessage.result.title!, date: responseMessage.result.startDate!, goal: responseMessage.result.goal!, headCount: responseMessage.result.currentMemberNum!, maxHead: responseMessage.result.recruits!)
+//                        self.challenges.append(challenge)
+                        print("챌린지 추가됨: ")
                     }
                 }
             }

@@ -34,16 +34,15 @@ struct CreationView: View {
                                     }
                     Group{
                         Toggle(isOn: $showingToggle) {
-                            Text(" 비밀번호")
+                            Text("비밀번호")
                                 .tint(Color.black)
+                        }
+                        .onChange(of: showingToggle) { newValue in
+                            self.isPassword = !self.isPassword
                         }
                         
                         if showingToggle {
-                            Button(action: {
-                            }) {
-                                Text("")
-                                TextField("비밀번호를 입력해주세요", text: $password)
-                            }
+                            TextField("비밀번호를 입력해주세요", text: $password)
                         }
                         
                     }}

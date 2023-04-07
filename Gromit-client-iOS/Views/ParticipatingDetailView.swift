@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ParticipatingDetailView: View {
-    var challenge: ParticipatingChallenge
+    var challenge: Challenge
     
     var body: some View {
         VStack(spacing: 0) {
@@ -112,6 +112,6 @@ struct ProgressMemberBar: View {
 
 struct ParticipatingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ParticipatingDetailView(challenge: ParticipatingList.participatingList.first!)
+        ParticipatingDetailView(challenge: ChallengeList.participatingList.first!)
     }
 }

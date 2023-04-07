@@ -64,7 +64,7 @@ struct ParticipatingListView_Previews: PreviewProvider {
 }
 
 struct ParticipatingCell: View {
-    var challenges: [ParticipatingChallenge] = ParticipatingList.participatingList
+    var challenges: [Challenge] = ChallengeList.participatingList
     
     var body: some View {
             List(challenges, id: \.id) { challenge in
@@ -78,10 +78,10 @@ struct ParticipatingCell: View {
                         }
                         HStack {
                             Spacer()
-                            Text(challenge.date)
+                            Text(challenge.startDate)
                         }
                         HStack {
-                            Text("\(challenge.progress) / \(challenge.goal)")
+                            Text("10 / 100")
                         }
                         ProgressBar()
                     }
@@ -102,7 +102,7 @@ struct ParticipatingCell: View {
 }
 
 struct CompletedCell: View {
-    var challenges: [ParticipatingChallenge] = ParticipatingList.participatingList
+    var challenges: [Challenge] = ChallengeList.participatingList
     
     var body: some View {
         NavigationView(content: {

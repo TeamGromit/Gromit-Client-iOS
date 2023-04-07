@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct TempSettingsView: View {
+struct SettingsView: View {
     @State private var toggling = false
     @State private var showingToggle = false
     @State var date = Date()
@@ -12,7 +12,9 @@ struct TempSettingsView: View {
     
     @EnvironmentObject private var coordinator: Coordinator
 
-    
+    init() {
+        print("SettingView init!")
+    }
     var body: some View {
         
         NavigationView {
@@ -79,8 +81,8 @@ struct TempSettingsView: View {
               }
                         }
                         }
-struct TempSettingsView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        TempSettingsView()
+        SettingsView()
     }
 }
