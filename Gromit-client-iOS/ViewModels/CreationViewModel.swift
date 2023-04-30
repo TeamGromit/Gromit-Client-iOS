@@ -29,8 +29,6 @@ class CreationViewModel: ObservableObject {
             "Content-Type": "application/json",
             "X-AUTH-TOKEN": token
         ]
-//        let params = ["title":title, "startDate":startDate, "endDate":endDate, "goal":goal,
-//                      "recruits":recruits, "isPassword":isPassword, "password":password] as Dictionary
         
         NetworkingClinet.shared.request(serviceURL: .requestChallenges, httpMethod: .post, parameter: RequestCreationMessage(title: title, startDate: startDate, endDate: endDate, goal: goal, recruits: recruits, isPassword: isPassword, password: password), headers: headers, type: ResponseCreationMessage.self) { responseData, error in
             if let error = error {
