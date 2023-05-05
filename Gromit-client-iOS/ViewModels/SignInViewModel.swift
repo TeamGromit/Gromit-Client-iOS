@@ -7,6 +7,7 @@
 
 import Foundation
 import AuthenticationServices
+import Alamofire
 
 class SignInViewModel: ObservableObject {
     
@@ -31,7 +32,12 @@ class SignInViewModel: ObservableObject {
     }
     
     func requestLogin(token: String) {
-        NetworkingClinet.shared.request(serviceURL: .requestPostLogin, httpMethod: .post, parameter: RequestLoginMessage(token: token), type: ResponseLoginMessage.self) { responseData, error in
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "X-AUTH-TOKEN": token
+        ]
+        
+        NetworkingClinet.shared.request(serviceURL: .requestPostLogin, httpMethod: .post,  parameter: RequestLoginMessage(token: token), headers: headers, type: ResponseLoginMessage.self) { responseData, error in
             if let error = error {
                 
             } else {

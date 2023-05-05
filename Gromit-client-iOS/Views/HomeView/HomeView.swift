@@ -27,6 +27,9 @@ struct HomeView: View {
             CharacterInfo()
         }
         .environmentObject(homeViewModel)
+        .onAppear {
+            homeViewModel.requestUserInfo()
+        }
         .onReceive(homeViewModel.$outputEvent) { event in
             if let event = event {
                 receiveViewModelEvent(event)

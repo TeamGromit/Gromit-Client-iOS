@@ -29,36 +29,53 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
             // Apple ID
             
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
-            if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
-                print("========================== 첫 로그인")
-                displayLog(credential: appleIdCredential)
-                //                registerNewAccount(credential: appleIdCredential) //appleIdCredential에서 정보가 들어있으면 register, 아니면 sign In
-                
-                // 회원가입 완료 후 로그인 유지를 위해 email을 UserDefaults에 저장. UserDefaults에는 email, provider, nickname, githubName이 저장될 것
-                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
-                
-                if let email = credential.email {
-                    print("AppStorage Save Email")
-                
-                    AppDataService.shared.setData(appData: .email, value: email)
-                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
-         
-                }
-              
-                
+            if let email = AppDataService.shared.getData(appData: .email), let gromitUserName = AppDataService.shared.getData(appData: .gromitUserName), let accessToken = AppDataService.shared.getData(appData: .accessToken) {
+                    print("========================== 로그인 했었음")
             } else {
-                print("========================== 로그인 했었음")
-                displayLog(credential: appleIdCredential)
-                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
-                
-                if let tokenString = String(data: credential.identityToken ?? Data(), encoding: .utf8) {
-                    let email = decode(tokenString: tokenString)["email"] as? String ?? ""
-                    
-                    AppDataService.shared.setData(appData: .email, value: email)
-                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
-                    
+                    print("========================== 첫 로그인")
+                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+                    print("credentail 오류")
+                    return
                 }
+                
+                guard let email = credential.email else {
+                    print("email 표시를 안 한 경우")
+                    return
+                }
+                AppDataService.shared.setData(appData: .email, value: email)
+                AppDataService.shared.setData(appData: .provider, value: "APPLE")
             }
+                      
+//            if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
+//                print("========================== 첫 로그인")
+//                displayLog(credential: appleIdCredential)
+//                //                registerNewAccount(credential: appleIdCredential) //appleIdCredential에서 정보가 들어있으면 register, 아니면 sign In
+//
+//                // 회원가입 완료 후 로그인 유지를 위해 email을 UserDefaults에 저장. UserDefaults에는 email, provider, nickname, githubName이 저장될 것
+//                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
+//
+//                if let email = credential.email {
+//                    print("AppStorage Save Email")
+//
+//                    AppDataService.shared.setData(appData: .email, value: email)
+//                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
+//
+//                }
+//
+//
+//            } else {
+//                print("========================== 로그인 했었음")
+//                displayLog(credential: appleIdCredential)
+//                guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
+//
+//                if let tokenString = String(data: credential.identityToken ?? Data(), encoding: .utf8) {
+//                    let email = decode(tokenString: tokenString)["email"] as? String ?? ""
+//
+//                    AppDataService.shared.setData(appData: .email, value: email)
+//                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
+//
+//                }
+//            }
             if let token = getToken(credential: appleIdCredential) {
                 print(token)
                 signInSucceeded(token)
