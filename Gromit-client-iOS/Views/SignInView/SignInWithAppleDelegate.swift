@@ -38,12 +38,12 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-                guard let email = credential.email else {
-                    print("email 표시를 안 한 경우")
-                    return
-                }
-                AppDataService.shared.setData(appData: .email, value: email)
-                AppDataService.shared.setData(appData: .provider, value: "APPLE")
+//                guard let email = credential.email else {
+//                    print("email 표시를 안 한 경우")
+//                    return
+//                }
+//                AppDataService.shared.setData(appData: .email, value: email)
+//                AppDataService.shared.setData(appData: .provider, value: "APPLE")
             }
                       
 //            if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
@@ -77,7 +77,10 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
 //                }
 //            }
             if let token = getToken(credential: appleIdCredential) {
-                print(token)
+                if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8) {
+                    let email = decode(tokenString: tokenString)["email"] as? String ?? ""
+                    print(email)
+                }
                 signInSucceeded(token)
             }
         default :

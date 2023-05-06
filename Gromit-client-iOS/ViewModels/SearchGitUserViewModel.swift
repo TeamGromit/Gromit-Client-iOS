@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Alamofire
 
 
 class SearchGitUserViewModel: ObservableObject {
@@ -49,7 +50,19 @@ class SearchGitUserViewModel: ObservableObject {
 //            }).store(in: &subscription)
 //    }
     func requestCheckGitUserName(_ gitUserName: String) {
-        NetworkingClinet.shared.request(serviceURL: .requestGetGitUser, pathVariable: [gitUserName], httpMethod: .get, type: SearchGitUserEntity.self) { responseData, error in
+        
+        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
+            print("requestCheckGitUserName Error token is nil")
+            return
+        }
+                
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "X-AUTH-TOKEN": token
+        ]
+        
+     
+        NetworkingClinet.shared.request(serviceURL: .requestGetGitUser, pathVariable: [gitUserName], httpMethod: .get, headers: headers, type: SearchGitUserEntity.self) { responseData, error in
             if let error = error {
                 self.outputEvent = .requestError
 

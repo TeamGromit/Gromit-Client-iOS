@@ -109,14 +109,14 @@ class NetworkingClinet {
         }
     }
     
-    func request<Output: Decodable>(serviceURL: ServiceURL, pathVariable: [String] ,httpMethod: HTTPMethod, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
+    func request<Output: Decodable>(serviceURL: ServiceURL, pathVariable: [String] ,httpMethod: HTTPMethod, headers: HTTPHeaders? = nil, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         var urlString = serviceURL.urlString
         print("request urlString: \(urlString)")
         pathVariable.forEach { variable in
             urlString += "/\(variable)"
         }
         print("AF Request")
-        AF.request(urlString, method: httpMethod).response { responseData in
+        AF.request(urlString, method: httpMethod, headers: headers).response { responseData in
             debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
