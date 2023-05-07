@@ -42,6 +42,7 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
 //                    print("email 표시를 안 한 경우")
 //                    return
 //                }
+//                print(email)
 //                AppDataService.shared.setData(appData: .email, value: email)
 //                AppDataService.shared.setData(appData: .provider, value: "APPLE")
             }
@@ -79,7 +80,10 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
             if let token = getToken(credential: appleIdCredential) {
                 if let tokenString = String(data: appleIdCredential.identityToken ?? Data(), encoding: .utf8) {
                     let email = decode(tokenString: tokenString)["email"] as? String ?? ""
-                    print(email)
+                    
+                    AppDataService.shared.setData(appData: .accessToken, value: tokenString)
+                    AppDataService.shared.setData(appData: .email, value: email)
+                    AppDataService.shared.setData(appData: .provider, value: "APPLE")
                 }
                 signInSucceeded(token)
             }

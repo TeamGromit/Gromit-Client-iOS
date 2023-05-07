@@ -49,7 +49,7 @@ struct SettingsView: View {
                 .foregroundColor(.black)
                 
                 Button(" 로그아웃") {
-                          self.showingAlert.toggle()
+                          //self.showingAlert.toggle()
                       }
                       .foregroundColor(.black)
                       .alert(isPresented: $showingAlert) {
