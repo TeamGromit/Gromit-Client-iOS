@@ -40,7 +40,7 @@ class NetworkingClinet {
             case .requestChallenges:
                 return "\(GeneralAPI.baseURL)/challenges"
             case .requstLogout:
-                return "\(GeneralAPI.baseURL)/logout"
+                return "\(GeneralAPI.baseURL)/settings/logout"
         
             case .testPatchURL:
                 return "https://jsonplaceholder.typicode.com/posts"

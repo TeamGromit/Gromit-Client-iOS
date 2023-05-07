@@ -39,6 +39,11 @@ class AppDataService {
         print("provider = \(provider), email = \(email), accessToken = \(accessToken), refreshToken = \(refreshToken), githubUserName = \(githubUserName). githubProfileImage = \(githubProfileImage), gromitUserName = \(gromitUserName)")
     }
     
+    func removeToken() {
+        UserDefaults.standard.removeObject(forKey: "accessToken")
+        UserDefaults.standard.removeObject(forKey: "refreshToken")
+    }
+    
     init() {
       
         
