@@ -19,7 +19,7 @@ class NetworkingClinet {
     }
     
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestSignOut, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, testGetURL, testPostURL, testPatchURL
         var urlString: String {
             switch self {
             case .requestPostLogin:
@@ -28,6 +28,8 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/users"
             case .requestGetGitUser:
                 return "\(GeneralAPI.baseURL)/users/github"
+            case .requestSignOut:
+                return "\(GeneralAPI.baseURL)/auth/revoke"
             case .requestGetNickName:
                 return "\(GeneralAPI.baseURL)/users/check"
             case .requestChangeGromitNickName:

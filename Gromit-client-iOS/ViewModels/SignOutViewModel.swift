@@ -55,7 +55,12 @@ class SignOutViewModel: ObservableObject {
             "client_secret": clientSecret,
             "token": token
         ]
-
+        // 파라미터가 존재하는 경우 (진행중...)
+//        NetworkingClinet.shared.request(serviceURL: ., httpMethod: .post, parameter: parameters, headers: header, type: , completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
+        // 파라미터가 존재하는 경우 (진행중...)
+        NetworkingClinet.shared.request(serviceURL: .requestSignOut, httpMethod: .post, parameter: parameters, headers: header, type: ResponseLoginMessage.self, completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
+        
+        
         AF.request(url,
                    method: .post,
                    parameters: parameters,
