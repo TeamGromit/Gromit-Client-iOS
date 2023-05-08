@@ -50,6 +50,7 @@ struct SettingsView: View {
                 
                 Button(" 로그아웃") {
                           //self.showingAlert.toggle()
+                    coordinator.rootPage = .signInView
                       }
                       .foregroundColor(.black)
                       .alert(isPresented: $showingAlert) {
@@ -58,7 +59,7 @@ struct SettingsView: View {
                           }
                           let secondButton = Alert.Button.cancel(Text("Cancel")) {
                               print("secondary button pressed")
-                          }
+                          } 
                           return Alert(title: Text("로그아웃 하시겠습니까?"),
                                        primaryButton: firstButton, secondaryButton: secondButton)
                       }
