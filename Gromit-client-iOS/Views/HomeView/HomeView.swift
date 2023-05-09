@@ -49,7 +49,6 @@ extension HomeView {
         case .loading:
             coordinator.startLoading()
         case .loaded:
-            
             coordinator.stopLoading()
         }
     }

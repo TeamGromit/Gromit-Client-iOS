@@ -28,6 +28,7 @@ extension SignInWithAppleDelegate: ASAuthorizationControllerDelegate {
         switch authorization.credential {
             // Apple ID
             
+            // 로직 수정이 필요
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             if let email = AppDataService.shared.getData(appData: .email), let gromitUserName = AppDataService.shared.getData(appData: .gromitUserName), let accessToken = AppDataService.shared.getData(appData: .accessToken) {
                     print("========================== 로그인 했었음")

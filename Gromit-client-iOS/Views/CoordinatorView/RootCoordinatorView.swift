@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootCoordinatorView: View {
-    @StateObject private var coordinator = Coordinator()
+    @StateObject private var coordinator = Coordinator(checkSignIn: AppDataService.shared.checkSignIn())
 
 
     var body: some View {

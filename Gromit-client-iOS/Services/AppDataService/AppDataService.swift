@@ -39,6 +39,16 @@ class AppDataService {
         print("provider = \(provider), email = \(email), accessToken = \(accessToken), refreshToken = \(refreshToken), githubUserName = \(githubUserName). githubProfileImage = \(githubProfileImage), gromitUserName = \(gromitUserName)")
     }
     
+    func checkSignIn() -> Bool {
+        guard let email = getData(appData: .email) else {
+            return false
+        }
+        guard let accessToken = getData(appData: .accessToken) else {
+            return false
+        }
+        return true
+    }
+    
     init() {
       
         

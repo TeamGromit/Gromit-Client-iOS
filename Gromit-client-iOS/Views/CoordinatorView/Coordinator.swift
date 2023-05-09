@@ -78,9 +78,7 @@ class Coordinator: ObservableObject {
     @Published var isPopuping: Bool
     
     @Published var tabSelection: Int
-
-    
-    @AppStorage("rootPage") var rootPage: RootPage = .signInView
+    @Published var rootPage: RootPage
     
     var alertOKAction: (() -> Void)?
     var popupOKAction: (() -> Void)?
@@ -88,8 +86,7 @@ class Coordinator: ObservableObject {
     
     var selectChallenge: ParticipatingChallenge?
     
-    init() {
-
+    init(checkSignIn: Bool) {
         self.sigInViewPath = NavigationPath()
         self.homeViewPath = NavigationPath()
         self.participatingListViewPath = NavigationPath()
@@ -98,6 +95,11 @@ class Coordinator: ObservableObject {
         self.isPopuping = false
         self.tabSelection = 2
         
+        if(checkSignIn) {
+            self.rootPage = .homeView
+        } else {
+            self.rootPage = .signInView
+        }
         print("Coordinator Init!! \(rootPage)")
     }
     
