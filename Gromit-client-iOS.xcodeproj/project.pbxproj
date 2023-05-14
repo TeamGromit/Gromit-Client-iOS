@@ -11,6 +11,7 @@
 		11782483298B8F84000C640E /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782482298B8F84000C640E /* SearchApi.swift */; };
 		11782485298B8F9D000C640E /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782484298B8F9D000C640E /* search.swift */; };
 		11C7299B29B2627000EB0DE2 /* ChangeNameView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7299A29B2627000EB0DE2 /* ChangeNameView_Backup.swift */; };
+		20145D632A10A19400946D88 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20145D622A10A19400946D88 /* LoginService.swift */; };
 		2058DAB329D82298006F0E44 /* ResponseMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058DAB229D82298006F0E44 /* ResponseMessageEntity.swift */; };
 		2058DAB629D827CD006F0E44 /* CollectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058DAB529D827CD006F0E44 /* CollectionListViewModel.swift */; };
 		2058DAB829D832FC006F0E44 /* CollectionCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058DAB729D832FC006F0E44 /* CollectionCharacter.swift */; };
@@ -90,6 +91,7 @@
 		11782482298B8F84000C640E /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		11782484298B8F9D000C640E /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
 		11C7299A29B2627000EB0DE2 /* ChangeNameView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameView_Backup.swift; sourceTree = "<group>"; };
+		20145D622A10A19400946D88 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		2058DAB229D82298006F0E44 /* ResponseMessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageEntity.swift; sourceTree = "<group>"; };
 		2058DAB529D827CD006F0E44 /* CollectionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewModel.swift; sourceTree = "<group>"; };
 		2058DAB729D832FC006F0E44 /* CollectionCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCharacter.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20145D612A10A14500946D88 /* LoginService */ = {
+			isa = PBXGroup;
+			children = (
+				20145D622A10A19400946D88 /* LoginService.swift */,
+			);
+			path = LoginService;
+			sourceTree = "<group>";
+		};
 		2058DAB429D82716006F0E44 /* CollectionListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +342,7 @@
 		D52DB51C2986FCF200B7A3CC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				20145D612A10A14500946D88 /* LoginService */,
 				206244CD29C5ED0D00B5B828 /* AppDataService */,
 				20B2F20D29AB235B007E947D /* NetworkingServcie */,
 				D56FE80D2987878300374A9A /* Entities */,
@@ -556,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				207FEA1629C5F95500E838E4 /* SettingsView.swift in Sources */,
+				20145D632A10A19400946D88 /* LoginService.swift in Sources */,
 				D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */,
 				2058DAB329D82298006F0E44 /* ResponseMessageEntity.swift in Sources */,
 				D56FE81D2988014700374A9A /* Constants.swift in Sources */,

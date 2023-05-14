@@ -11,7 +11,10 @@ import SwiftUI
 
 // request 정리 할 필요성이 있음 중복 코드가 많은거 같음
 class NetworkingClinet {
+    
     static let shared = NetworkingClinet()
+    private let timeOutSeconds: Double = 0.01
+    
     private init() { }
     
     enum httpMetod {
@@ -54,7 +57,8 @@ class NetworkingClinet {
 
     
     func requestURLImage(imageURL: String, completion: @escaping (UIImage?) -> Void) {
-        AF.request(imageURL, method: .get).response { responseData in
+        AF.request(imageURL, method: .get)  { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             switch responseData.result {
             case let .success(data):
                 if let data = data {
@@ -62,6 +66,9 @@ class NetworkingClinet {
                 }
                 
             case let .failure(error):
+                if error._code == NSURLErrorTimedOut {
+                        debugPrint("timeOut")
+                }
                 completion(nil)
             }
          }
@@ -70,7 +77,8 @@ class NetworkingClinet {
     // 파라미터 존재하지 않는 경우
     func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         let urlString = serviceURL.urlString
-        AF.request(urlString, method: httpMethod).response { responseData in
+        AF.request(urlString, method: httpMethod) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             switch responseData.result {
             case let .success(data):
                 do {
@@ -90,7 +98,8 @@ class NetworkingClinet {
     
     func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, headers: HTTPHeaders, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         let urlString = serviceURL.urlString
-        AF.request(urlString, method: httpMethod, headers: headers).response { responseData in
+        AF.request(urlString, method: httpMethod, headers: headers) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
@@ -116,7 +125,8 @@ class NetworkingClinet {
             urlString += "/\(variable)"
         }
         print("AF Request")
-        AF.request(urlString, method: httpMethod, headers: headers).response { responseData in
+        AF.request(urlString, method: httpMethod, headers: headers) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
@@ -139,7 +149,8 @@ class NetworkingClinet {
         var urlString = serviceURL.urlString
         print("request urlString: \(urlString)")
         print("AF Request")
-        AF.request(urlString, method: httpMethod).response { responseData in
+        AF.request(urlString, method: httpMethod) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
@@ -161,7 +172,8 @@ class NetworkingClinet {
     // 파라미터가 존재하는 경우
     func request<Input: Encodable, Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, parameter: Input, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> ()) {
         let urlString = serviceURL.urlString
-        AF.request(urlString, method: httpMethod, parameters: parameter, encoder: .json()).response { responseData in
+        AF.request(urlString, method: httpMethod, parameters: parameter, encoder: .json()) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             debugPrint(responseData)
             switch responseData.result {
             case let .success(data):
@@ -174,7 +186,16 @@ class NetworkingClinet {
                     completion((responseData.debugDescription, nil), nil)
                 }
             case let .failure(error):
+//                switch error {
+//                case .sessionTaskFailed(URLError.timedOut):
+//                    completion(nil, )
+//                    break
+//                default:
+//                    completion(nil, error)
+//                    break
+//                }
                 completion(nil, error)
+                
             }
             sleep(1)
         }
@@ -183,7 +204,8 @@ class NetworkingClinet {
     
     func request<Input: Encodable, Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, parameter: Input, headers: HTTPHeaders, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> ()) {
         let urlString = serviceURL.urlString
-        AF.request(urlString, method: httpMethod, parameters: parameter, encoder: .json(), headers: headers).response { responseData in
+        AF.request(urlString, method: httpMethod, parameters: parameter, encoder: .json(), headers: headers) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
             switch responseData.result {
             case let .success(data):
                 do {

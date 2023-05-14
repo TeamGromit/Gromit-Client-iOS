@@ -54,7 +54,7 @@ enum AlertPopup: String, Identifiable {
 }
 
 enum Popup: String, Identifiable {
-    case isCheckGitUser, requestServerError, emptyUserName, isNotExistGitUser, isExistGromitUser, isNotExistGromitUser, signInError, changeGromitUserName
+    case isCheckGitUser, requestServerError, emptyUserName, isNotExistGitUser, isExistGromitUser, isNotExistGromitUser, signInError, changeGromitUserName, failAppleSignIn, timeOutNetwork
     var id: String {
         self.rawValue
     }
@@ -86,7 +86,7 @@ class Coordinator: ObservableObject {
     
     var selectChallenge: ParticipatingChallenge?
     
-    init(checkSignIn: Bool) {
+    init(isExistLoginHistory: Bool) {
         self.sigInViewPath = NavigationPath()
         self.homeViewPath = NavigationPath()
         self.participatingListViewPath = NavigationPath()
@@ -95,7 +95,7 @@ class Coordinator: ObservableObject {
         self.isPopuping = false
         self.tabSelection = 2
         
-        if(checkSignIn) {
+        if(isExistLoginHistory) {
             self.rootPage = .homeView
         } else {
             self.rootPage = .signInView
@@ -341,26 +341,24 @@ class Coordinator: ObservableObject {
             
         case .isNotExistGitUser:
             GromitPopupView(popupType: .message, title: "존재하지 않는 유저명!", message: "유저명을 확인해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .requestServerError:
             GromitPopupView(popupType: .message, title: "네트워크 서버 오류!", message: "관리자에게 오류를 보고해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .emptyUserName:
             GromitPopupView(popupType: .message, title: "입력 오류!", message: "값을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .none:
             GromitPopupView(popupType: .message, title: "", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .isExistGromitUser:
             GromitPopupView(popupType: .message, title: "유저명 중복!", message: "다른 유저명을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .isNotExistGromitUser:
             GromitPopupView(popupType: .message, buttonType: .twoButton, title: "유저명 확인!", message: "해당 유저명으로 가입하시겠습니까!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .signInError:
             GromitPopupView(popupType: .message, title: "가입 오류!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .changeGromitUserName:
             GromitPopupView(popupType: .message, title: "닉네임 변경 완료!", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+        case .failAppleSignIn:
+            GromitPopupView(popupType: .message, title: "애플 로그인 오류!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+        case .timeOutNetwork:
+            GromitPopupView(popupType: .message, title: "요청 시간 초과!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         }
     }
 }
