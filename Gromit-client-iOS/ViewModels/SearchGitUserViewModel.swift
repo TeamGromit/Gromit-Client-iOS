@@ -51,18 +51,13 @@ class SearchGitUserViewModel: ObservableObject {
 //    }
     func requestCheckGitUserName(_ gitUserName: String) {
         
-        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
-            print("requestCheckGitUserName Error token is nil")
-            return
-        }
+//        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
+//            print("requestCheckGitUserName Error token is nil")
+//            return
+//        }
                 
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "X-AUTH-TOKEN": token
-        ]
-        
      
-        NetworkingClinet.shared.request(serviceURL: .requestGetGitUser, pathVariable: [gitUserName], httpMethod: .get, headers: headers, type: SearchGitUserEntity.self) { responseData, error in
+        NetworkingClinet.shared.request(serviceURL: .requestGetGitUser, pathVariable: [gitUserName], httpMethod: .get, type: SearchGitUserEntity.self) { responseData, error in
             if let error = error {
                 self.outputEvent = .requestError
 
@@ -81,10 +76,11 @@ class SearchGitUserViewModel: ObservableObject {
                                 return
                             }
                             self.responseGithubImg = githubProfileImage
+                            LoginService.shared.setLoginInfo(githubUserName: githubUserName, githubUserImageUrl: githubProfileImage)
                             //UserDefaults.standard.set(self.responseGithubNickName, forKey: "githubUserName")
                             //UserDefaults.standard.set(self.responseGithubImg, forKey: "githubImage")
-                            AppDataService.shared.setData(appData: .githubUserName, value: githubUserName)
-                            AppDataService.shared.setData(appData: .githubProfileImage, value: githubProfileImage)
+                            //AppDataService.shared.setData(appData: .githubUserName, value: githubUserName)
+                            //AppDataService.shared.setData(appData: .githubProfileImage, value: githubProfileImage)
                             self.outputEvent = .isExistGitUser
                         }
 

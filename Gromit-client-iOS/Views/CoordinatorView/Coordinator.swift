@@ -335,8 +335,9 @@ class Coordinator: ObservableObject {
 
         switch self.popup{
         case .isCheckGitUser:
-            let userName = AppDataService.shared.getData(appData: .gromitUserName)
-            let userImage = AppDataService.shared.getData(appData: .githubProfileImage)
+            let userName = LoginService.shared.getGithubUserName()
+            let userImage = LoginService.shared.getGithubUserImageUrl()
+            
             GromitPopupView(popupType: .gitProfileView, buttonType: .twoButton, userName: userName ?? "" , urlString: userImage ?? "",  okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
             
         case .isNotExistGitUser:
@@ -348,9 +349,11 @@ class Coordinator: ObservableObject {
         case .none:
             GromitPopupView(popupType: .message, title: "", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .isExistGromitUser:
-            GromitPopupView(popupType: .message, title: "유저명 중복!", message: "다른 유저명을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            let gromitUserName = LoginService.shared.getGromitUserName() ?? ""
+            GromitPopupView(popupType: .message, title: "유저명 중복!", message: "\(gromitUserName) 이외 유저명을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .isNotExistGromitUser:
-            GromitPopupView(popupType: .message, buttonType: .twoButton, title: "유저명 확인!", message: "해당 유저명으로 가입하시겠습니까!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            let gromitUserName = LoginService.shared.getGromitUserName() ?? ""
+            GromitPopupView(popupType: .message, buttonType: .twoButton, title: "유저명 확인!", message: "\(gromitUserName)으로 가입하시겠습니까!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .signInError:
             GromitPopupView(popupType: .message, title: "가입 오류!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .changeGromitUserName:

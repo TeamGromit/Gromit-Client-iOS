@@ -13,7 +13,9 @@ import SwiftUI
 class NetworkingClinet {
     
     static let shared = NetworkingClinet()
-    private let timeOutSeconds: Double = 0.01
+    
+    // MARK : 통신 타임아웃 관리
+    private let timeOutSeconds: Double = 5
     
     private init() { }
     

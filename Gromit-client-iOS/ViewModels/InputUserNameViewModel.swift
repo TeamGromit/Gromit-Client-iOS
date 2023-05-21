@@ -92,6 +92,7 @@ class InputUserNameViewModel: ObservableObject {
                 self.outputEvent = .requestError
             } else {
                 if let responseData = responseData, let responseMessage = responseData.1 {
+                    LoginService.shared.setLoginInfo(gromitUserName: nickName)
                     if(responseMessage.code == 1000) {
                        // 닉네임
                        // 다시한번 팝업을 통해 물어보기
@@ -108,26 +109,27 @@ class InputUserNameViewModel: ObservableObject {
     func requestSignUpUser(_ nickName: String) {
         print("requestSignUpUser run / nickName : \(nickName)")
         //guard let githubName = UserDefaults.standard.string(forKey: "githubUserName") else { return }
-        guard let githubName = AppDataService.shared.getData(appData: .githubUserName) else  {
+        guard let githubName = LoginService.shared.getGithubUserName() else  {
             print("Guard Error! githubUserName is nil")
             return
         }
         print("githubName : \(githubName)")
         
         //guard let email = UserDefaults.standard.string(forKey: "email") else { return }
-        guard let email = AppDataService.shared.getData(appData: .email) else {
+        guard let email = LoginService.shared.getEmail() else {
             print("Guard Error! email is nil")
             return
         }
         print("email : \(email)")
         
+        let provider = "APPLE"
         
         //guard let provider = UserDefaults.standard.string(forKey: "provider") else { return }
-        guard let provider = AppDataService.shared.getData(appData: .provider) else {
-            print("Guard Error! provider is nil")
-            return
-        }
-        print("provider : \(provider)")
+//        guard let provider = AppDataService.shared.getData(appData: .provider) else {
+//            print("Guard Error! provider is nil")
+//            return
+//        }
+//        print("provider : \(provider)")
         
 // 킴쿡 : 테스트를 위해서 주석처리
 // 주석을 해제 할 경우 서버 DB에 등록돼 재테스트시 문제가 발생 할 수 있음
@@ -138,13 +140,12 @@ class InputUserNameViewModel: ObservableObject {
                 if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
                     print(response)
                     if(responseMessage.code == 1000) {
-                        AppDataService.shared.setData(appData: .gromitUserName, value: nickName)
                         if let result = responseMessage.result {
-                            if let acessToken = result.accessToken {
-                                AppDataService.shared.setData(appData: .accessToken, value: acessToken)
+                            if let accessToken = result.accessToken {
+                                LoginService.shared.setLoginInfo(accessToken: accessToken)
                             }
                             if let refreshToken = result.refreshToken {
-                                AppDataService.shared.setData(appData: .refreshToken, value: refreshToken)
+                                LoginService.shared.setLoginInfo(refreshToken: refreshToken)
                             }
                             self.outputEvent = .createGromitUser
                         }

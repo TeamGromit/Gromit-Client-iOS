@@ -13,6 +13,9 @@ class LoginService {
     var email: String?
     var accessToken: String?
     var refreshToken: String?
+    var githubUserName: String?
+    var githubUserImageUrl: String?
+    var gromitUserName: String?
 
     func isExistLoginHistory() -> Bool {
         guard let accessToken = AppDataService.shared.getData(appData: .accessToken) else {
@@ -33,14 +36,48 @@ class LoginService {
         return true
     }
     
-    func setLoginInfo(email: String, accessToken: String, refreshToken: String) {
+    func setLoginInfo(email: String? = nil, accessToken: String? = nil, refreshToken: String? = nil, githubUserName: String? = nil, githubUserImageUrl: String? = nil, gromitUserName: String? = nil) {
         self.email = email
         self.accessToken = accessToken
         self.refreshToken = refreshToken
-        
+        self.githubUserName = githubUserName
+        self.githubUserImageUrl = githubUserImageUrl
+        self.gromitUserName = gromitUserName
+    }
+    
+    func saveLoginHistory() {
+        guard let email = self.email, let accessToken = self.accessToken, let refreshToken = self.refreshToken else {
+            return
+        }
         AppDataService.shared.setData(appData: .email, value: email)
         AppDataService.shared.setData(appData: .accessToken, value: accessToken)
         AppDataService.shared.setData(appData: .refreshToken, value: refreshToken)
+        //AppDataService.shared.setData(appData: .githubUserName, value: githubUserName)
+
+    }
+    
+    func getEmail() -> String? {
+        return self.email
+    }
+    
+    func getAccessToken() -> String? {
+        return self.accessToken
+    }
+    
+    func getRefreshToken() -> String? {
+        return self.refreshToken
+    }
+    
+    func getGithubUserName() -> String? {
+        return self.githubUserName
+    }
+    
+    func getGithubUserImageUrl() -> String? {
+        return self.githubUserImageUrl
+    }
+    
+    func getGromitUserName() -> String? {
+        return self.gromitUserName
     }
     
     init() {

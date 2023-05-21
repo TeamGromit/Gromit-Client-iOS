@@ -63,11 +63,16 @@ class SignInViewModel: ObservableObject {
                                 return
                             }
                             LoginService.shared.setLoginInfo(email: email, accessToken: accessToken, refreshToken: refreshToken)
+                            LoginService.shared.saveLoginHistory()
                             self.outputEvent = .checkMember
                         }
                     } else if(code == 3005) {
                         // 신규 회원
+                        LoginService.shared.setLoginInfo(email: email)
+
                         self.outputEvent = .checkNewMember
+                        //LoginService.shared.setLoginInfo(email: email, accessToken: accessToken, refreshToken: refreshToken)
+
                     } else if(code == 3002) {
                         // 애플 통신 실패
                         self.outputEvent = .errorNetwork

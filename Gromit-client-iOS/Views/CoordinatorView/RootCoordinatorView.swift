@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootCoordinatorView: View {
-    // LOGIC: 로그인 이력 체크
+    // MARK: 로그인 이력 체크
     @StateObject private var coordinator = Coordinator(isExistLoginHistory: LoginService.shared.isExistLoginHistory())
 
 
