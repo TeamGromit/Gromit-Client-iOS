@@ -54,7 +54,9 @@ struct SettingsView: View {
             .alert(isPresented: $showingAlert) {
                 let firstButton = Alert.Button.default(Text("OK")) {
                     print("primary button pressed")
-                    settingsViewModel.patchLogout()
+                    settingsViewModel.removeToken()
+                    // 로그인 페이지로 이동 후 다시 로그인했을 때 화면 전환이 안 됨
+                    coordinator.rootPage = .signInView
                 }
                 let secondButton = Alert.Button.cancel(Text("Cancel")) {
                     print("secondary button pressed")

@@ -19,8 +19,8 @@ class NetworkingClinet {
     }
     
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, requstLogout,
-            testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestSignOut, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, testGetURL, testPostURL, testPatchURL
+        var urlString: String {
             switch self {
             case .requestPostLogin:
                 return "\(GeneralAPI.baseURL)/login/apple"
@@ -40,8 +40,6 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/home/reload"
             case .requestChallenges:
                 return "\(GeneralAPI.baseURL)/challenges"
-            case .requstLogout:
-                return "\(GeneralAPI.baseURL)/settings/logout"
         
             case .testPatchURL:
                 return "https://jsonplaceholder.typicode.com/posts"
@@ -217,4 +215,3 @@ class NetworkingClinet {
     }
     
 }
-

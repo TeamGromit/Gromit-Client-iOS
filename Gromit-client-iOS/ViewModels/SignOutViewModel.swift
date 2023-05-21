@@ -58,20 +58,22 @@ class SignOutViewModel: ObservableObject {
         // 파라미터가 존재하는 경우 (진행중...)
 //        NetworkingClinet.shared.request(serviceURL: ., httpMethod: .post, parameter: parameters, headers: header, type: , completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
         // 파라미터가 존재하는 경우 (진행중...)
-        NetworkingClinet.shared.request(serviceURL: .requestSignOut, httpMethod: .post, parameter: parameters, headers: header, type: ResponseLoginMessage.self, completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
         
         
-        AF.request(url,
-                   method: .post,
-                   parameters: parameters,
-                   headers: header)
-        .validate(statusCode: 200..<600)
-        .responseData { response in
-            guard let statusCode = response.response?.statusCode else { return }
-            if statusCode == 200 {
-                print("애플 토큰 삭제 성공!")
-                completionHandler()
-            }
-        }
+//        NetworkingClinet.shared.request(serviceURL: .requestSignOut, httpMethod: .post, parameter: parameters, headers: header, type: ResponseLoginMessage.self, completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
+//
+//
+//        AF.request(url,
+//                   method: .post,
+//                   parameters: parameters,
+//                   headers: header)
+//        .validate(statusCode: 200..<600)
+//        .responseData { response in
+//            guard let statusCode = response.response?.statusCode else { return }
+//            if statusCode == 200 {
+//                print("애플 토큰 삭제 성공!")
+//                completionHandler()
+//            }
+//        }
     }
 }

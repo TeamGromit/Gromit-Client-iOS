@@ -22,7 +22,7 @@ class SettingsViewModel: ObservableObject {
         print(#fileID, #function, #line, "")
     }
     
-    func patchLogout() {
+    func removeToken() {
 //        let deviceId = UIDevice.current.identifierForVendor!.uuidString
 //        print(deviceId)
 //        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
@@ -56,7 +56,6 @@ class SettingsViewModel: ObservableObject {
         
         AppDataService.shared.removeToken()
         self.outputEvent = .logout
-//        self.coordinator.push(.signInView, page: .homeView)
         print("로그아웃 성공")
         
     }
