@@ -71,11 +71,11 @@ struct HomeButtons: View {
             }
             
             Spacer()
-            Button {
-                showParticipating.toggle()
-            } label: {
-                Image("collection")
-            }
+//            Button {
+//                showParticipating.toggle()
+//            } label: {
+//                Image("collection")
+//            }
         }
         .sheet(isPresented: $showParticipating) {
             CollectionListView()
