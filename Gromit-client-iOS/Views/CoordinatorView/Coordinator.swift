@@ -12,14 +12,14 @@ import SwiftUI
 // 일반 View
 
 enum RootPage: String, Identifiable {
-    case signInView, homeView, participatingListView, settingView
+    case signInView, homeView, participatingListView, settingView, collectionListView
     var id: String {
         self.rawValue
     }
 }
 
 enum Page: String, Identifiable {
-    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView
+    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView, collectionListView
     var id: String {
         self.rawValue
     }
@@ -68,6 +68,7 @@ class Coordinator: ObservableObject {
     @Published var homeViewPath: NavigationPath
     @Published var participatingListViewPath: NavigationPath
     @Published var settingViewPath: NavigationPath
+    @Published var collectionListViewPath: NavigationPath
     
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
@@ -94,6 +95,7 @@ class Coordinator: ObservableObject {
         self.homeViewPath = NavigationPath()
         self.participatingListViewPath = NavigationPath()
         self.settingViewPath = NavigationPath()
+        self.collectionListViewPath = NavigationPath()
         self.isLoading = false
         self.isPopuping = false
         self.tabSelection = 2
@@ -112,6 +114,8 @@ class Coordinator: ObservableObject {
             participatingListViewPath.append(page)
         case .settingView:
             settingViewPath.append(page)
+        case .collectionListView:
+            collectionListViewPath.append(page)
         }
         
         if let challenge = challenge {
@@ -151,6 +155,10 @@ class Coordinator: ObservableObject {
             if(settingViewPath.isEmpty == false) {
                 settingViewPath.removeLast()
             }
+        case .collectionListView:
+            if(collectionListViewPath.isEmpty == false) {
+                collectionListViewPath.removeLast()
+            }
         }
     }
     func popToRoot() {
@@ -163,6 +171,8 @@ class Coordinator: ObservableObject {
             participatingListViewPath.removeLast(participatingListViewPath.count)
         case .settingView:
             settingViewPath.removeLast(settingViewPath.count)
+        case .collectionListView:
+            collectionListViewPath.removeLast(collectionListViewPath.count)
         }
     }
     
@@ -230,6 +240,8 @@ class Coordinator: ObservableObject {
             }
         case .changeGromitUserNameView:
             ChangeNameView()
+        case .collectionListView:
+            CollectionListView()
         }
     }
     

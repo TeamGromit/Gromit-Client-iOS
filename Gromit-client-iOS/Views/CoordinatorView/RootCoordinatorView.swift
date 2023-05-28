@@ -24,8 +24,20 @@ struct RootCoordinatorView: View {
                 }
             } else {
                 TabView(selection: $coordinator.tabSelection) {
-                    NavigationStack(path: $coordinator.participatingListViewPath) {
-                        coordinator.build(page: .participatingListView)
+//                    NavigationStack(path: $coordinator.participatingListViewPath) {
+//                        coordinator.build(page: .participatingListView)
+//                            .navigationDestination(for: Page.self) { page in
+//                                coordinator.build(page: page)
+//                                    .navigationBarTitle("")
+//                                    .navigationBarHidden(true)
+//                            }
+//
+//                    }
+//                    .tabItem{
+//                        Image("challenge")
+//                    }.tag(1)
+                    NavigationStack(path: $coordinator.collectionListViewPath) {
+                        coordinator.build(page: .collectionListView)
                             .navigationDestination(for: Page.self) { page in
                                 coordinator.build(page: page)
                                     .navigationBarTitle("")
@@ -34,7 +46,7 @@ struct RootCoordinatorView: View {
                         
                     }
                     .tabItem{
-                        Image("challenge")
+                        Image("collection")
                     }.tag(1)
                     
                     NavigationStack(path: $coordinator.homeViewPath) {
