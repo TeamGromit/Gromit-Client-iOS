@@ -71,7 +71,7 @@ class HomeViewModel: ObservableObject {
             status = .request
             updateReloadStatus()
             
-            guard let token = AppDataService.shared.getData(appData: .accessToken) else {
+            guard let token = LoginService.shared.getAccessToken() else {
                 print("Guard Error token is nil")
                 outputEvent = .loaded
                 return

@@ -37,12 +37,34 @@ class LoginService {
     }
     
     func setLoginInfo(email: String? = nil, accessToken: String? = nil, refreshToken: String? = nil, githubUserName: String? = nil, githubUserImageUrl: String? = nil, gromitUserName: String? = nil) {
-        self.email = email
-        self.accessToken = accessToken
-        self.refreshToken = refreshToken
-        self.githubUserName = githubUserName
-        self.githubUserImageUrl = githubUserImageUrl
-        self.gromitUserName = gromitUserName
+        if let email = email {
+            self.email = email
+        }
+        if let accessToken = accessToken {
+            self.accessToken = accessToken
+        }
+        if let refreshToken = refreshToken {
+            self.refreshToken = refreshToken
+        }
+        if let githubUserName = githubUserName {
+            self.githubUserName = githubUserName
+        }
+        if let githubUserImageUrl = githubUserImageUrl {
+            self.githubUserImageUrl = githubUserImageUrl
+        }
+        if let githubUserImageUrl = githubUserImageUrl {
+            self.githubUserImageUrl = githubUserImageUrl
+        }
+        if let gromitUserName = gromitUserName {
+            self.gromitUserName = gromitUserName
+        }
+    }
+    
+    func initLoginHistory() {
+        AppDataService.shared.initData(appData: .email)
+        AppDataService.shared.initData(appData: .accessToken)
+        AppDataService.shared.initData(appData: .refreshToken)
+        
     }
     
     func saveLoginHistory() {

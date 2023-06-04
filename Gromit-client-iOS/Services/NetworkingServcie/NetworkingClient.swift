@@ -15,7 +15,7 @@ class NetworkingClinet {
     static let shared = NetworkingClinet()
     
     // MARK : 통신 타임아웃 관리
-    private let timeOutSeconds: Double = 5
+    private let timeOutSeconds: Double = 7
     
     private init() { }
     
@@ -24,7 +24,7 @@ class NetworkingClinet {
     }
     
     enum ServiceURL {
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, requestCollections, testGetURL, testPostURL, testPatchURL
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, requestCollections, reqeustSignOut, testGetURL, testPostURL, testPatchURL
         var urlString: String {
             switch self {
             case .requestPostLogin:
@@ -45,7 +45,8 @@ class NetworkingClinet {
                 return "\(GeneralAPI.baseURL)/challenges"
             case .requestCollections:
                 return "\(GeneralAPI.baseURL)/home/collections"
-
+            case .reqeustSignOut:
+                return "\(GeneralAPI.baseURL)/users/delete"
         
             case .testPatchURL:
                 return "https://jsonplaceholder.typicode.com/posts"

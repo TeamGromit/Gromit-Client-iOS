@@ -21,6 +21,10 @@ class AppDataService {
         UserDefaults.standard.set(value, forKey: appData.rawValue)
     }
     
+    func initData(appData: AppData) {
+        UserDefaults.standard.set(nil, forKey: appData.rawValue)
+    }
+    
     func getData(appData: AppData) -> String? {
         return UserDefaults.standard.string(forKey: appData.rawValue)
     }

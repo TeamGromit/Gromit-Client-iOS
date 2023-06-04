@@ -10,6 +10,8 @@ struct SettingsView: View {
     @State private var showingAlert3 = false
     @State private var showSignInView = false
     
+    @StateObject var signOutViewModel = SignOutViewModel()
+
     @EnvironmentObject private var coordinator: Coordinator
 
     init() {
@@ -74,6 +76,8 @@ struct SettingsView: View {
                           }
                           let secondButton = Alert.Button.cancel(Text("탈퇴하기")) {
                               print("secondary button pressed")
+                              signOutViewModel.signOut()
+                              LoginService.shared.initLoginHistory()
                           }
                           return Alert(title: Text("탈퇴를 진행할 경우 모든 정보가 삭제됩니다. 정말 탈퇴하시겠습니까?"),
                                        primaryButton: firstButton, secondaryButton: secondButton)
