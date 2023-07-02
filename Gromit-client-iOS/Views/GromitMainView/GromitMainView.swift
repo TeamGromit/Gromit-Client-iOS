@@ -39,7 +39,7 @@ struct GromitMainView: View {
                     Image("home")
                 }.tag(2)
                 
-            SettingsView()
+            SettingView()
                 .tabItem{
                     Image("settings")
                 }.tag(3)

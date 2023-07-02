@@ -41,6 +41,7 @@
 		20E199BF29C204FD00FE6DCD /* ParticipatingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E199BE29C204FD00FE6DCD /* ParticipatingListView.swift */; };
 		223253E729CF6B28002BDE0F /* SignOutEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223253E629CF6B28002BDE0F /* SignOutEntity.swift */; };
 		223253E929CF6C2D002BDE0F /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */; };
+		2243C2122A4DD3E60072E86C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2243C2112A4DD3E60072E86C /* SettingView.swift */; };
 		224CE19C298459BB007EDD4F /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 224CE19B298459BB007EDD4F /* PopupView */; };
 		227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227133DF298AA17C003025E7 /* InputUserNameView_Backup.swift */; };
 		2281F940297DA918000649A9 /* SearchGitUserView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F93F297DA918000649A9 /* SearchGitUserView_Backup.swift */; };
@@ -120,6 +121,7 @@
 		20E199BE29C204FD00FE6DCD /* ParticipatingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingListView.swift; sourceTree = "<group>"; };
 		223253E629CF6B28002BDE0F /* SignOutEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutEntity.swift; sourceTree = "<group>"; };
 		223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
+		2243C2112A4DD3E60072E86C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		22659355297FA0A80031E6C0 /* Gromit-client-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gromit-client-iOS.entitlements"; sourceTree = "<group>"; };
 		227133DF298AA17C003025E7 /* InputUserNameView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserNameView_Backup.swift; sourceTree = "<group>"; };
 		2281F93F297DA918000649A9 /* SearchGitUserView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitUserView_Backup.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				207FEA1529C5F95500E838E4 /* SettingsView.swift */,
 				207FEA1729C5F9F200E838E4 /* ChangeNameView.swift */,
+				2243C2112A4DD3E60072E86C /* SettingView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				D5F8C233297BF1FD004C6146 /* SignInView.swift in Sources */,
 				D56FE8132987F6AC00374A9A /* CollectionListView.swift in Sources */,
 				D5F8C235297BF20B004C6146 /* HomeView.swift in Sources */,
+				2243C2122A4DD3E60072E86C /* SettingView.swift in Sources */,
 				D53AC6F3299CB65200470E2A /* ChallengeListView.swift in Sources */,
 				D582FF8629D06EA0005448F8 /* ChallengeListViewModel.swift in Sources */,
 				20B2F20F29AB236E007E947D /* NetworkingClient.swift in Sources */,
