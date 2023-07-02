@@ -32,12 +32,12 @@ struct SettingsView: View {
                         )
                     }
                 }
-                Link(" 이용약관", destination: URL(string: "https://www.notion.so/Gromit-Team-27c8612cb66a446b962b1fb29f8957d4")!)
+                Link(" 이용 약관", destination: URL(string: "https://www.notion.so/Gromit-Team-27c8612cb66a446b962b1fb29f8957d4")!)
                     .foregroundColor(.black)
                 
                 Text(" 버전 정보")
                 
-                Button(" 닉네임변경") {
+                Button(" 닉네임 변경") {
                 //showSignInView.toggle()
                     coordinator.push(.settingView, page: .changeGromitUserNameView)
                     
@@ -65,7 +65,7 @@ struct SettingsView: View {
                 primaryButton: firstButton, secondaryButton: secondButton)
             }
                 
-            Button(" 서비스탈퇴") {
+            Button(" 서비스 탈퇴") {
                 self.showingAlert2.toggle()
             }
             .foregroundColor(.black)

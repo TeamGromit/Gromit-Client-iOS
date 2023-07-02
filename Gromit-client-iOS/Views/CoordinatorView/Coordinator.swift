@@ -231,7 +231,7 @@ class Coordinator: ObservableObject {
         case .homeView:
             HomeView()
         case .settingView:
-            SettingsView()
+            SettingView()
         case .participatingDetailView:
             if let selectChallenge = selectChallenge {
                 TempParticipatingDetailView(challenge: selectChallenge)
