@@ -66,7 +66,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func requestUserInfo() {
-        if(status == .requestPrepare) {
+        if(status == .requestPrepare && LoginService.shared.isExistLoginHistory()) {
             outputEvent = .loading
             status = .request
             updateReloadStatus()
@@ -85,7 +85,7 @@ class HomeViewModel: ObservableObject {
                 responseData, error in
                 if let error = error {
                     self.outputEvent = .requestError
-                    
+                    self.outputEvent = .loaded
                 } else {
                     if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
                         if(code == 1000) {
@@ -123,7 +123,7 @@ class HomeViewModel: ObservableObject {
     
     func requestReloadUserInfo() {
         outputEvent = .loading
-        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
+        guard let token = LoginService.shared.getAccessToken() else {
             print("Guard Error token is nil")
             outputEvent = .loaded
             return
@@ -162,6 +162,8 @@ class HomeViewModel: ObservableObject {
                             
                             self.updateLevelString()
                             self.updateLevelBar()
+                            self.outputEvent = .loaded
+
                         }
                     }
                 }

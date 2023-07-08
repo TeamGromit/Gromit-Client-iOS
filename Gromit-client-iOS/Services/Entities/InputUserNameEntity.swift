@@ -11,9 +11,12 @@ struct InputUserNameEntity: Codable, CustomStringConvertible {
     var isSuccess: Bool
     var code: Int
     var message: String
-    var result: GromitNickNameResponse
+    var result: GromitNickNameResponse?
     
     var description: String {
+        guard let result = result else {
+            return "gromit user name: nil / message: \(message)"
+        }
         return "gromit user name: \(result.nickname) / message: \(message)"
     }
 }

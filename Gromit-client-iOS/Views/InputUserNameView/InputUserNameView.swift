@@ -53,9 +53,10 @@ struct InputUserNameView: View {
                     if userNickname.isEmpty {
                         //self.alertTitle = "닉네임을 입력해주세요."
                         //self.alertMessage = ""
-                        coordinator.openPopup(popup: .emptyUserName, okAction: {
-                            coordinator.closePopup()
-                        })
+                        coordinator.present(fullScreenCover: .checkGitUserPopup)
+//                        coordinator.openPopup(popup: .emptyUserName, okAction: {
+//                            coordinator.closePopup()
+//                        })
                     } else {
                         // 동기 작업 필요? 1. 아무것도 입력하지 않고 2. 확인을 누른뒤 3. 닉네임 입력하고 4. 확인 누르면 5. 첫번째 알림창에서 메시지가 안뜨는 오류
                         hideKeyboard()
@@ -138,6 +139,8 @@ extension InputUserNameView {
             coordinator.stopLoading()
 //            self.rootPage = .gromitMainView
 //            coordinator.push(page: .gromitMainView)
+            LoginService.shared.saveLoginHistory()
+            coordinator.popToRoot()
             coordinator.rootPage = .homeView
         }
     }

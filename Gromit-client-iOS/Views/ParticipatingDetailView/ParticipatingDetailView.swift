@@ -15,7 +15,7 @@ struct ParticipatingDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             NavigationBarView(isActiveLeftButton: true, isActiveRightButton: true, title: "참여 챌린지", leftButtonTitle: "뒤로가기", rightButtonTitle: "삭제", leftButtonTapped: {
-                    coordinator.pop(.participatingListView)
+                    //coordinator.pop(.participatingListView)
             }, rightButtonTapped: {
                 
             })

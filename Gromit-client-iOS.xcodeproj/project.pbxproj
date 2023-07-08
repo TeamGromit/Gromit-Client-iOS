@@ -11,7 +11,9 @@
 		11782483298B8F84000C640E /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782482298B8F84000C640E /* SearchApi.swift */; };
 		11782485298B8F9D000C640E /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782484298B8F9D000C640E /* search.swift */; };
 		11C7299B29B2627000EB0DE2 /* ChangeNameView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7299A29B2627000EB0DE2 /* ChangeNameView_Backup.swift */; };
+		20132E9A2A595531005DD434 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20132E992A595531005DD434 /* Sequence.swift */; };
 		20145D632A10A19400946D88 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20145D622A10A19400946D88 /* LoginService.swift */; };
+		201F5C4E2A2C96230062C498 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201F5C4D2A2C96230062C498 /* SettingViewModel.swift */; };
 		2058DAB329D82298006F0E44 /* ResponseMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058DAB229D82298006F0E44 /* ResponseMessageEntity.swift */; };
 		2058DAB629D827CD006F0E44 /* CollectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058DAB529D827CD006F0E44 /* CollectionListViewModel.swift */; };
 		2058DAB829D832FC006F0E44 /* CollectionCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058DAB729D832FC006F0E44 /* CollectionCharacter.swift */; };
@@ -91,7 +93,9 @@
 		11782482298B8F84000C640E /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		11782484298B8F9D000C640E /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
 		11C7299A29B2627000EB0DE2 /* ChangeNameView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameView_Backup.swift; sourceTree = "<group>"; };
+		20132E992A595531005DD434 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		20145D622A10A19400946D88 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		201F5C4D2A2C96230062C498 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		2058DAB229D82298006F0E44 /* ResponseMessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageEntity.swift; sourceTree = "<group>"; };
 		2058DAB529D827CD006F0E44 /* CollectionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListViewModel.swift; sourceTree = "<group>"; };
 		2058DAB729D832FC006F0E44 /* CollectionCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCharacter.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				D5C02EB529A7695E000BB76E /* Extension+View.swift */,
+				20132E992A595531005DD434 /* Sequence.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 				D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */,
 				223253E829CF6C2D002BDE0F /* SignOutViewModel.swift */,
 				2058DAB529D827CD006F0E44 /* CollectionListViewModel.swift */,
+				201F5C4D2A2C96230062C498 /* SettingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				D514C9A9298BB463002E4E5A /* InputUserNameEntity.swift in Sources */,
 				D5F8C23B297BF22A004C6146 /* SettingsView_Backup.swift in Sources */,
 				2071C01A29BC97D30099A63C /* GitProfileView.swift in Sources */,
+				20132E9A2A595531005DD434 /* Sequence.swift in Sources */,
 				20B2F21829AB3644007E947D /* RootCoordinatorView.swift in Sources */,
 				20CA8C1229D0940D00608DFD /* CommonView.swift in Sources */,
 				2058DAB829D832FC006F0E44 /* CollectionCharacter.swift in Sources */,
@@ -629,6 +636,7 @@
 				D56FE8152987FAD300374A9A /* User.swift in Sources */,
 				D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */,
 				20D138AD29CD5A4500FC7A9C /* ResultEntity.swift in Sources */,
+				201F5C4E2A2C96230062C498 /* SettingViewModel.swift in Sources */,
 				D56FE81F29882ABD00374A9A /* SearchGitUserView.swift in Sources */,
 				20E199BF29C204FD00FE6DCD /* ParticipatingListView.swift in Sources */,
 				2281F942297DBC9F000649A9 /* SearchGitUser.swift in Sources */,

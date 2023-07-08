@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CollectionCharacter: Identifiable {
+struct CollectionCharacter: Identifiable, Hashable {
     var name: String
     var image: String
     var id: String {

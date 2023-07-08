@@ -12,14 +12,14 @@ import SwiftUI
 // 일반 View
 
 enum RootPage: String, Identifiable {
-    case signInView, homeView, participatingListView, settingView
+    case signInView, homeView, collectionView, settingView
     var id: String {
         self.rawValue
     }
 }
 
 enum Page: String, Identifiable {
-    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView
+    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView, collectionView
     var id: String {
         self.rawValue
     }
@@ -66,8 +66,9 @@ class Coordinator: ObservableObject {
     // @Published @ObservableObject 프로토콜 준수해야 사용 가능
     @Published var sigInViewPath: NavigationPath
     @Published var homeViewPath: NavigationPath
-    @Published var participatingListViewPath: NavigationPath
+    //@Published var participatingListViewPath: NavigationPath
     @Published var settingViewPath: NavigationPath
+    @Published var collectionViewPath: NavigationPath
     
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
@@ -89,7 +90,8 @@ class Coordinator: ObservableObject {
     init(isExistLoginHistory: Bool) {
         self.sigInViewPath = NavigationPath()
         self.homeViewPath = NavigationPath()
-        self.participatingListViewPath = NavigationPath()
+        //self.participatingListViewPath = NavigationPath()
+        self.collectionViewPath = NavigationPath()
         self.settingViewPath = NavigationPath()
         self.isLoading = false
         self.isPopuping = false
@@ -110,8 +112,8 @@ class Coordinator: ObservableObject {
             sigInViewPath.append(page)
         case .homeView:
             homeViewPath.append(page)
-        case .participatingListView:
-            participatingListViewPath.append(page)
+        case .collectionView:
+            collectionViewPath.append(page)
         case .settingView:
             settingViewPath.append(page)
         }
@@ -145,9 +147,13 @@ class Coordinator: ObservableObject {
             if(homeViewPath.isEmpty == false) {
                 homeViewPath.removeLast()
             }
-        case .participatingListView:
-            if(participatingListViewPath.isEmpty == false) {
-                participatingListViewPath.removeLast()
+//        case .participatingListView:
+//            if(participatingListViewPath.isEmpty == false) {
+//                participatingListViewPath.removeLast()
+//            }
+        case .collectionView:
+            if(collectionViewPath.isEmpty == false) {
+                collectionViewPath.removeLast()
             }
         case .settingView:
             if(settingViewPath.isEmpty == false) {
@@ -156,13 +162,16 @@ class Coordinator: ObservableObject {
         }
     }
     func popToRoot() {
+        self.tabSelection = 1
         switch rootPage {
         case .signInView:
             sigInViewPath.removeLast(sigInViewPath.count)
         case .homeView:
             homeViewPath.removeLast(homeViewPath.count)
-        case .participatingListView:
-            participatingListViewPath.removeLast(participatingListViewPath.count)
+//        case .participatingListView:
+//            participatingListViewPath.removeLast(participatingListViewPath.count)
+        case .collectionView:
+            collectionViewPath.removeLast(collectionViewPath.count)
         case .settingView:
             settingViewPath.removeLast(settingViewPath.count)
         }
@@ -222,6 +231,8 @@ class Coordinator: ObservableObject {
             ParticipatingListView()
         case .homeView:
             HomeView()
+        case .collectionView:
+            CollectionListView()
         case .settingView:
             SettingsView()
         case .participatingDetailView:
@@ -254,7 +265,11 @@ class Coordinator: ObservableObject {
     func build(fullScreenCover: FullScreenCover) -> some View {
         switch fullScreenCover {
         case .checkGitUserPopup: NavigationStack {
-            //CheckGitUserPopup()
+            let userName = LoginService.shared.getGithubUserName()
+            let userImage = LoginService.shared.getGithubUserImageUrl()
+            
+            GromitPopupView(popupType: .gitProfileView, buttonType: .twoButton, userName: userName ?? "" , urlString: userImage ?? "",  okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         }
         case .nickNameCreateView: NavigationStack {
             InputUserNameView()

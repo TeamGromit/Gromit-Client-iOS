@@ -76,11 +76,11 @@ struct HomeButtons: View {
             }
             
             Spacer()
-            Button {
-                coordinator.present(sheet: .collectionView)
-            } label: {
-                Image("collection")
-            }
+//            Button {
+//                coordinator.present(sheet: .collectionView)
+//            } label: {
+//                Image("collection")
+//            }
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }

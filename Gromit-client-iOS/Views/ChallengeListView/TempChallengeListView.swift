@@ -18,7 +18,7 @@ struct TempChallengeListView: View {
             NavigationView {
                 VStack {
                     NavigationBarView(isActiveLeftButton: true, isActiveRightButton: false, title: "전체 챌린지", leftButtonTitle: "뒤로가기", leftButtonTapped: {
-                        coordinator.pop(.participatingListView)
+                        //coordinator.pop(.participatingListView)
                     })
 //                    HStack {
 //                        Spacer()

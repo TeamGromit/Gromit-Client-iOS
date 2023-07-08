@@ -86,6 +86,7 @@ class SignOutViewModel: ObservableObject {
                 if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
                     print(response)
                     if(responseMessage.code == 1000) {
+                        
                         print("탈퇴완료!")
                     } else {
                         
@@ -96,9 +97,3 @@ class SignOutViewModel: ObservableObject {
     }
 }
 
-struct ResponseSignOutMessage: Codable {
-    let code: Int?
-    let isSuccess: Bool?
-    let message: String?
-    let result: String?
-}

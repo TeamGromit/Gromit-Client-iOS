@@ -11,16 +11,17 @@ import Alamofire
 class CollectionListViewModel: ObservableObject {
     
     enum OutputEvent {
-        case requestError
+        case requestError, loading, loaded
     }
     
     @Published var outputEvent: OutputEvent? = nil
     @Published var isLoading: Bool = false
     @Published var collectionCharacters: [CollectionCharacter] = []
+    let collectionCharacterCount = 10;
     
     init() {
         print("CollectionListViewModel")
-        requestCollections()
+        //requestCollections()
     }
     
     func requestCollections() {
@@ -28,28 +29,31 @@ class CollectionListViewModel: ObservableObject {
         
         guard let token = AppDataService.shared.getData(appData: .accessToken) else {
             print("Guard Error token is nil")
-            isLoading = false
+            outputEvent = .loaded
             return
         }
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "X-AUTH-TOKEN": token
         ]
-        
+        outputEvent = .loading
+
         NetworkingClinet.shared.request(serviceURL: .requestCollections, httpMethod: .get, headers: headers, type: ResponseMessage<[CollectionResult]>.self, completion: {
             responseData, error in
             if let error = error {
                 self.outputEvent = .requestError
-                self.isLoading = false
+                self.outputEvent = .loaded
             } else {
                 if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
                     if(code == 1000) {
                         if let responseResults = responseMessage.result{
-                            self.collectionCharacters = responseResults.map{ element in
+                            var responseCharecters = responseResults.map{ element in
                                 return CollectionCharacter(name: element.name ?? "", image: element.img ?? "")
                             }
+                            self.collectionCharacters = responseCharecters.uniqued()
+                            self.outputEvent = .loaded
+
                         }
-                        self.isLoading = false
                     }
                 }
             }

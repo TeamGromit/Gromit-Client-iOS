@@ -17,7 +17,7 @@ struct ParticipatingListView: View {
                 HStack {
                     NavigationBarView(isActiveLeftButton: true, isActiveRightButton: true, title: "참여 챌린지", leftButtonTitle: "전체 챌린지", rightButtonTitle: "챌린지 생성"
                     , leftButtonTapped: {
-                        coordinator.push(.participatingListView, page: .challengeListView)
+                        //coordinator.push(.participatingListView, page: .challengeListView)
                     }, rightButtonTapped: {
                         coordinator.present(sheet: .creationView)
                     })
@@ -70,7 +70,7 @@ struct TempParticipatingCell: View {
                     .cornerRadius(20)
                     .shadow(color: Color("gray500"), radius: 5, y: 5)
                     .onTapGesture {
-                        coordinator.push(.participatingListView, page: .participatingDetailView, challenge: challenge)
+                        //coordinator.push(.participatingListView, page: .participatingDetailView, challenge: challenge)
                     }
 //                    NavigationLink(destination: TempParticipatingDetailView(challenge: challenge)) {
 //                        EmptyView()

@@ -64,7 +64,9 @@ class LoginService {
         AppDataService.shared.initData(appData: .email)
         AppDataService.shared.initData(appData: .accessToken)
         AppDataService.shared.initData(appData: .refreshToken)
-        
+        AppDataService.shared.initData(appData: .gromitUserName)
+        AppDataService.shared.initData(appData: .githubUserName)
+        AppDataService.shared.initData(appData: .githubProfileImage)
     }
     
     func saveLoginHistory() {

@@ -10,8 +10,8 @@ import SwiftUI
 struct RootCoordinatorView: View {
     // MARK: 로그인 이력 체크
     @StateObject private var coordinator = Coordinator(isExistLoginHistory: LoginService.shared.isExistLoginHistory())
-
-
+    
+    
     var body: some View {
         ZStack {
             if(coordinator.rootPage == .signInView) {
@@ -25,8 +25,8 @@ struct RootCoordinatorView: View {
                 }
             } else {
                 TabView(selection: $coordinator.tabSelection) {
-                    NavigationStack(path: $coordinator.participatingListViewPath) {
-                        coordinator.build(page: .participatingListView)
+                    NavigationStack(path: $coordinator.collectionViewPath) {
+                        coordinator.build(page: .collectionView)
                             .navigationDestination(for: Page.self) { page in
                                 coordinator.build(page: page)
                                     .navigationBarTitle("")
@@ -35,7 +35,7 @@ struct RootCoordinatorView: View {
                         
                     }
                     .tabItem{
-                        Image("challenge")
+                        Image("collection")
                     }.tag(1)
                     
                     NavigationStack(path: $coordinator.homeViewPath) {
@@ -57,14 +57,14 @@ struct RootCoordinatorView: View {
                                     .navigationBarTitle("")
                                     .navigationBarHidden(true)
                             }
-
+                        
                     }
                     .tabItem{
                         Image("settings")
                     }.tag(3)
                 }
             }
-        
+            
             if coordinator.isLoading {
                 coordinator.buildLoadingView()
             }
@@ -82,6 +82,7 @@ struct RootCoordinatorView: View {
             coordinator.build(sheet: sheet)
         }
         .environmentObject(coordinator)
+        
     }
     
     init() {
@@ -96,3 +97,4 @@ struct RootCoordinatorView_Previews: PreviewProvider {
         RootCoordinatorView()
     }
 }
+

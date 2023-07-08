@@ -33,24 +33,30 @@ class InputUserNameViewModel: ObservableObject {
         //postSignUp(rNickname: "", rgithubName: "", rEmail: "", rProvider: "")
     }
     
-    func inputUserName(rUserName: String) {
-        print(#fileID, #function, #line, "")
-        AF.request("\(GeneralAPI.baseURL)/users/check/\(rUserName)")
-            .publishDecodable(type: InputUserNameEntity.self)
-            .compactMap { $0.value }
-            .sink(receiveCompletion: { complete in
-                print("데이터스트림 완료")
-            }, receiveValue: { (receivedValue : InputUserNameEntity) in
-                print("받은 값: \(receivedValue.description)")
-                if (receivedValue.isSuccess) { // 성공
-                    self.responseUserName = receivedValue.result.nickname
-                } else { // 실패
-                    self.responseUserName = ""
-                }
-                self.responseMessage = receivedValue.message
-                print("code: \(receivedValue.code) / message: \(receivedValue.message)")
-            }).store(in: &subscription)
-    }
+//    func inputUserName(rUserName: String) {
+//        print(#fileID, #function, #line, "")
+//        AF.request("\(GeneralAPI.baseURL)/users/check/\(rUserName)")
+//            .publishDecodable(type: InputUserNameEntity.self)
+//            .compactMap { $0.value }
+//            .sink(receiveCompletion: { complete in
+//                print("데이터스트림 완료")
+//            }, receiveValue: { (receivedValue : InputUserNameEntity) in
+//                print("받은 값: \(receivedValue.description)")
+//                if (receivedValue.code == 1000) { // 성공
+//                    
+//                    self.responseUserName = receivedValue.result.nickname
+//                } else if(receivedValue.code == 3006){
+//
+//                }
+////                if (receivedValue.isSuccess) { // 성공
+////                    self.responseUserName = receivedValue.result.nickname
+////                } else { // 실패
+////                    self.responseUserName = ""
+////                }
+//                self.responseMessage = receivedValue.message
+//                print("code: \(receivedValue.code) / message: \(receivedValue.message)")
+//            }).store(in: &subscription)
+//    }
     
     func postSignUp(rNickname: String, rgithubName: String, rEmail: String, rProvider: String) {
         print(#fileID, #function, #line, "")
