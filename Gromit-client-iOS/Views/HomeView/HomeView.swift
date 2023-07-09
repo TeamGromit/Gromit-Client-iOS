@@ -27,6 +27,11 @@ struct HomeView: View {
             CharacterInfo()
         }
         .environmentObject(homeViewModel)
+        .onAppear {
+            homeViewModel.requestUserInfo()
+            // 프리뷰 오류시 해당 부분 주석처리
+            // 초기 데이터 값을 설정해주지 않았기 때문
+        }
         .onReceive(homeViewModel.$outputEvent) { event in
             if let event = event {
                 receiveViewModelEvent(event)
@@ -52,14 +57,14 @@ extension HomeView {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+        
     }
 }
 
 struct HomeButtons: View {
     @State private var showParticipating = false
-    @State private var showingSheet = false
     @EnvironmentObject private var homeViewModel: HomeViewModel
-
+    @EnvironmentObject private var coordinator: Coordinator
     
     var body: some View {
         
@@ -72,13 +77,10 @@ struct HomeButtons: View {
             
             Spacer()
 //            Button {
-//                showParticipating.toggle()
+//                coordinator.present(sheet: .collectionView)
 //            } label: {
 //                Image("collection")
 //            }
-        }
-        .sheet(isPresented: $showParticipating) {
-            CollectionListView()
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
     }

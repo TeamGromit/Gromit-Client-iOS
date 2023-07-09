@@ -7,11 +7,12 @@
 
 import Foundation
 import AuthenticationServices
+import Alamofire
 
 class SignInViewModel: ObservableObject {
     
     enum OutputEvent {
-        case checkNewMember, checkMember, errorNetwork, errorAppleToken, errorServer
+        case checkNewMember, checkMember, errorNetwork, errorAppleToken, errorServer, failAppleLogin, timeOutNetworking
     }
     
     @Published var outputEvent: OutputEvent? = nil
@@ -20,7 +21,7 @@ class SignInViewModel: ObservableObject {
     
     
     func appleLogin() {
-        appleSignInDelegates = SignInWithAppleDelegate(onSignedIn: requestLogin)
+        appleSignInDelegates = SignInWithAppleDelegate(onSignedIn: requestLogin, onFail: appleLoginFail)
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
@@ -30,33 +31,48 @@ class SignInViewModel: ObservableObject {
         authorizationController.performRequests()
     }
     
-    func requestLogin(token: String) {
-        NetworkingClinet.shared.request(serviceURL: .requestPostLogin, httpMethod: .post, parameter: RequestLoginMessage(token: token), type: ResponseLoginMessage.self) { responseData, error in
+    func appleLoginFail() {
+        self.outputEvent = .failAppleLogin
+    }
+    
+    func requestLogin(appleToken: String, email: String) {
+//        let headers: HTTPHeaders = [
+//            "Content-Type": "application/json",
+//            "X-AUTH-TOKEN": appleToken
+//        ]
+        
+        NetworkingClinet.shared.request(serviceURL: .requestPostLogin, httpMethod: .post,  parameter: RequestLoginMessage(token: appleToken), type: ResponseLoginMessage.self) { responseData, error in
             if let error = error {
-                
+                if error._code == 13 {
+                    print("Request timeout!")
+                    self.outputEvent = .timeOutNetworking
+
+                } else {
+                    print("Other error!")
+
+                }
+//                }
             } else {
                 if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
-                    if let debugMessage = responseData.0 {
-                        print(debugMessage)
-                    }
-
                     if(code == 1000) {
-                        // 기존 회원
-                        // 테스트를 위함
-                        self.outputEvent = .checkMember
                         if let result = responseMessage.result {
-                            if let accessToken = result.accessToken {
-                                AppDataService.shared.setData(appData: .accessToken, value: accessToken)
+                            guard let accessToken = result.accessToken else {
+                                return
                             }
-                            
-                            if let refreshToken = result.refreshToken {
-                                AppDataService.shared.setData(appData: .refreshToken, value: refreshToken)
+                            guard let refreshToken = result.refreshToken else {
+                                return
                             }
+                            LoginService.shared.setLoginInfo(email: email, accessToken: accessToken, refreshToken: refreshToken)
+                            LoginService.shared.saveLoginHistory()
+                            self.outputEvent = .checkMember
                         }
-                        //self.outputEvent = .checkMember
                     } else if(code == 3005) {
                         // 신규 회원
+                        LoginService.shared.setLoginInfo(email: email)
+
                         self.outputEvent = .checkNewMember
+                        //LoginService.shared.setLoginInfo(email: email, accessToken: accessToken, refreshToken: refreshToken)
+
                     } else if(code == 3002) {
                         // 애플 통신 실패
                         self.outputEvent = .errorNetwork

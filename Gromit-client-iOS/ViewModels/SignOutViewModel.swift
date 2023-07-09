@@ -13,39 +13,39 @@ import AuthenticationServices
 class SignOutViewModel: ObservableObject {
     
     // MARK: - 애플 리프레시 토큰 발급
-//    func getAppleRefreshToken(code: String, completionHandler: @escaping (AppleTokenResponse) -> Void) {
-//        let url = "https://appleid.apple.com/auth/token"
-//        let header: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
-//        let parameters: Parameters = [
-//            "client_id": "teamgromit.gromit",
-//            "client_secret": "1번의jwt토큰",
-//            "code": code,
-//            "grant_type": "authorization_code"
-//        ]
-//
-//        AF.request(url,
-//                   method: .post,
-//                   parameters: parameters,
-//                   headers: header)
-//        .validate(statusCode: 200..<600)
-//        .responseData { response in
-//            switch response.result {
-//            case .success:
-//                guard let data = response.data else { return }
-//                let responseData = JSON(data)
-//                print(responseData)
-//
-//                guard let output = try? JSONDecoder().decode(AppleTokenResponse.self, from: data) else {
-//                    print("Error: JSON Data Parsing failed")
-//                    return
-//                }
-//
-//                completionHandler(output)
-//            case .failure:
-//                print("애플 토큰 발급 실패 - \(response.error.debugDescription)")
-//            }
-//        }
-//    }
+    //    func getAppleRefreshToken(code: String, completionHandler: @escaping (AppleTokenResponse) -> Void) {
+    //        let url = "https://appleid.apple.com/auth/token"
+    //        let header: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+    //        let parameters: Parameters = [
+    //            "client_id": "teamgromit.gromit",
+    //            "client_secret": "1번의jwt토큰",
+    //            "code": code,
+    //            "grant_type": "authorization_code"
+    //        ]
+    //
+    //        AF.request(url,
+    //                   method: .post,
+    //                   parameters: parameters,
+    //                   headers: header)
+    //        .validate(statusCode: 200..<600)
+    //        .responseData { response in
+    //            switch response.result {
+    //            case .success:
+    //                guard let data = response.data else { return }
+    //                let responseData = JSON(data)
+    //                print(responseData)
+    //
+    //                guard let output = try? JSONDecoder().decode(AppleTokenResponse.self, from: data) else {
+    //                    print("Error: JSON Data Parsing failed")
+    //                    return
+    //                }
+    //
+    //                completionHandler(output)
+    //            case .failure:
+    //                print("애플 토큰 발급 실패 - \(response.error.debugDescription)")
+    //            }
+    //        }
+    //    }
     
     func revokeAppleToken(clientSecret: String, token: String, completionHandler: @escaping () -> Void) {
         let url = "https://appleid.apple.com/auth/revoke"
@@ -55,6 +55,21 @@ class SignOutViewModel: ObservableObject {
             "client_secret": clientSecret,
             "token": token
         ]
+
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: parameters,
+                   headers: header)
+        .validate(statusCode: 200..<600)
+        .responseData { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            if statusCode == 200 {
+                print("애플 토큰 삭제 성공!")
+                completionHandler()
+            }
+        }
+
         // 파라미터가 존재하는 경우 (진행중...)
 //        NetworkingClinet.shared.request(serviceURL: ., httpMethod: .post, parameter: parameters, headers: header, type: , completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
         // 파라미터가 존재하는 경우 (진행중...)
@@ -75,5 +90,33 @@ class SignOutViewModel: ObservableObject {
 //                completionHandler()
 //            }
 //        }
+
+    }
+    
+    func signOut() {
+        guard let token = LoginService.shared.accessToken else {
+            print("Guard Error token is nil")
+            return
+        }
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "X-AUTH-TOKEN": token
+        ]
+        NetworkingClinet.shared.request(serviceURL: .reqeustSignOut, httpMethod: .delete, headers: headers, type: ResponseSignOutMessage.self) { responseData, error in
+            if let error = error {
+                
+            } else {
+                if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
+                    print(response)
+                    if(responseMessage.code == 1000) {
+                        
+                        print("탈퇴완료!")
+                    } else {
+                        
+                    }
+                }
+            }
+        }
     }
 }
+

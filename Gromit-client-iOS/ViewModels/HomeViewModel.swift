@@ -10,6 +10,10 @@ import Alamofire
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    enum ReloadStatus {
+        case request, update, waiting, requestPrepare
+        
+    }
     
     enum OutputEvent {
         case requestError, loading, loaded
@@ -41,6 +45,9 @@ class HomeViewModel: ObservableObject {
     var goal: Int? = nil
     var commits: Int? = nil
     
+    var status: ReloadStatus = .requestPrepare
+    
+    private var reloadSeconds = 10
 //    "commits": 0,
 //            "todayCommit": 0,
 //            "level": 1,
@@ -49,60 +56,74 @@ class HomeViewModel: ObservableObject {
 //            "goal": 10
     init() {
         print("HomeViewModel init !")
-        requestUserInfo()
+    }
+    
+    func updateReloadStatus() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(reloadSeconds)) {
+            print("request Prepare")
+            self.status = .requestPrepare
+        }
     }
     
     func requestUserInfo() {
-        outputEvent = .loading
-        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
-            print("Guard Error token is nil")
-            outputEvent = .loaded
-            return
-        }
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "X-AUTH-TOKEN": token
-        ]
-        
-        NetworkingClinet.shared.request(serviceURL: .requestUserInfo, httpMethod: .get, headers: headers, type: RequestUserInfoEntity.self, completion: {
-            responseData, error in
-            if let error = error {
-                self.outputEvent = .requestError
-            } else {
-                if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
-                    if(code == 1000) {
-                        if let reponseMessageResult = responseMessage.result {
-                            if let commits = reponseMessageResult.commits {
-                                self.commits = commits
+        if(status == .requestPrepare && LoginService.shared.isExistLoginHistory()) {
+            outputEvent = .loading
+            status = .request
+            updateReloadStatus()
+            
+            guard let token = LoginService.shared.getAccessToken() else {
+                print("Guard Error token is nil")
+                outputEvent = .loaded
+                return
+            }
+            let headers: HTTPHeaders = [
+                "Content-Type": "application/json",
+                "X-AUTH-TOKEN": token
+            ]
+            
+            NetworkingClinet.shared.request(serviceURL: .requestUserInfo, httpMethod: .get, headers: headers, type: RequestUserInfoEntity.self, completion: {
+                responseData, error in
+                if let error = error {
+                    self.outputEvent = .requestError
+                    self.outputEvent = .loaded
+                } else {
+                    if let responseData = responseData, let responseMessage = responseData.1, let code = responseMessage.code {
+                        if(code == 1000) {
+                            if let reponseMessageResult = responseMessage.result {
+                                if let commits = reponseMessageResult.commits {
+                                    self.commits = commits
+                                }
+                                if let todayCommit = reponseMessageResult.todayCommit {
+                                    self.todayCommit = "\(todayCommit)"
+                                }
+                                if let level = reponseMessageResult.level {
+                                    self.level = level
+                                }
+                                if let name = reponseMessageResult.name {
+                                    self.name = name
+                                }
+                                if let imageURL = reponseMessageResult.img {
+                                    self.requestCharecterImg(url: imageURL)
+                                }
+                                if let goal = reponseMessageResult.goal {
+                                    self.goal = goal
+                                }
+                                
+                                self.updateLevelString()
+                                self.updateLevelBar()
                             }
-                            if let todayCommit = reponseMessageResult.todayCommit {
-                                self.todayCommit = "\(todayCommit)"
-                            }
-                            if let level = reponseMessageResult.level {
-                                self.level = level
-                            }
-                            if let name = reponseMessageResult.name {
-                                self.name = name
-                            }
-                            if let imageURL = reponseMessageResult.img {
-                                self.requestCharecterImg(url: imageURL)
-                            }
-                            if let goal = reponseMessageResult.goal {
-                                self.goal = goal
-                            }
-                            
-                            self.updateLevelString()
-                            self.updateLevelBar()
                         }
                     }
+                    
                 }
-            }
-        })
+            })
+        }
+        
     }
     
     func requestReloadUserInfo() {
         outputEvent = .loading
-        guard let token = AppDataService.shared.getData(appData: .accessToken) else {
+        guard let token = LoginService.shared.getAccessToken() else {
             print("Guard Error token is nil")
             outputEvent = .loaded
             return
@@ -141,6 +162,8 @@ class HomeViewModel: ObservableObject {
                             
                             self.updateLevelString()
                             self.updateLevelBar()
+                            self.outputEvent = .loaded
+
                         }
                     }
                 }
@@ -160,8 +183,11 @@ class HomeViewModel: ObservableObject {
     
     func updateLevelBar() {
         let goal = self.goal ?? 0
-        let commits = self.commits ?? 0
-
+        var commits = self.commits ?? 0
+        if(commits >= goal) {
+            commits = goal
+        }
+        
         self.levelBarPercent = Double(commits) / Double(goal)
     }
     

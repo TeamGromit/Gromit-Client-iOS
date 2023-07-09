@@ -7,17 +7,45 @@
 
 import SwiftUI
 
-var numOfMyCharacters = 2
-var numOfAllCharacters = 10
-
 struct CollectionListView: View {
+    
+    @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var collectionListViewModel = CollectionListViewModel()
+
+    init() {
+        print("CollectionListView init!")
+    }
     var body: some View {
-        VStack {
-            CollectionTitle()
-            
-            CollectionCount()
-            
-            CollectionCell()
+        ZStack {
+            VStack {
+                CollectionTitle()
+                
+                CollectionCount()
+                
+                CollectionCell()
+            }
+        }
+        .environmentObject(collectionListViewModel)
+        .onReceive(collectionListViewModel.$outputEvent) { event in
+            if let event = event {
+                receiveViewModelEvent(event)
+            }
+        }.onAppear {
+            collectionListViewModel.requestCollections()
+        }
+    }
+}
+
+extension CollectionListView {
+    private func receiveViewModelEvent(_ event: CollectionListViewModel.OutputEvent) {
+        switch event {
+        case .requestError:
+            break
+        case .loading:
+            coordinator.startLoading()
+        case .loaded:
+            coordinator.stopLoading()
+
         }
     }
 }
@@ -47,10 +75,13 @@ struct CollectionTitle: View {
 }
 
 struct CollectionCount: View {
+    @EnvironmentObject private var collectionListViewModel: CollectionListViewModel
+
+    
     var body: some View {
         HStack {
             Spacer()
-            Text("\(String(numOfMyCharacters)) / \(String(numOfAllCharacters))")
+            Text("\(String(collectionListViewModel.collectionCharacters.count)) / \(String(collectionListViewModel.collectionCharacterCount))")
                 .font(.system(size: 16))
                 .foregroundColor(Color(.gray))
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -64,9 +95,11 @@ struct CollectionCount: View {
 }
 
 struct CollectionCell: View {
-    @State private var containerWidth: CGFloat = 0
-    let myArray = Array(1...numOfMyCharacters).map { "목록 \($0)"}
-    let unKnownArray = Array(numOfMyCharacters...numOfAllCharacters).map { "목록 \($0)"}
+    @State private var containerWidth: CGFloat = 5
+    @EnvironmentObject private var collectionListViewModel: CollectionListViewModel
+
+//    let myArray = Array(1...numOfMyCharacters).map { "목록 \($0)"}
+//    let unKnownArray = Array(2...10).map { "목록 \($0)"}
     let columns = [
             GridItem(.adaptive(minimum: 100))
         ]
@@ -82,24 +115,35 @@ struct CollectionCell: View {
             }
             
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(myArray, id: \.self) { i in
+                
+                ForEach(collectionListViewModel.collectionCharacters) { character in
                     VStack {
+                        ZStack {
                         RoundedRectangle(cornerRadius: 30)
                             .fill(Color("green300"))
-                            .frame(width: containerWidth, height: containerWidth)
+                            //.frame(width: containerWidth, height: containerWidth)
+                            .frame(width: 100, height: 100)
                             .overlay(RoundedRectangle(cornerRadius: 30)
                                 .stroke(Color("gray500")))
                             
-                        Text("캐릭터 이름")
+                            URLImage(urlString: character.image)
+                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: containerWidth - 10, height: containerWidth - 10)
+                                .frame(width: 90, height: 90)
+                                .cornerRadius(30)
+                            
+                        }
+                        Text(character.name)
                             .font(.system(size: 16))
                     }
                 }
-                ForEach(unKnownArray, id: \.self) { i in
+                
+                ForEach(collectionListViewModel.collectionCharacters.count..<collectionListViewModel.collectionCharacterCount, id: \.self) { i in
                     VStack {
                         RoundedRectangle(cornerRadius: 30)
                             .fill(Color("gray500"))
-                            .frame(width: containerWidth, height: containerWidth)
-                       
+                            .frame(width: 100, height: 100)
+
                         Text("???")
                             .font(.system(size: 16))
                     }

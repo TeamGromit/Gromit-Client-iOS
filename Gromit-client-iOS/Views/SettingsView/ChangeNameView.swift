@@ -127,12 +127,15 @@ extension ChangeNameView {
                     coordinator.closePopup()
                 })
             case .isNotExistGromitUser:
+                LoginService.shared.setLoginInfo(gromitUserName: userNickname);
                 coordinator.openPopup(popup: .isNotExistGromitUser, okAction: {
                     coordinator.closePopup()
                     coordinator.startLoading()
                     changeNameViewModel.reqeustChangeUserNickName(userNickname)
                     //inputUserNameViewModel.requestSignUpUser(userNickname)
                 }, cancleAction: {
+                    LoginService.shared.initGromitUserName()
+
                     coordinator.closePopup()
                 })
             case .changeGromitNickName:

@@ -21,6 +21,10 @@ class AppDataService {
         UserDefaults.standard.set(value, forKey: appData.rawValue)
     }
     
+    func initData(appData: AppData) {
+        UserDefaults.standard.set(nil, forKey: appData.rawValue)
+    }
+    
     func getData(appData: AppData) -> String? {
         return UserDefaults.standard.string(forKey: appData.rawValue)
     }
@@ -39,13 +43,20 @@ class AppDataService {
         print("provider = \(provider), email = \(email), accessToken = \(accessToken), refreshToken = \(refreshToken), githubUserName = \(githubUserName). githubProfileImage = \(githubProfileImage), gromitUserName = \(gromitUserName)")
     }
     
+
+    func checkSignIn() -> Bool {
+        guard let email = getData(appData: .email) else {
+            return false
+        }
+        guard let accessToken = getData(appData: .accessToken) else {
+            return false
+        }
+        return true
+    }
+    
     func removeToken() {
         UserDefaults.standard.removeObject(forKey: "accessToken")
         UserDefaults.standard.removeObject(forKey: "refreshToken")
     }
-    
-    init() {
-      
-        
-    }
+   
 }

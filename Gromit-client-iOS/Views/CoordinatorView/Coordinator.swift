@@ -12,14 +12,14 @@ import SwiftUI
 // 일반 View
 
 enum RootPage: String, Identifiable {
-    case signInView, homeView, participatingListView, settingView, collectionListView
+    case signInView, homeView, collectionView, settingView
     var id: String {
         self.rawValue
     }
 }
 
 enum Page: String, Identifiable {
-    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView, collectionListView
+    case signInView, gitHubNameCheckView, inputUserNameView, challengeListView, participatingListView, participatingDetailView, homeView, settingView, changeGromitUserNameView, collectionView
     var id: String {
         self.rawValue
     }
@@ -29,7 +29,7 @@ enum Page: String, Identifiable {
 // Modal과 흡사
 // 호출 뷰와 상속 관계가 아닌..?
 enum Sheet: String, Identifiable {
-    case test, creationView
+    case test, creationView, collectionView
     var id: String {
         self.rawValue
     }
@@ -54,7 +54,7 @@ enum AlertPopup: String, Identifiable {
 }
 
 enum Popup: String, Identifiable {
-    case isCheckGitUser, requestServerError, emptyUserName, isNotExistGitUser, isExistGromitUser, isNotExistGromitUser, signInError, changeGromitUserName
+    case isCheckGitUser, requestServerError, emptyUserName, isNotExistGitUser, isExistGromitUser, isNotExistGromitUser, signInError, changeGromitUserName, failAppleSignIn, timeOutNetwork
     var id: String {
         self.rawValue
     }
@@ -66,9 +66,9 @@ class Coordinator: ObservableObject {
     // @Published @ObservableObject 프로토콜 준수해야 사용 가능
     @Published var sigInViewPath: NavigationPath
     @Published var homeViewPath: NavigationPath
-    @Published var participatingListViewPath: NavigationPath
+    //@Published var participatingListViewPath: NavigationPath
     @Published var settingViewPath: NavigationPath
-    @Published var collectionListViewPath: NavigationPath
+    @Published var collectionViewPath: NavigationPath
     
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
@@ -79,9 +79,7 @@ class Coordinator: ObservableObject {
     @Published var isPopuping: Bool
     
     @Published var tabSelection: Int
-
-    
-    @AppStorage("rootPage") var rootPage: RootPage = .signInView
+    @Published var rootPage: RootPage
     
     var alertOKAction: (() -> Void)?
     var popupOKAction: (() -> Void)?
@@ -89,17 +87,22 @@ class Coordinator: ObservableObject {
     
     var selectChallenge: Challenge?
     
-    init() {
-
+    init(isExistLoginHistory: Bool) {
         self.sigInViewPath = NavigationPath()
         self.homeViewPath = NavigationPath()
-        self.participatingListViewPath = NavigationPath()
+        //self.participatingListViewPath = NavigationPath()
+        self.collectionViewPath = NavigationPath()
         self.settingViewPath = NavigationPath()
-        self.collectionListViewPath = NavigationPath()
+        //self.collectionListViewPath = NavigationPath()
         self.isLoading = false
         self.isPopuping = false
         self.tabSelection = 2
         
+        if(isExistLoginHistory) {
+            self.rootPage = .homeView
+        } else {
+            self.rootPage = .signInView
+        }
         print("Coordinator Init!! \(rootPage)")
     }
     
@@ -110,12 +113,12 @@ class Coordinator: ObservableObject {
             sigInViewPath.append(page)
         case .homeView:
             homeViewPath.append(page)
-        case .participatingListView:
-            participatingListViewPath.append(page)
+        case .collectionView:
+            collectionViewPath.append(page)
         case .settingView:
             settingViewPath.append(page)
-        case .collectionListView:
-            collectionListViewPath.append(page)
+//        case .collectionListView:
+//            collectionListViewPath.append(page)
         }
         
         if let challenge = challenge {
@@ -147,32 +150,39 @@ class Coordinator: ObservableObject {
             if(homeViewPath.isEmpty == false) {
                 homeViewPath.removeLast()
             }
-        case .participatingListView:
-            if(participatingListViewPath.isEmpty == false) {
-                participatingListViewPath.removeLast()
+//        case .participatingListView:
+//            if(participatingListViewPath.isEmpty == false) {
+//                participatingListViewPath.removeLast()
+//            }
+        case .collectionView:
+            if(collectionViewPath.isEmpty == false) {
+                collectionViewPath.removeLast()
             }
         case .settingView:
             if(settingViewPath.isEmpty == false) {
                 settingViewPath.removeLast()
             }
-        case .collectionListView:
-            if(collectionListViewPath.isEmpty == false) {
-                collectionListViewPath.removeLast()
-            }
+//        case .collectionListView:
+//            if(collectionListViewPath.isEmpty == false) {
+//                collectionListViewPath.removeLast()
+//            }
         }
     }
     func popToRoot() {
+        self.tabSelection = 2
         switch rootPage {
         case .signInView:
             sigInViewPath.removeLast(sigInViewPath.count)
         case .homeView:
             homeViewPath.removeLast(homeViewPath.count)
-        case .participatingListView:
-            participatingListViewPath.removeLast(participatingListViewPath.count)
+//        case .participatingListView:
+//            participatingListViewPath.removeLast(participatingListViewPath.count)
+        case .collectionView:
+            collectionViewPath.removeLast(collectionViewPath.count)
         case .settingView:
             settingViewPath.removeLast(settingViewPath.count)
-        case .collectionListView:
-            collectionListViewPath.removeLast(collectionListViewPath.count)
+//        case .collectionListView:
+//            collectionListViewPath.removeLast(collectionListViewPath.count)
         }
     }
     
@@ -230,18 +240,20 @@ class Coordinator: ObservableObject {
             ParticipatingListView()
         case .homeView:
             HomeView()
+        case .collectionView:
+            CollectionListView()
         case .settingView:
             SettingView()
         case .participatingDetailView:
             if let selectChallenge = selectChallenge {
-                TempParticipatingDetailView(challenge: selectChallenge)
+                ParticipatingDetailView(challenge: selectChallenge)
             } else {
                 EmptyView()
             }
         case .changeGromitUserNameView:
             ChangeNameView()
-        case .collectionListView:
-            CollectionListView()
+//        case .collectionListView:
+//            CollectionListView()
         }
     }
     
@@ -255,6 +267,8 @@ class Coordinator: ObservableObject {
             }
         case .creationView:
             CreationView()
+        case .collectionView:
+            CollectionListView()
         }
     }
     
@@ -262,7 +276,11 @@ class Coordinator: ObservableObject {
     func build(fullScreenCover: FullScreenCover) -> some View {
         switch fullScreenCover {
         case .checkGitUserPopup: NavigationStack {
-            //CheckGitUserPopup()
+            let userName = LoginService.shared.getGithubUserName()
+            let userImage = LoginService.shared.getGithubUserImageUrl()
+            
+            GromitPopupView(popupType: .gitProfileView, buttonType: .twoButton, userName: userName ?? "" , urlString: userImage ?? "",  okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+            
         }
         case .nickNameCreateView: NavigationStack {
             InputUserNameView()
@@ -343,32 +361,33 @@ class Coordinator: ObservableObject {
 
         switch self.popup{
         case .isCheckGitUser:
-            let userName = AppDataService.shared.getData(appData: .gromitUserName)
-            let userImage = AppDataService.shared.getData(appData: .githubProfileImage)
+            let userName = LoginService.shared.getGithubUserName()
+            let userImage = LoginService.shared.getGithubUserImageUrl()
+            
             GromitPopupView(popupType: .gitProfileView, buttonType: .twoButton, userName: userName ?? "" , urlString: userImage ?? "",  okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
             
         case .isNotExistGitUser:
             GromitPopupView(popupType: .message, title: "존재하지 않는 유저명!", message: "유저명을 확인해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .requestServerError:
             GromitPopupView(popupType: .message, title: "네트워크 서버 오류!", message: "관리자에게 오류를 보고해주세요.", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .emptyUserName:
             GromitPopupView(popupType: .message, title: "입력 오류!", message: "값을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .none:
             GromitPopupView(popupType: .message, title: "", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
         case .isExistGromitUser:
-            GromitPopupView(popupType: .message, title: "유저명 중복!", message: "다른 유저명을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
+            let gromitUserName = LoginService.shared.getGromitUserName() ?? ""
+            GromitPopupView(popupType: .message, title: "유저명 중복!", message: "\(gromitUserName) 이외 유저명을 입력해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .isNotExistGromitUser:
-            GromitPopupView(popupType: .message, buttonType: .twoButton, title: "유저명 확인!", message: "해당 유저명으로 가입하시겠습니까!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
-            
+            let gromitUserName = LoginService.shared.getGromitUserName() ?? ""
+            GromitPopupView(popupType: .message, buttonType: .twoButton, title: "유저명 확인!", message: "\(gromitUserName)으로 가입하시겠습니까!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .signInError:
             GromitPopupView(popupType: .message, title: "가입 오류!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         case .changeGromitUserName:
             GromitPopupView(popupType: .message, title: "닉네임 변경 완료!", message: "", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+        case .failAppleSignIn:
+            GromitPopupView(popupType: .message, title: "애플 로그인 오류!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
+        case .timeOutNetwork:
+            GromitPopupView(popupType: .message, title: "요청 시간 초과!", message: "관리자에게 오류를 보고해주세요!", okDelegate:  popupOKAction, cancleDelegate: popupCancleAction)
         }
     }
 }

@@ -18,7 +18,7 @@ struct ChallengeListView: View {
             NavigationView {
                 VStack {
                     NavigationBarView(isActiveLeftButton: true, isActiveRightButton: false, title: "전체 챌린지", leftButtonTitle: "뒤로가기", leftButtonTapped: {
-                        coordinator.pop(.participatingListView)
+                        //coordinator.pop(.participatingListView)
                     })
                     Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1, alignment: .center).padding(EdgeInsets(top: 3, leading: 20, bottom: 3, trailing: 20))
                     ChallengeCell()
