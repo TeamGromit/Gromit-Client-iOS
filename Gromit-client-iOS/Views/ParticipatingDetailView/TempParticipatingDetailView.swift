@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct ParticipatingDetailView: View {
-    var challenge: ParticipatingChallenge
+struct TempParticipatingDetailView: View {
+    var challenge: Challenge
     @EnvironmentObject private var coordinator: Coordinator
 
     
     var body: some View {
         VStack(spacing: 0) {
             NavigationBarView(isActiveLeftButton: true, isActiveRightButton: true, title: "참여 챌린지", leftButtonTitle: "뒤로가기", rightButtonTitle: "삭제", leftButtonTapped: {
-                    //coordinator.pop(.participatingListView)
+                    coordinator.pop(.participatingListView)
             }, rightButtonTapped: {
                 
             })
@@ -61,7 +61,7 @@ struct ParticipatingDetailView: View {
                         .font(.system(size: 16))
                         .lineLimit(1)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
-                        ProgressMemberBar()
+                        TempProgressMemberBar()
                     }
                     .padding(EdgeInsets(top: 20, leading: 20, bottom: 10, trailing: 20))
                     .background(Color("yellow500"))
@@ -81,7 +81,7 @@ struct ParticipatingDetailView: View {
     }
 }
 
-struct ProgressMemberBar: View {
+struct TempProgressMemberBar: View {
     @State private var containerWidth: CGFloat = 0
     @State private var step = 100
     private let goal = 120
@@ -111,8 +111,8 @@ struct ProgressMemberBar: View {
 }
 
 
-struct ParticipatingDetailView_Previews: PreviewProvider {
+struct TempParticipatingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ParticipatingDetailView(challenge: ChallengeList.participatingList.first!)
+        TempParticipatingDetailView(challenge: ChallengeList.participatingList.first!)
     }
 }

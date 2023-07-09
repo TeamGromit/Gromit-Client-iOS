@@ -34,7 +34,7 @@ struct SettingsView: View {
                         )
                     }
                 }
-                Link(" 이용약관", destination: URL(string: "https://www.notion.so/Gromit-Team-27c8612cb66a446b962b1fb29f8957d4")!)
+                Link(" 이용 약관", destination: URL(string: "https://www.notion.so/Gromit-Team-27c8612cb66a446b962b1fb29f8957d4")!)
                     .foregroundColor(.black)
                 
                 Text(" 버전 정보")

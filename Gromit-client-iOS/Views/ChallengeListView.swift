@@ -33,12 +33,11 @@ struct ChallengeCell: View {
     @State var showDetail = false
     @StateObject var challengeListViewModel = ChallengeListViewModel()
     // dummy data
-//    var challenges: [Challenge] = AllChallengeList.allChallengeList
+    var challenges: [Challenge] = ChallengeList.allChallengeList
     
     var body: some View {
         // Detail view와 Model 연결 작업중...
-//        List(challenges, id: \.id) { challenge in
-        List(challengeListViewModel.challenges, id: \.id) { challenge in
+        List(challenges, id: \.id) { challenge in
             // 로그 출력이 안됨... 왜지?
             let _ = print("챌린지: \(challenge)")
             VStack(alignment: .leading, spacing: 5) {
@@ -48,12 +47,12 @@ struct ChallengeCell: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 HStack {
                     Spacer()
-                    Text(challenge.date)
+                    Text(challenge.startDate)
                 }
                 HStack {
                     Text("목표 커밋: \(challenge.goal)")
                     Spacer()
-                    Text("\(challenge.headCount) / \(challenge.maxHead)")
+                    Text("\(challenge.currentMemberNum) / \(challenge.recuits)")
                 }
             }
             .padding(EdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30))
