@@ -16,8 +16,8 @@ struct SettingView: View {
     @State private var showSignInView = false
     @State var date = Date()
     
-    @EnvironmentObject private var coordinator: Coordinator
     @StateObject private var settingsViewModel = SettingsViewModel()
+    @EnvironmentObject private var coordinator: Coordinator
     
     init() {
         print("SettingView init!")
@@ -38,7 +38,7 @@ struct SettingView: View {
                 }
             }
             
-            Link("이용 약관", destination: URL(string: "https://www.notion.so/Gromit-Team-27c8612cb66a446b962b1fb29f8957d4")!)
+            Link("이용 약관", destination: URL(string: "https://www.notion.so/Gromit-67f86ba5f9fc47abb6b7061016e37395?pvs=4")!)
                 .foregroundColor(.black)
             
             HStack {
