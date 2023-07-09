@@ -69,6 +69,10 @@ class LoginService {
         AppDataService.shared.initData(appData: .githubProfileImage)
     }
     
+    func initGromitUserName() {
+        AppDataService.shared.initData(appData: .gromitUserName)
+    }
+    
     func saveLoginHistory() {
         guard let email = self.email, let accessToken = self.accessToken, let refreshToken = self.refreshToken else {
             return

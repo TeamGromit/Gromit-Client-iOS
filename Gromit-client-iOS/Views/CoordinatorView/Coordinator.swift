@@ -162,7 +162,7 @@ class Coordinator: ObservableObject {
         }
     }
     func popToRoot() {
-        self.tabSelection = 1
+        self.tabSelection = 2
         switch rootPage {
         case .signInView:
             sigInViewPath.removeLast(sigInViewPath.count)

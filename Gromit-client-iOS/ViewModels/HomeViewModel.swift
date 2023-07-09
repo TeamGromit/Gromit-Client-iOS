@@ -183,8 +183,11 @@ class HomeViewModel: ObservableObject {
     
     func updateLevelBar() {
         let goal = self.goal ?? 0
-        let commits = self.commits ?? 0
-
+        var commits = self.commits ?? 0
+        if(commits >= goal) {
+            commits = goal
+        }
+        
         self.levelBarPercent = Double(commits) / Double(goal)
     }
     
