@@ -24,11 +24,9 @@ class NetworkingClinet {
     }
     
     enum ServiceURL {
-<<<<<<< HEAD
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, requestCollections, reqeustSignOut, testGetURL, testPostURL, testPatchURL
-=======
-        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestSignOut, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, testGetURL, testPostURL, testPatchURL
->>>>>>> 541d7fe465e6a660b35bc0521825311761d7d3af
+
+        case requestPostLogin, requestPostSignUp, requestGetGitUser, requestGetNickName, requestChangeGromitNickName, requestUserInfo, requestReloadUserInfo, requestChallenges, requestCollections, reqeustSignOut, testGetURL, testPostURL, testPatchURL, requestSignOut
+
         var urlString: String {
             switch self {
             case .requestPostLogin:

@@ -93,7 +93,7 @@ class Coordinator: ObservableObject {
         //self.participatingListViewPath = NavigationPath()
         self.collectionViewPath = NavigationPath()
         self.settingViewPath = NavigationPath()
-        self.collectionListViewPath = NavigationPath()
+        //self.collectionListViewPath = NavigationPath()
         self.isLoading = false
         self.isPopuping = false
         self.tabSelection = 2
@@ -117,8 +117,8 @@ class Coordinator: ObservableObject {
             collectionViewPath.append(page)
         case .settingView:
             settingViewPath.append(page)
-        case .collectionListView:
-            collectionListViewPath.append(page)
+//        case .collectionListView:
+//            collectionListViewPath.append(page)
         }
         
         if let challenge = challenge {
@@ -162,10 +162,10 @@ class Coordinator: ObservableObject {
             if(settingViewPath.isEmpty == false) {
                 settingViewPath.removeLast()
             }
-        case .collectionListView:
-            if(collectionListViewPath.isEmpty == false) {
-                collectionListViewPath.removeLast()
-            }
+//        case .collectionListView:
+//            if(collectionListViewPath.isEmpty == false) {
+//                collectionListViewPath.removeLast()
+//            }
         }
     }
     func popToRoot() {
@@ -181,8 +181,8 @@ class Coordinator: ObservableObject {
             collectionViewPath.removeLast(collectionViewPath.count)
         case .settingView:
             settingViewPath.removeLast(settingViewPath.count)
-        case .collectionListView:
-            collectionListViewPath.removeLast(collectionListViewPath.count)
+//        case .collectionListView:
+//            collectionListViewPath.removeLast(collectionListViewPath.count)
         }
     }
     
@@ -252,8 +252,8 @@ class Coordinator: ObservableObject {
             }
         case .changeGromitUserNameView:
             ChangeNameView()
-        case .collectionListView:
-            CollectionListView()
+//        case .collectionListView:
+//            CollectionListView()
         }
     }
     

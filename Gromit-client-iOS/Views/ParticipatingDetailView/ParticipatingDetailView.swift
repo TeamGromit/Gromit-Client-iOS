@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ParticipatingDetailView: View {
-    var challenge: ParticipatingChallenge
+    var challenge: Challenge
     @EnvironmentObject private var coordinator: Coordinator
 
     

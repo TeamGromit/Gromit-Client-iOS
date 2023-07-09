@@ -43,7 +43,7 @@ class AppDataService {
         print("provider = \(provider), email = \(email), accessToken = \(accessToken), refreshToken = \(refreshToken), githubUserName = \(githubUserName). githubProfileImage = \(githubProfileImage), gromitUserName = \(gromitUserName)")
     }
     
-<<<<<<< HEAD
+
     func checkSignIn() -> Bool {
         guard let email = getData(appData: .email) else {
             return false
@@ -52,15 +52,11 @@ class AppDataService {
             return false
         }
         return true
-=======
+    }
+    
     func removeToken() {
         UserDefaults.standard.removeObject(forKey: "accessToken")
         UserDefaults.standard.removeObject(forKey: "refreshToken")
->>>>>>> 541d7fe465e6a660b35bc0521825311761d7d3af
     }
-    
-    init() {
-      
-        
-    }
+   
 }

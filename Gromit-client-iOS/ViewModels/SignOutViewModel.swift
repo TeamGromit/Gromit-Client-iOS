@@ -55,7 +55,7 @@ class SignOutViewModel: ObservableObject {
             "client_secret": clientSecret,
             "token": token
         ]
-<<<<<<< HEAD
+
         
         AF.request(url,
                    method: .post,
@@ -69,7 +69,7 @@ class SignOutViewModel: ObservableObject {
                 completionHandler()
             }
         }
-=======
+
         // 파라미터가 존재하는 경우 (진행중...)
 //        NetworkingClinet.shared.request(serviceURL: ., httpMethod: .post, parameter: parameters, headers: header, type: , completion: <#T##((String?, Decodable?)?, Error?) -> ()#>)
         // 파라미터가 존재하는 경우 (진행중...)
@@ -90,7 +90,7 @@ class SignOutViewModel: ObservableObject {
 //                completionHandler()
 //            }
 //        }
->>>>>>> 541d7fe465e6a660b35bc0521825311761d7d3af
+
     }
     
     func signOut() {

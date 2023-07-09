@@ -76,9 +76,7 @@
 		D582FF8829D07290005448F8 /* ChallengesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8729D07290005448F8 /* ChallengesEntity.swift */; };
 		D58E5E5529E00AA100AB7649 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58E5E5429E00AA100AB7649 /* SettingsViewModel.swift */; };
 		D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */; };
-		D5A7F191299E862700EC6A49 /* ParticipatingDetailView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7F190299E862700EC6A49 /* ParticipatingDetailView_Backup.swift */; };
 		D596B40029D9BFBB0052C41D /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */; };
-		D5A7F191299E862700EC6A49 /* ParticipatingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */; };
 		D5C02EB629A7695E000BB76E /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C02EB529A7695E000BB76E /* Extension+View.swift */; };
 		D5F8C21E297BF090004C6146 /* Gromit_client_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */; };
 		D5F8C222297BF091004C6146 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F8C221297BF091004C6146 /* Assets.xcassets */; };
@@ -160,9 +158,7 @@
 		D582FF8729D07290005448F8 /* ChallengesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesEntity.swift; sourceTree = "<group>"; };
 		D58E5E5429E00AA100AB7649 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewModel_Backup.swift; path = "Gromit-client-iOS/Backup/SignInViewModel_Backup.swift"; sourceTree = SOURCE_ROOT; };
-		D5A7F190299E862700EC6A49 /* ParticipatingDetailView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingDetailView_Backup.swift; sourceTree = "<group>"; };
 		D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
-		D5A7F190299E862700EC6A49 /* ParticipatingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatingDetailView.swift; sourceTree = "<group>"; };
 		D5C02EB529A7695E000BB76E /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		D5F8C21A297BF090004C6146 /* Gromit-client-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gromit-client-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F8C21D297BF090004C6146 /* Gromit_client_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gromit_client_iOSApp.swift; sourceTree = "<group>"; };
@@ -316,7 +312,6 @@
 				D5F8C23C297BF231004C6146 /* GromitMainView_Backup.swift */,
 				11C7299A29B2627000EB0DE2 /* ChangeNameView_Backup.swift */,
 				D5F8C23A297BF22A004C6146 /* SettingsView_Backup.swift */,
-				D5A7F190299E862700EC6A49 /* ParticipatingDetailView_Backup.swift */,
 				D5F8C230297BF1DE004C6146 /* TempView.swift */,
 			);
 			path = Backup;
@@ -664,7 +659,6 @@
 				2071C01E29BCB2650099A63C /* MessageView.swift in Sources */,
 				223253E929CF6C2D002BDE0F /* SignOutViewModel.swift in Sources */,
 				208C766029C5BC3F00CAEC57 /* ParticipatingDetailView.swift in Sources */,
-				D5A7F191299E862700EC6A49 /* ParticipatingDetailView_Backup.swift in Sources */,
 				207FEA1A29C5FD7400E838E4 /* ChangeNameViewModel.swift in Sources */,
 				11782483298B8F84000C640E /* SearchApi.swift in Sources */,
 				2058DAB629D827CD006F0E44 /* CollectionListViewModel.swift in Sources */,
