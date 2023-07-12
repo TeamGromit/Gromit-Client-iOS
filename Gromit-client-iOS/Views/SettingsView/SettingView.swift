@@ -16,7 +16,7 @@ struct SettingView: View {
     @State private var showSignInView = false
     @State var date = Date()
     
-    @StateObject private var settingsViewModel = SettingsViewModel()
+//    @StateObject private var settingsViewModel = SettingsViewModel()
     @StateObject var settingViewModel = SettingViewModel()
     @EnvironmentObject private var coordinator: Coordinator
     
@@ -64,7 +64,7 @@ struct SettingView: View {
             .alert(isPresented: $showingAlert) {
                 let firstButton = Alert.Button.default(Text("OK")) {
                     print("primary button pressed")
-                    settingsViewModel.removeToken()
+                    settingViewModel.logOut()
                     // 로그아웃 후, 로그인 페이지로 이동 후 다시 재로그인 했을 때 홈 화면으로 전환이 안 됨
                     coordinator.rootPage = .signInView
                 }
@@ -111,7 +111,8 @@ extension SettingView {
             LoginService.shared.initLoginHistory()
             coordinator.popToRoot()
             coordinator.rootPage = .signInView
-            
+        case .logOut:
+            coordinator.stopLoading()
         }
     }
 }
