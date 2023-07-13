@@ -44,7 +44,7 @@ struct SettingView: View {
             HStack {
                 Text("버전 정보")
                 Spacer()
-                Text("v0.1.0").foregroundColor(.gray)
+                Text("ver. 0.1.0").foregroundColor(.gray)
             }
             
             Button("닉네임 변경") {
