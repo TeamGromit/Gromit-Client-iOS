@@ -21,7 +21,6 @@
 		2071C01829BC977C0099A63C /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01729BC977C0099A63C /* URLImage.swift */; };
 		2071C01A29BC97D30099A63C /* GitProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01929BC97D30099A63C /* GitProfileView.swift */; };
 		2071C01E29BCB2650099A63C /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071C01D29BCB2650099A63C /* MessageView.swift */; };
-		207FEA1629C5F95500E838E4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1529C5F95500E838E4 /* SettingsView.swift */; };
 		207FEA1829C5F9F200E838E4 /* ChangeNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1729C5F9F200E838E4 /* ChangeNameView.swift */; };
 		207FEA1A29C5FD7400E838E4 /* ChangeNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */; };
 		207FEA1C29C605AD00E838E4 /* RequestChangeNickNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */; };
@@ -74,7 +73,6 @@
 		D56FE821298838E400374A9A /* SearchGitUserViewModel_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56FE820298838E400374A9A /* SearchGitUserViewModel_Backup.swift */; };
 		D582FF8629D06EA0005448F8 /* ChallengeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */; };
 		D582FF8829D07290005448F8 /* ChallengesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582FF8729D07290005448F8 /* ChallengesEntity.swift */; };
-		D58E5E5529E00AA100AB7649 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58E5E5429E00AA100AB7649 /* SettingsViewModel.swift */; };
 		D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */; };
 		D596B40029D9BFBB0052C41D /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */; };
 		D5C02EB629A7695E000BB76E /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C02EB529A7695E000BB76E /* Extension+View.swift */; };
@@ -106,7 +104,6 @@
 		2071C01729BC977C0099A63C /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		2071C01929BC97D30099A63C /* GitProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProfileView.swift; sourceTree = "<group>"; };
 		2071C01D29BCB2650099A63C /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		207FEA1529C5F95500E838E4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		207FEA1729C5F9F200E838E4 /* ChangeNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameView.swift; sourceTree = "<group>"; };
 		207FEA1929C5FD7400E838E4 /* ChangeNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewModel.swift; sourceTree = "<group>"; };
 		207FEA1B29C605AD00E838E4 /* RequestChangeNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChangeNickNameEntity.swift; sourceTree = "<group>"; };
@@ -156,7 +153,6 @@
 		D575D2B029896C660024C6DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D582FF8529D06EA0005448F8 /* ChallengeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListViewModel.swift; sourceTree = "<group>"; };
 		D582FF8729D07290005448F8 /* ChallengesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesEntity.swift; sourceTree = "<group>"; };
-		D58E5E5429E00AA100AB7649 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D592104629967ADF00E637C6 /* SignInViewModel_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewModel_Backup.swift; path = "Gromit-client-iOS/Backup/SignInViewModel_Backup.swift"; sourceTree = SOURCE_ROOT; };
 		D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
 		D5C02EB529A7695E000BB76E /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
@@ -217,7 +213,6 @@
 		207FEA1429C5F94200E838E4 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				207FEA1529C5F95500E838E4 /* SettingsView.swift */,
 				207FEA1729C5F9F200E838E4 /* ChangeNameView.swift */,
 				2243C2112A4DD3E60072E86C /* SettingView.swift */,
 			);
@@ -457,7 +452,6 @@
 				2058DAB529D827CD006F0E44 /* CollectionListViewModel.swift */,
 				201F5C4D2A2C96230062C498 /* SettingViewModel.swift */,
 				D596B3FF29D9BFBB0052C41D /* ChallengeDetailViewModel.swift */,
-				D58E5E5429E00AA100AB7649 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -581,7 +575,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				207FEA1629C5F95500E838E4 /* SettingsView.swift in Sources */,
 				20145D632A10A19400946D88 /* LoginService.swift in Sources */,
 				D56FE80A298781C500374A9A /* LoginWithAppleRequest.swift in Sources */,
 				2058DAB329D82298006F0E44 /* ResponseMessageEntity.swift in Sources */,
@@ -626,7 +619,6 @@
 				20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */,
 				D592104729967ADF00E637C6 /* SignInViewModel_Backup.swift in Sources */,
 				D56FE81B2987FFC200374A9A /* SearchGitUserEntity.swift in Sources */,
-				D58E5E5529E00AA100AB7649 /* SettingsViewModel.swift in Sources */,
 				D582FF8829D07290005448F8 /* ChallengesEntity.swift in Sources */,
 				D5F8C239297BF224004C6146 /* ParticipatingListView_Backup.swift in Sources */,
 				20AC077029A27003009519A1 /* Coordinator.swift in Sources */,

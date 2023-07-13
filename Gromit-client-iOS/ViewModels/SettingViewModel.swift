@@ -12,7 +12,7 @@ import AuthenticationServices
 // MARK: - 애플 토큰 삭제 (탈퇴) HTTP 통신
 class SettingViewModel: ObservableObject {
     enum OutputEvent {
-        case reqeustError, signOut
+        case reqeustError, signOut, logOut
     }
     
     @Published var outputEvent: OutputEvent? = nil
@@ -42,6 +42,12 @@ class SettingViewModel: ObservableObject {
                 }
             }
         }
+    }
+
+    func logOut() {
+        AppDataService.shared.removeToken()
+        self.outputEvent = .logOut
+        print("로그아웃 성공")
     }
 }
 
