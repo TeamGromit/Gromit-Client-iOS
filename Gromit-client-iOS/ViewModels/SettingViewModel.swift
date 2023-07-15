@@ -33,10 +33,10 @@ class SettingViewModel: ObservableObject {
                 if let responseData = responseData, let responseMessage = responseData.1, let response = responseData.0{
                     print(response)
                     if(responseMessage.code == 1000) {
-                        print("탈퇴완료!")
+                        print("탈퇴 완료!")
                         self.outputEvent = .signOut
                     } else {
-                        print("탈퇴실패!")
+                        print("탈퇴 실패!")
                         self.outputEvent = .reqeustError
                     }
                 }

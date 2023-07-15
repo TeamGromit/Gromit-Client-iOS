@@ -243,7 +243,7 @@ class Coordinator: ObservableObject {
         case .collectionView:
             CollectionListView()
         case .settingView:
-            SettingView()
+            SettingsView()
         case .participatingDetailView:
             if let selectChallenge = selectChallenge {
                 ParticipatingDetailView(challenge: selectChallenge)
