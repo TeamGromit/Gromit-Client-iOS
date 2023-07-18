@@ -13,7 +13,6 @@ struct InputUserNameView: View {
         case userNickname
       }
     let maxLength = Int(8)
-
     
     @State private var userNickname = ""    // State
     @FocusState private var focusField: Field?
