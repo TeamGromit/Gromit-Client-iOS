@@ -66,6 +66,7 @@ struct SettingView: View {
                     print("primary button pressed")
                     settingViewModel.logOut()
                     // 로그아웃 후, 로그인 페이지로 이동 후 다시 재로그인 했을 때 홈 화면으로 전환이 안 됨
+                    coordinator.popToRoot()
                     coordinator.rootPage = .signInView
                 }
                 let secondButton = Alert.Button.cancel(Text("Cancel")) {
