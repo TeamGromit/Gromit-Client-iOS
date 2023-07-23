@@ -26,18 +26,18 @@ struct SettingView: View {
     
     var body: some View {
         List {
-            Toggle(isOn: $showingToggle) {
-                Text("알람")
-            }
-            if showingToggle {
-                Button(action: {}) {
-                    DatePicker(
-                        "알람 시간 설정",
-                        selection: $date,
-                        displayedComponents: [.hourAndMinute]
-                    )
-                }
-            }
+//            Toggle(isOn: $showingToggle) {
+//                Text("알람")
+//            }
+//            if showingToggle {
+//                Button(action: {}) {
+//                    DatePicker(
+//                        "알람 시간 설정",
+//                        selection: $date,
+//                        displayedComponents: [.hourAndMinute]
+//                    )
+//                }
+//            }
             
             Link("이용 약관", destination: URL(string: "https://www.notion.so/Gromit-67f86ba5f9fc47abb6b7061016e37395?pvs=4")!)
                 .foregroundColor(.black)
