@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "delete_ui.png",
+      "filename" : "x.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "delete_ui 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "delete_ui 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
