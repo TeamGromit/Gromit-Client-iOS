@@ -26,6 +26,7 @@ struct SettingView: View {
     
     var body: some View {
         List {
+//            추후 기능 추가
 //            Toggle(isOn: $showingToggle) {
 //                Text("알람")
 //            }
