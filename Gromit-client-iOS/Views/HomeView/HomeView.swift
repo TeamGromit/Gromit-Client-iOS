@@ -28,9 +28,7 @@ struct HomeView: View {
         }
         .environmentObject(homeViewModel)
         .onAppear {
-            homeViewModel.requestUserInfo()
-            // 프리뷰 오류시 해당 부분 주석처리
-            // 초기 데이터 값을 설정해주지 않았기 때문
+            homeViewModel.requestUserInfo() // 프리뷰 오류시 해당 부분 주석처리
         }
         .onReceive(homeViewModel.$outputEvent) { event in
             if let event = event {
