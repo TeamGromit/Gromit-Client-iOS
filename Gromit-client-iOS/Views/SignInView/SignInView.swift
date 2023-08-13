@@ -27,15 +27,16 @@ struct SignInView: View {
     }
     var body: some View {
         ZStack {
+//            Color(red: 100, green: 100, blue: 100).ignoresSafeArea()  // 화이트 배경색 적용
             Color("yellow500").ignoresSafeArea()
             
-            VStack(spacing: 100) {
+            VStack(spacing: 45) {
                 // Origin logo
-                Image("gromit_logo")
+                Image("gromit_new_appIcon")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(30)
-                    .padding(.all, 15.0)
+                    .padding(.all, 40)
                 
                 // apple login
                 SignInWithAppleButtonView()
