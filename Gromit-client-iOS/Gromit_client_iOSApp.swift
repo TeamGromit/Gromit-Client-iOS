@@ -9,6 +9,7 @@ import SwiftUI
     
 @main
 struct Gromit_client_iOSApp: App {
+    @UIApplicationDelegateAdaptor(LaunchScreenDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             RootCoordinatorView()
