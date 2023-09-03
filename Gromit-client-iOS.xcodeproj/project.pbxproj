@@ -87,6 +87,8 @@
 		D5F8C23D297BF231004C6146 /* GromitMainView_Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C23C297BF231004C6146 /* GromitMainView_Backup.swift */; };
 		D5F8C23F297BF4CE004C6146 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F8C23E297BF4CE004C6146 /* Challenge.swift */; };
 		D5FBA28129E214AE008D3975 /* LogoutEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBA28029E214AE008D3975 /* LogoutEntity.swift */; };
+		D5FE3E3B2AA4CBC100E4C5E6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5FE3E3A2AA4CBC100E4C5E6 /* Launch Screen.storyboard */; };
+		D5FE3E3E2AA4CE6D00E4C5E6 /* LaunchScreenAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE3E3D2AA4CE6D00E4C5E6 /* LaunchScreenAppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +170,8 @@
 		D5F8C23C297BF231004C6146 /* GromitMainView_Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GromitMainView_Backup.swift; sourceTree = "<group>"; };
 		D5F8C23E297BF4CE004C6146 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D5FBA28029E214AE008D3975 /* LogoutEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutEntity.swift; sourceTree = "<group>"; };
+		D5FE3E3A2AA4CBC100E4C5E6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		D5FE3E3D2AA4CE6D00E4C5E6 /* LaunchScreenAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenAppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +463,7 @@
 		D5F8C22E297BF1A3004C6146 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D5FE3E3C2AA4CDEB00E4C5E6 /* LaunchScreen */,
 				2058DAB429D82716006F0E44 /* CollectionListView */,
 				20CA8C1329D0946800608DFD /* HomeView */,
 				20CA8C1029D093FE00608DFD /* Common */,
@@ -492,6 +497,15 @@
 				2058DAB729D832FC006F0E44 /* CollectionCharacter.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D5FE3E3C2AA4CDEB00E4C5E6 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D5FE3E3A2AA4CBC100E4C5E6 /* Launch Screen.storyboard */,
+				D5FE3E3D2AA4CE6D00E4C5E6 /* LaunchScreenAppDelegate.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,6 +577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5FE3E3B2AA4CBC100E4C5E6 /* Launch Screen.storyboard in Resources */,
 				D5F8C225297BF091004C6146 /* Preview Assets.xcassets in Resources */,
 				D5F8C222297BF091004C6146 /* Assets.xcassets in Resources */,
 			);
@@ -624,6 +639,7 @@
 				20AC077029A27003009519A1 /* Coordinator.swift in Sources */,
 				207FEA1829C5F9F200E838E4 /* ChangeNameView.swift in Sources */,
 				2281F940297DA918000649A9 /* SearchGitUserView_Backup.swift in Sources */,
+				D5FE3E3E2AA4CE6D00E4C5E6 /* LaunchScreenAppDelegate.swift in Sources */,
 				227133E0298AA17C003025E7 /* InputUserNameView_Backup.swift in Sources */,
 				20AC077229A2700D009519A1 /* GromitMainView.swift in Sources */,
 				20D138AB29CD59EB00FC7A9C /* RequestUserInfoEntity.swift in Sources */,
@@ -792,10 +808,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gromit-client-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "그로밋";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -823,10 +842,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gromit-client-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "그로밋";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
