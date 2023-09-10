@@ -91,7 +91,7 @@ class InputUserNameViewModel: ObservableObject {
     /// ================================================================================================
     func requestCheckUserNickName(_ nickName: String) {
         print("requestCheckUserNickName run / nickName : \(nickName)")
-        NetworkingClinet.shared.request(serviceURL: .requestGetNickName, pathVariable: [nickName], httpMethod: .get, type: InputUserNameEntity.self) { responseData, error in
+        NetworkingClinet.shared.request(serviceURL: .requestGetNickName, queryParamerter: ["nickname": nickName], httpMethod: .get, type: InputUserNameEntity.self) { responseData, error in
             debugPrint(responseData)
             debugPrint(error)
             if let error = error {

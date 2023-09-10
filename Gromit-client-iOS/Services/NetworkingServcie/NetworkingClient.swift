@@ -152,6 +152,31 @@ class NetworkingClinet {
         }
     }
     
+    func request<Output: Decodable>(serviceURL: ServiceURL, queryParamerter: [String: String] ,httpMethod: HTTPMethod, headers: HTTPHeaders? = nil, type: Output.Type, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
+        let urlString = serviceURL.urlString
+        print("request urlString: \(urlString)")
+       
+        print("AF Request")
+        AF.request(urlString, method: httpMethod, parameters: queryParamerter, encoding: URLEncoding(destination: .queryString), headers: headers) { $0.timeoutInterval = self.timeOutSeconds}
+            .response { responseData in
+            debugPrint(responseData)
+            switch responseData.result {
+            case let .success(data):
+                do {
+                    if let decodingData = try self.decodeData(type, data: data) {
+                        completion((responseData.debugDescription, decodingData), nil)
+                    }
+                }
+                catch {
+                    completion((responseData.debugDescription, nil), nil)
+                }
+            case let .failure(error):
+                completion(nil, error)
+            }
+            sleep(1)
+        }
+    }
+    
     func request<Output: Decodable>(serviceURL: ServiceURL, httpMethod: HTTPMethod, type: Output.Type, headers: HTTPHeaders, completion: @escaping ((String?, Output?)?, Error?) -> Void) {
         var urlString = serviceURL.urlString
         print("request urlString: \(urlString)")
