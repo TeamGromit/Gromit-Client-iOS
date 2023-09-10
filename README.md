@@ -7,7 +7,7 @@
 - xcode 팝업창의 rebase 체크는 해제합니다.
 #### 4. Push
 - 본인 브랜치에 푸시합니다. :no_entry_sign:메인에 절대 금지:no_entry_sign:
-#### 5. Github 레포에서 PR 날리고 Merge
+#### 5. Github 레포에서 PR 날리고 Merge!
 
 ---
 
