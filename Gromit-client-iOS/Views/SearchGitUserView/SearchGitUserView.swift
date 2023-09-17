@@ -39,7 +39,7 @@ struct SearchGitUserView: View {
                 .lineLimit(1)
                 .tracking(1.5)
                 .allowsTightening(true)
-                .keyboardType(.namePhonePad)
+                .keyboardType(.default)
                 .onSubmit {
                     print("user did tap return , \(userName)")
                 }
