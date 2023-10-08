@@ -40,7 +40,7 @@ struct SettingView: View {
 //                }
 //            }
             
-            Link("이용 약관", destination: URL(string: "https://www.notion.so/Gromit-67f86ba5f9fc47abb6b7061016e37395?pvs=4")!)
+            Link("이용 약관", destination: URL(string: "https://www.notion.so/6335954c94654fdfb16465077694250b")!)
                 .foregroundColor(.black)
             
             HStack {
