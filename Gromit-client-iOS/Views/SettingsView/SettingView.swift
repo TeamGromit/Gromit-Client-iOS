@@ -40,13 +40,13 @@ struct SettingView: View {
 //                }
 //            }
             
-            Link("이용 약관", destination: URL(string: "https://www.notion.so/Gromit-67f86ba5f9fc47abb6b7061016e37395?pvs=4")!)
+            Link("이용 약관", destination: URL(string: "https://www.notion.so/6335954c94654fdfb16465077694250b")!)
                 .foregroundColor(.black)
             
             HStack {
                 Text("버전 정보")
                 Spacer()
-                Text("ver. 0.1.1").foregroundColor(.gray)
+                Text("ver. 0.1.2").foregroundColor(.gray)
             }
             
             Button("닉네임 변경") {
