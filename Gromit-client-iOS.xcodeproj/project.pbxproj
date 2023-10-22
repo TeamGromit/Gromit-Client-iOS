@@ -262,6 +262,8 @@
 		20B0E37C29C354B800B4FEE1 /* ChallengeListView */ = {
 			isa = PBXGroup;
 			children = (
+				D53AC6F2299CB65200470E2A /* ChallengeListView.swift */,
+				D514837329A4AAA3005F05B2 /* ChallengeDetailView.swift */,
 				20B0E37D29C354D400B4FEE1 /* TempChallengeListView.swift */,
 			);
 			path = ChallengeListView;
@@ -479,8 +481,6 @@
 				20B2F21029AB2843007E947D /* SignInView */,
 				20AC076E29A26FEE009519A1 /* CoordinatorView */,
 				D56FE8102987F68300374A9A /* FinalLevelView.swift */,
-				D53AC6F2299CB65200470E2A /* ChallengeListView.swift */,
-				D514837329A4AAA3005F05B2 /* ChallengeDetailView.swift */,
 				11782480298B8F43000C640E /* CreationView.swift */,
 			);
 			path = Views;
@@ -819,7 +819,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = teamgromit.gromit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -853,7 +853,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = teamgromit.gromit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

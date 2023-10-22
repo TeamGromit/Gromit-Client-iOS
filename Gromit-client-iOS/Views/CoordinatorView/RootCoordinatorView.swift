@@ -25,8 +25,8 @@ struct RootCoordinatorView: View {
                 }
             } else {
                 TabView(selection: $coordinator.tabSelection) {
-                    NavigationStack(path: $coordinator.collectionViewPath) {
-                        coordinator.build(page: .collectionView)
+                    NavigationStack(path: $coordinator.participatingListViewPath) {
+                        coordinator.build(page: .participatingListView)
                             .navigationDestination(for: Page.self) { page in
                                 coordinator.build(page: page)
                                     .navigationBarTitle("")
@@ -35,7 +35,7 @@ struct RootCoordinatorView: View {
                         
                     }
                     .tabItem{
-                        Image("collection")
+                        Image("challenge")
                     }.tag(1)
                     
                     NavigationStack(path: $coordinator.homeViewPath) {
