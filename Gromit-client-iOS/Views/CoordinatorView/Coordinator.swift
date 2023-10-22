@@ -12,7 +12,7 @@ import SwiftUI
 // 일반 View
 
 enum RootPage: String, Identifiable {
-    case signInView, homeView, collectionView, settingView
+    case signInView, homeView, collectionView, settingView, challengeListView, participatingListView
     var id: String {
         self.rawValue
     }
@@ -62,13 +62,16 @@ enum Popup: String, Identifiable {
 
 // 객체의 변화를 감지하기 위해서는 ObservableObject 프로토콜을 채택해야한다.
 class Coordinator: ObservableObject {
-    // signInView, homeView, participatingListView, settingView
+    // signInView, homeView, participatingListView, settingView, challengeListView, participatingListView
     // @Published @ObservableObject 프로토콜 준수해야 사용 가능
     @Published var sigInViewPath: NavigationPath
     @Published var homeViewPath: NavigationPath
-    //@Published var participatingListViewPath: NavigationPath
+    
     @Published var settingViewPath: NavigationPath
     @Published var collectionViewPath: NavigationPath
+    
+    @Published var challengeListViewPath: NavigationPath
+    @Published var participatingListViewPath: NavigationPath
     
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
@@ -90,10 +93,11 @@ class Coordinator: ObservableObject {
     init(isExistLoginHistory: Bool) {
         self.sigInViewPath = NavigationPath()
         self.homeViewPath = NavigationPath()
-        //self.participatingListViewPath = NavigationPath()
         self.collectionViewPath = NavigationPath()
         self.settingViewPath = NavigationPath()
-        //self.collectionListViewPath = NavigationPath()
+        self.challengeListViewPath = NavigationPath()
+        self.participatingListViewPath = NavigationPath()
+        
         self.isLoading = false
         self.isPopuping = false
         self.tabSelection = 2
@@ -117,8 +121,10 @@ class Coordinator: ObservableObject {
             collectionViewPath.append(page)
         case .settingView:
             settingViewPath.append(page)
-//        case .collectionListView:
-//            collectionListViewPath.append(page)
+        case .challengeListView:
+            challengeListViewPath.append(page)
+        case .participatingListView:
+            participatingListViewPath.append(page)
         }
         
         if let challenge = challenge {
@@ -150,10 +156,6 @@ class Coordinator: ObservableObject {
             if(homeViewPath.isEmpty == false) {
                 homeViewPath.removeLast()
             }
-//        case .participatingListView:
-//            if(participatingListViewPath.isEmpty == false) {
-//                participatingListViewPath.removeLast()
-//            }
         case .collectionView:
             if(collectionViewPath.isEmpty == false) {
                 collectionViewPath.removeLast()
@@ -162,10 +164,14 @@ class Coordinator: ObservableObject {
             if(settingViewPath.isEmpty == false) {
                 settingViewPath.removeLast()
             }
-//        case .collectionListView:
-//            if(collectionListViewPath.isEmpty == false) {
-//                collectionListViewPath.removeLast()
-//            }
+        case .challengeListView:
+            if(challengeListViewPath.isEmpty == false) {
+                challengeListViewPath.removeLast()
+            }
+        case .participatingListView:
+            if(participatingListViewPath.isEmpty == false) {
+                participatingListViewPath.removeLast()
+            }
         }
     }
     func popToRoot() {
@@ -175,14 +181,14 @@ class Coordinator: ObservableObject {
             sigInViewPath.removeLast(sigInViewPath.count)
         case .homeView:
             homeViewPath.removeLast(homeViewPath.count)
-//        case .participatingListView:
-//            participatingListViewPath.removeLast(participatingListViewPath.count)
         case .collectionView:
             collectionViewPath.removeLast(collectionViewPath.count)
         case .settingView:
             settingViewPath.removeLast(settingViewPath.count)
-//        case .collectionListView:
-//            collectionListViewPath.removeLast(collectionListViewPath.count)
+        case .challengeListView:
+            challengeListViewPath.removeLast(challengeListViewPath.count)
+        case .participatingListView:
+            participatingListViewPath.removeLast(participatingListViewPath.count)
         }
     }
     
@@ -252,8 +258,6 @@ class Coordinator: ObservableObject {
             }
         case .changeGromitUserNameView:
             ChangeNameView()
-//        case .collectionListView:
-//            CollectionListView()
         }
     }
     
