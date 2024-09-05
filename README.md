@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="https://apps.apple.com/kr/app/%EA%B7%B8%EB%A1%9C%EB%B0%8B/id6451416113" tabIndex="0">
+    <img class="bn46" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="bn45"/>
+  </a>
+</p>
 
 <p align="center">
   <img src="https://private-user-images.githubusercontent.com/56381189/364624195-8ae4bb11-54c1-4447-9f02-08186873d323.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjU1MTEwOTAsIm5iZiI6MTcyNTUxMDc5MCwicGF0aCI6Ii81NjM4MTE4OS8zNjQ2MjQxOTUtOGFlNGJiMTEtNTRjMS00NDQ3LTlmMDItMDgxODY4NzNkMzIzLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA5MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwOTA1VDA0MzMxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWNjYmE4Y2UwZTQ2MDU5Njg0NTIxZDBmMmJlYmExYmFjZTU2NTEwOTlkNDAyOGRiYjVmMTUwNGYzMTZmMmI1ODYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.cD-2E8hrsU_gNspp6u6SNWVZ-7Ty4bu1aKfsG6KHLJk" align="center" width="32%">
